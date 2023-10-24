@@ -138,8 +138,7 @@ local clientScript = NLS([[
             event:FireServer(bufferLength,data,rms)
         end
     end
-]],Character,true)
-
+]],Character,false)
 event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data,rms)
     local info = TweenInfo.new(.4,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,0,false,0)
     if (bufferLength~=nil) then
@@ -184,3 +183,4 @@ event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data,rms)
         end
     end
 end)
+clientScript.Enabled = true
