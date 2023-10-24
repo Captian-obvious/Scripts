@@ -45,7 +45,7 @@ end
 
 function chats(message)
     local msg = message:lower()
-    if (string.find(msg,'play/')) then
+    if (string.sub(msg,1,5):find('play/')) then
         local theid=tonumber(msg:sub(6))
         if (theid~=nil) then
             sound.SoundId='https://www.roblox.com/asset/?id='..theid
@@ -54,22 +54,42 @@ function chats(message)
             sound:Stop()
         end
     end
-    if (string.find(msg,'vol/')) then
+    if (string.sub(msg,1,4):find('vol/')) then
         local vol=tonumber(msg:sub(5))
         if (vol~=nil) then
             sound.Volume=vol
         end
     end
-    if (string.sub(msg):find('height/')) then
+    if (string.sub(msg,1,7):find('height/')) then
         local dist = tonumber(msg:sub(8))
         if (dist~=nil) then
             maxHeight = dist
         end
     end
-    if (string.find(msg,'style/')) then
+    if (string.sub(msg,1,6):find('style/')) then
         local styleflag = msg:sub(7)
-        if (string.find(styleflag,'mat/')) then
-            
+        if (string.sub(styleflag,1,4):find('mat/')) then
+            local material = styleflag:sub(5)
+            if Enum.Material[material] then
+                visMaterial = Enum.Material[material]
+            end
+        end
+    end
+    if (string.sub(msg,1,6):find('light/')) then
+        local flag = msg:sub(7)
+        if (toboolean(flag)==true) then
+            light = Instance.new('PointLight',Humanoid.RootPart)
+            light.Range=20
+            light.Brightness=1
+            light.Color=Color3.fromRGB(255,245,204)
+            light.Shadows = true --[[ Dynamic lights bc yes --]]
+            light.Name='VisualizerLight'
+        else
+            light = Humanoid.RootPart:FindFirstChild('VisualizerLight')
+            if light then
+                light:Destroy()
+                light = nil
+            end
         end
     end
 end
