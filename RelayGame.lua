@@ -38,7 +38,7 @@ function display(ty,ti,configs)
                 uistr.LineJoinMode=style.JoinMode
             end
             if configs.AspectRatio then
-                local style=configs.AspectRation
+                local style=configs.AspectRatio
                 
             end
         end
