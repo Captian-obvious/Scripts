@@ -11,7 +11,9 @@ function display(ty,ti,config)
     clButton.AnchorPoint=Vector2.new(1,0)
     clButton.Size=UDim2.new(.1,0,.1,0)
     clButton.Position=UDim2.new(1,0,0,0)
-    local clRatio = clButton:FindFirstChild('ratio') or Instance.new()
+    local clRatio = clButton:FindFirstChild('ratio') or Instance.new('UIAspectRatioConstraint',clButton)
+    clRatio.Name='ratio'
+    clRatio.AspectRatio=1
     if ty=='msg' or ty=='text' then
 
     end
