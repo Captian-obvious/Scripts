@@ -16,6 +16,7 @@ function createElement(parent,ty,configs)
         if configs.childElements then
             buildElementTree(uielement,configs.childElements)
         end
+        return uielement
     end
     if ty=='label_text' then
         local uielement = Instance.new('TextLabel',parent)
@@ -33,6 +34,7 @@ function createElement(parent,ty,configs)
         if configs.childElements then
             buildElementTree(uielement,configs.childElements)
         end
+        return uielement
     end
     if ty=='label_img' then
         local uielement = Instance.new('ImageLabel',parent)
@@ -52,6 +54,7 @@ function createElement(parent,ty,configs)
         if configs.childElements then
             buildElementTree(uielement,configs.childElements)
         end
+        return uielement
     end
 end
 function buildElementTree(parent,ch)
@@ -120,9 +123,8 @@ function display(ty,ti,configs)
     clRatio.Name='ratio'
     clRatio.AspectRatio=1
     if ty=='msg' or ty=='text' then
-
-    end
-    if ty=='window' then
+        
+    elseif ty=='window' then
         local uielement = Instance.new('Frame',baseui)
         uielement.Name=configs.Name or 'WINDOW_'
         uielement.BackgroundTransparency=configs.BGTrans or 1
@@ -135,20 +137,8 @@ function display(ty,ti,configs)
         if configs.childElements then
             buildElementTree(uielement,configs.childElements)
         end
-    end
-    if ty=='frame' then
-        local uielement = Instance.new('Frame',baseui)
-        uielement.Name=configs.Name or 'FRAME_'
-        uielement.BackgroundTransparency=configs.BGTrans or 1
-        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
-        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
-        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
-        if configs.elStyle then
-            style(uielement,configs.elStyle)
-        end
-        if configs.childElements then
-            buildElementTree(uielement,configs.childElements)
-        end
+    else
+        local uielement = createElement(theui,ty,configs)
     end
 end
 function start()
