@@ -46,9 +46,8 @@ end
 function chats(message)
     local msg = message:lower()
     if (string.find(msg,'play/')) then
-        local idmsg=msg:sub(6)
-        if (idmsg~=nil and idmsg~='') then
-            local theid=tonumber(idmsg)
+        local theid=tonumber(msg:sub(6))
+        if (theid~=nil) then
             sound.SoundId='https://www.roblox.com/asset/?id='..theid
             sound:Play()
         else
@@ -57,14 +56,20 @@ function chats(message)
     end
     if (string.find(msg,'vol/')) then
         local vol=tonumber(msg:sub(5))
-        if vol then
+        if (vol~=nil) then
             sound.Volume=vol
         end
     end
-    if (string.find(msg,'dist/')) then
-        local distm=msg:sub(6)
-        if (distm~=nil and distm~='') then
-            local dist = tonumber(distm)
+    if (string.find(msg,'height/')) then
+        local dist = tonumber(msg:sub(8))
+        if (dist~=nil) then
+            maxHeight = dist
+        end
+    end
+    if (string.find(msg,'style/')) then
+        local styleflag = msg:sub(7)
+        if (string.find(styleflag,'mat/')) then
+            
         end
     end
 end
