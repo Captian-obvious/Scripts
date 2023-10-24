@@ -7,7 +7,12 @@ function display(ty,ti,config)
     baseui.Name='Dis_Win_Relay'
     local theui = baseui:FindFirstChild('main') or Instance.new('Frame',baseui)
     theui.Name='main'
-    
+    if ty=='msg' or ty=='text' then
+
+    end
+    if ty=='window' or ty=='frame' then
+        
+    end
 end
 function start()
     score=0
