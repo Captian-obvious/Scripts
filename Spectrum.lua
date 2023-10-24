@@ -3,7 +3,7 @@ local plr = owner
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
 wait()
 script.Name='AudioSpectrum_Server'
-local analyserNode = require(15162238427)
+local analyserNode = fromurl('Scripts/analyserNode.lua')()
 local fftSize = 64
 local Character = plr.Character
 local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOfClass('Humanoid')
@@ -119,7 +119,7 @@ local clientScript = NLS([[
     local event = c:WaitForChild('SpectrumMain')
     local sound = h.RootPart:WaitForChild('Visualize')
     local Replicated = game:GetService('ReplicatedStorage')
-    local analyserNode=]]..analyserNode..[[
+    local analyserNode=fromurl('Scripts/analyserNode.lua')()
     local analyser=analyserNode:CreateAnalyser(sound,]]..fftSize..[[)
     local bufferLength = analyser.frequencyBinCount
     while (script.Parent~=nil) do
