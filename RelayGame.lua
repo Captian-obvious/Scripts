@@ -39,7 +39,8 @@ function display(ty,ti,configs)
             end
             if configs.AspectRatio then
                 local style=configs.AspectRatio
-                
+                local aspectRatio = Instance.new('UIAspectRatioConstraint',uielement)
+                aspectRatio.AspectRatio = style.Value
             end
         end
     end
