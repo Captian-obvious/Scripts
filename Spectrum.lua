@@ -16,6 +16,15 @@ local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOf
 local sound = Instance.new('Sound',Humanoid.RootPart)
 local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEvent',Character)
 event.Name='SpectrumMain'
+local light=nil
+
+function toboolean(val)
+    if val:lower()=='t' or val:lower()=='true' or val:lower()=='tr' or val:lower()=='tru' or tonumber(val)==1 then
+        return true
+    else
+        return false
+    end
+end
 
 function createVisualizer(pos,radius,numParts,parent)
     local visModel = Instance.new('Model',parent)
@@ -72,6 +81,8 @@ function chats(message)
             local material = styleflag:sub(5)
             if Enum.Material[material] then
                 visMaterial = Enum.Material[material]
+            else
+                
             end
         end
     end
