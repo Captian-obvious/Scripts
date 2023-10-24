@@ -4,4 +4,5 @@ function e()
     task.wait(1)
     printerScript:Destroy()
 end
+e()
 mediaPlayer:Fire(script.Player.Value.Name,128)
