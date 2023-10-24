@@ -220,16 +220,23 @@ function Initialize()
                         BGC3 = Color3.fromRGB(85,0,0),
                         Position = UDim2.new(.5,0,.5,0),
                         AnchorPoint = Vector2.new(.5,.5),
-                        Size=UDim2.new(1,-2,1,-2),
+                        Size=UDim2.new(.3,-2,.3,-2),
                         elStyle={
-                            CloseButton={
-                                Value=true,
-                                Size=UDim2.new(.05,0,.05,0),
-                            },
                             Stroke={
                                 Color=Color3.new(1,0,0),
                                 Thickness=4,
-                                JoinMode=Enum.LineJoinMode.Bevel,
+                                JoinMode=Enum.LineJoinMode.Round,
+                            },
+                            AspectRatio={
+                                Value=1/2,
+                            },
+                        },
+                        childElements={
+                            {
+                                ElementType='button_text',
+                                Config={
+                                    Name='',
+                                },
                             },
                         },
                     },
