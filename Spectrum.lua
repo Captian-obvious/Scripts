@@ -157,10 +157,10 @@ event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data)
             for i,bar in pairs(bars) do
                 if bar~=nil and bar.Parent~=nil then
                     task.spawn(function()
-                        local val = data[i]
+                        local val = data[i]/255
                         local obj = bar:FindFirstChild('scaled')
                         local scaleTween = ts:Create(obj,info,{Scale=Vector3.new(1,val*maxHeight,1)})
-                        local colorTween = ts:Create(obj.Parent,info,{Color=Color3.fromRGB()})
+                        local colorTween = ts:Create(obj.Parent,info,{Color=Color3.fromRGB((val) * 255 + 25 * (i / bufferLength),250 * (i / bufferLength),50)})
                         scaleTween:Play()
                         colorTween:Play()
                     end)
