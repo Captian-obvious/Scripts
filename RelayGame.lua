@@ -28,8 +28,9 @@ function display(ty,ti,configs)
         uielement.Position=configs.Position or UDim2.new(0,0,0,0)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
         if configs.elStyle then
+            elStyle = configs.elStyle
             if configs.Stroke then
-                local style=configs.Stroke
+                local style=elStyle.Stroke
                 local uistr=Instance.new('UIStroke',uielement)
                 uistr.Thickness=style.Thickness or 2
                 uistr.ApplyStrokeMode=style.StrokeMode or Enum.ApplyStrokeMode.Border
@@ -38,11 +39,16 @@ function display(ty,ti,configs)
                 uistr.LineJoinMode=style.JoinMode or Enum.LineJoinMode.Round
             end
             if configs.AspectRatio then
-                local style=configs.AspectRatio
+                local style=elStyle.AspectRatio
                 local aspectRatio = Instance.new('UIAspectRatioConstraint',uielement)
                 aspectRatio.AspectRatio = style.Value or 1
-                aspectRatio.AspectType = style.Type or Enum.AspectType
+                aspectRatio.AspectType = style.Type or Enum.AspectType.FitWithinMaxSize
                 aspectRatio.DominantAxis = style.Axis or Enum.DominantAxis.X
+            end
+            if configs.Corner then
+                local style=elStyle.Corner
+                local corner=Instance.new('UICorner',uielement)
+                corner.CornerRadius
             end
         end
     end
