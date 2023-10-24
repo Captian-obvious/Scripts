@@ -17,8 +17,10 @@ local sound = Instance.new('Sound',Humanoid.RootPart)
 local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEvent',Character)
 event.Name='SpectrumMain'
 
-function createVisualizer(radius,parent)
-    
+function createVisualizer(radius,numParts,parent)
+    local tau = 2 * math.pi
+    local angle = myItemNumber * tau / totalAmountOfItems
+    local positionOnCircle = Vector3.new(math.sin(angle), 0, math.cos(angle))
 end
 
 
