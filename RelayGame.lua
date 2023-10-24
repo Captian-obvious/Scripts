@@ -32,8 +32,10 @@ function display(ty,ti,config)
                 local style=configs.Stroke
                 local uistr=Instance.new('UIStroke',uielement)
                 uistr.Thickness=style.Thickness
-                uistr.ApplyStrokeMode=style.Mode
+                uistr.ApplyStrokeMode=style.StrokeMode
                 uistr.Color=style.Color
+                uistr.Transparency=style.Transparency
+                uistr.LineJoinMode=style.JoinMode
             end
         end
     end
