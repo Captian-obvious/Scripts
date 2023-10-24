@@ -1,15 +1,7 @@
 local plr = owner
-function loadMessage()
-    local printerScript = NLS([[
-        print('Audio Spectrum v1.0.0 Loaded!')
-    ]],plr.PlayerGui,false)
-    printerScript.Enabled=true
-    task.wait(1)
-    printerScript:Destroy()
-end
-loadMessage()
 --[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
+wait()
 script.Name='AudioSpectrum_Server'
 local analyserNode = require(15162238427)
 local fftSize = 64
