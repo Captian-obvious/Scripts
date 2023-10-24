@@ -106,4 +106,9 @@ function chats(message)
 end
 
 --[[ The actual script begins here --]]
-local visualizer = createVisualizer
+local visualizer = createVisualizer(Humanoid.RootPart.Position,5,64,Humanoid.Parent)
+for i,v in pairs(visualizer:GetChildren()) do
+    if v~=nil and v.Parent~=nil then
+        
+    end
+end
