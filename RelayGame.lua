@@ -175,8 +175,10 @@ function display(ty,ti,configs)
         if configs.childElements then
             buildElementTree(uielement,configs.childElements)
         end
+        return uielement
     else
         local uielement = createElement(theui,ty,configs)
+        return uielement
     end
 end
 function start()
