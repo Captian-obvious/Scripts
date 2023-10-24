@@ -17,8 +17,7 @@ local sound = Instance.new('Sound',Humanoid.RootPart)
 local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEvent',Character)
 event.Name='SpectrumMain'
 local light=nil
-
-
+local bars={}
 function toboolean(val)
     if (val:lower()=='t' or val:lower()=='true' or val:lower()=='tr' or val:lower()=='tru' or tonumber(val)==1) then
         return true
