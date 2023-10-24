@@ -29,8 +29,11 @@ function display(ty,ti,config)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
         if configs.elStyle then
             if configs.Stroke then
-                local strokeStyle = configs.Stroke
+                local style=configs.Stroke
                 local uistr=Instance.new('UIStroke',uielement)
+                uistr.Thickness=style.Thickness
+                uistr.ApplyStrokeMode=style.Mode
+                uistr.Color=style.Color
             end
         end
     end
