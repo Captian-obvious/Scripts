@@ -4,6 +4,20 @@ local plr = script.Player.Value
 local score=0
 function style(uielement,elStyle)
     if elStyle then
+        if elStyle.CloseButton then
+            local style=elStyle.CloseButton
+            if style.Value==true then
+                local button = Instance.new('TextButton',uielement)
+                button.AnchorPoint=Vector2.new(1,0)
+                button.Position=UDim2.new(1,0,0,0)
+                button.Size=style.Size or UDim2.new(.1,0,.1,0)
+                button.TextColor3=style.Color or Color3.new(1,0,0)
+                button.Text='X'
+                local clRatio = button:FindFirstChild('ratio') or Instance.new('UIAspectRatioConstraint',button)
+                clRatio.Name='ratio'
+                clRatio.AspectRatio=1
+            end
+        end
         if elStyle.Stroke then
             local style=elStyle.Stroke
             local uistr=Instance.new('UIStroke',uielement)
@@ -54,6 +68,23 @@ function display(ty,ti,configs)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
         if configs.elStyle then
             style(uielement,configs.elStyle)
+        end
+        if configs.childElements then
+            buildElementTree(uielement,configs.childElements)
+        end
+    end
+    if ty=='frame' then
+        local uielement = Instance.new('Frame',baseui)
+        uielement.Name=configs.Name or 'FRAME_'
+        uielement.BackgroundTransparency=configs.BGTrans or 1
+        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
+        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
+        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        if configs.elStyle then
+            style(uielement,configs.elStyle)
+        end
+        if configs.childElements then
+            buildElementTree(uielement,configs.childElements)
         end
     end
 end
