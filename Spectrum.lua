@@ -9,4 +9,5 @@ function loadMessage()
 end
 loadMessage()
 --[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
-
+local analyserNode = require(id)
+local analyser = analyserNode:CreateAnalyser(sound,64)
