@@ -109,6 +109,8 @@ end
 local visualizer = createVisualizer(Humanoid.RootPart.Position,5,64,Humanoid.Parent)
 for i,v in pairs(visualizer:GetChildren()) do
     if v~=nil and v.Parent~=nil then
-        
+        task.spawn(function()
+            bars[i]=v
+        end)
     end
 end
