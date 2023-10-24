@@ -7,6 +7,10 @@ function display(ty,ti,config)
     baseui.Name='Dis_Win_Relay'
     local theui = baseui:FindFirstChild('main') or Instance.new('Frame',baseui)
     theui.Name='main'
+    local clButton = theui:FindFirstChild('Close') or Instance.new('TextButton',theui)
+    clButton.AnchorPoint=Vector2.new(1,0)
+    clButton.Size=UDim2.new(.1,0,.1,0)
+    clButton.Position=UDim2.new(1,0,0,0)
     if ty=='msg' or ty=='text' then
 
     end
