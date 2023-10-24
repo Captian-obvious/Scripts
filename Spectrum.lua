@@ -33,7 +33,7 @@ function createVisualizer(pos,radius,numParts,parent)
         local angle=i*angleStep
         local offset=Vector3.new(math.sin(angle), 0, math.cos(angle)) * radius
         local placementPos=pos+offset
-        local visPart = Instance.new('Part',workspace)
+        local visPart = Instance.new('Part',visModel)
         visPart.Anchored=true
         visPart.TopSurface=Enum.SurfaceType.Smooth
         visPart.BottomSurface=Enum.SurfaceType.Smooth
