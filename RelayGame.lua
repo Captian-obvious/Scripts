@@ -56,6 +56,24 @@ function createElement(parent,ty,configs)
         end
         return uielement
     end
+    if ty=='button_text' then
+        local uielement = Instance.new('TextLabel',parent)
+        uielement.Name=configs.Name or 'BTEXT_'
+        uielement.BackgroundTransparency=configs.BGTrans or 1
+        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
+        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
+        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        uielement.TextColor3=configs.TC3 or Color3.new(0,0,0)
+        uielement.TextTransparency=configs.TT or 0
+        uielement.Text = configs.Text or 'Label'
+        if configs.elStyle then
+            style(uielement,configs.elStyle)
+        end
+        if configs.childElements then
+            buildElementTree(uielement,configs.childElements)
+        end
+        return uielement
+    end
     if ty=='button_img' then
         local uielement = Instance.new('ImageLabel',parent)
         uielement.Name=configs.Name or 'BIMAGE_'
