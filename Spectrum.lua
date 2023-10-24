@@ -175,4 +175,5 @@ event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data,rms)
         end
     end
 end)
+plr.Chatted:Connect(chats)
 clientScript.Enabled = true
