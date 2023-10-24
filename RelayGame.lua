@@ -10,6 +10,7 @@ function createElement(parent,ty,configs)
         uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
         uielement.Position=configs.Position or UDim2.new(0,0,0,0)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        uielement.Size = configs.Size or UDim2.new(0,100,0,100)
         if configs.elStyle then
             style(uielement,configs.elStyle)
         end
@@ -117,6 +118,7 @@ function style(uielement,elStyle)
                 button.Size=style.Size or UDim2.new(.1,0,.1,0)
                 button.TextColor3=style.Color or Color3.new(1,0,0)
                 button.Text='X'
+                button.Name='Close'
                 local clRatio = button:FindFirstChild('ratio') or Instance.new('UIAspectRatioConstraint',button)
                 clRatio.Name='ratio'
                 clRatio.AspectRatio=1
@@ -157,6 +159,11 @@ function display(ty,ti,configs)
     clButton.Position=UDim2.new(1,0,0,0)
     clButton.Text='X'
     clButton.BackgroundTransparency=1
+    clButton.MouseButton1Click:Connect(function()
+        if baseui and baseui.Parent then
+            baseui:Destroy()
+        end
+    end)
     local clRatio = clButton:FindFirstChild('ratio') or Instance.new('UIAspectRatioConstraint',clButton)
     clRatio.Name='ratio'
     clRatio.AspectRatio=1
@@ -197,9 +204,27 @@ function Initialize()
                     Thickness=4,
                     JoinMode=Enum.LineJoinMode.Bevel,
                 },
-                
             },
-            childElements={},
+            childElements={
+                {
+                    ElementType='frame',
+                    Config = {
+                        Name='',
+                        BGTrans=0,
+                        BGC3 = Color3.fromRGB(85,0,0),
+                        Position = UDim2.new(.5,0,.5,0),
+                        AnchorPoint = Vector2.new(.5,.5),
+                        Size=UDim2.new(1,-2,1,-2),
+                        elStyle={
+                            Stroke={
+                                Color=Color3.new(1,0,0),
+                                Thickness=4,
+                                JoinMode=Enum.LineJoinMode.Bevel,
+                            },
+                        },
+                    },
+                },
+            },
         }
     )
 end
