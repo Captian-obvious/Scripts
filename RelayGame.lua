@@ -181,6 +181,14 @@ function display(ty,ti,configs)
         return uielement
     end
 end
+function Initialize()
+    window=display('window',1,
+        {
+            BGTrans=0,
+            childElements={},
+        }
+    )
+end
 function start()
     score=0
     
