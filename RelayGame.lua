@@ -4,7 +4,7 @@ local plr = script.Player.Value
 local score=0
 function createElement(parent,ty,configs)
     if ty=='frame' then
-        local uielement = Instance.new('Frame',baseui)
+        local uielement = Instance.new('Frame',parent)
         uielement.Name=configs.Name or 'FRAME_'
         uielement.BackgroundTransparency=configs.BGTrans or 1
         uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
@@ -18,7 +18,7 @@ function createElement(parent,ty,configs)
         end
     end
     if ty=='label_text' then
-        local uielement = Instance.new('TextLabel',baseui)
+        local uielement = Instance.new('TextLabel',parent)
         uielement.Name=configs.Name or 'LTEXT_'
         uielement.BackgroundTransparency=configs.BGTrans or 1
         uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
@@ -35,7 +35,7 @@ function createElement(parent,ty,configs)
         end
     end
     if ty=='label_img' then
-        local uielement = Instance.new('TextLabel',baseui)
+        local uielement = Instance.new('ImageLabel',parent)
         uielement.Name=configs.Name or 'LIMAGE_'
         uielement.BackgroundTransparency=configs.BGTrans or 1
         uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
