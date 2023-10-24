@@ -29,6 +29,8 @@ function createElement(parent,ty,configs)
         uielement.TextColor3=configs.TC3 or Color3.new(0,0,0)
         uielement.TextTransparency=configs.TT or 0
         uielement.Text = configs.Text or 'Label'
+        uielement.RichText=configs.RT or true
+        uielement.TextScaled=configs.TS or false
         if configs.elStyle then
             style(uielement,configs.elStyle)
         end
@@ -67,6 +69,8 @@ function createElement(parent,ty,configs)
         uielement.TextColor3=configs.TC3 or Color3.new(0,0,0)
         uielement.TextTransparency=configs.TT or 0
         uielement.Text = configs.Text or 'Label'
+        uielement.RichText=configs.RT or true
+        uielement.TextScaled=configs.TS or false
         if configs.elStyle then
             style(uielement,configs.elStyle)
         end
@@ -158,6 +162,8 @@ function display(ty,ti,configs)
     clButton.Size=UDim2.new(.1,0,.1,0)
     clButton.Position=UDim2.new(1,0,0,0)
     clButton.Text='X'
+    clButton.TextScaled=true
+    clButton.RichText=true
     clButton.BackgroundTransparency=1
     clButton.MouseButton1Click:Connect(function()
         if baseui and baseui.Parent then
@@ -209,13 +215,17 @@ function Initialize()
                 {
                     ElementType='frame',
                     Config = {
-                        Name='',
+                        Name='WINDOW_HUD',
                         BGTrans=0,
                         BGC3 = Color3.fromRGB(85,0,0),
                         Position = UDim2.new(.5,0,.5,0),
                         AnchorPoint = Vector2.new(.5,.5),
                         Size=UDim2.new(1,-2,1,-2),
                         elStyle={
+                            CloseButton={
+                                Value=true,
+                                Size=UDim2.new(.05,0,.05,0),
+                            },
                             Stroke={
                                 Color=Color3.new(1,0,0),
                                 Thickness=4,
