@@ -12,6 +12,7 @@ loadMessage()
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
 script.Name='AudioSpectrum_Server'
 local analyserNode = require(id)
+local fftSize = 64
 local Character = plr.Character
 local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOfClass('Humanoid')
 local sound = Instance.new('Sound',Humanoid.RootPart)
@@ -119,8 +120,15 @@ local clientScript = NLS([[
     local sound = h.RootPart:WaitForChild('Visualize')
     local Replicated = game:GetService('ReplicatedStorage')
     local analyserNode=]]..analyserNode..[[
-    local analyser=analyserNode:CreateAnalyser(sound,64)
-    
+    local analyser=analyserNode:CreateAnalyser(sound,]]..fftSize..[[)
+    local bufferLength = analyser.frequencyBinCount
+    while (script.Parent~=nil) do
+        task.wait()
+        local data = analyser:GetByteFrequencyData(sound)
+        if (data~=nil) then
+            event:FireServer(bufferLength,data)
+        end
+    end
 ]],Character,true)
 for i,v in pairs(visualizer:GetChildren()) do
     if v~=nil and v.Parent~=nil then
