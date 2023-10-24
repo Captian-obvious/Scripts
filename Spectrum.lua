@@ -60,7 +60,7 @@ function chats(message)
             sound.Volume=vol
         end
     end
-    if (string.find(msg,'height/')) then
+    if (string.sub(msg):find('height/')) then
         local dist = tonumber(msg:sub(8))
         if (dist~=nil) then
             maxHeight = dist
