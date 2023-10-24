@@ -1,4 +1,4 @@
-local plr = script.Player.Value
+local plr = owner
 function loadMessage()
     local printerScript = NLS([[
         print('Audio Spectrum v1.0.0 Loaded!')
