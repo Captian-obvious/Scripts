@@ -31,11 +31,15 @@ function display(ty,ti,config)
             if configs.Stroke then
                 local style=configs.Stroke
                 local uistr=Instance.new('UIStroke',uielement)
-                uistr.Thickness=style.Thickness
+                uistr.Thickness=style.Thickness or 2
                 uistr.ApplyStrokeMode=style.StrokeMode
-                uistr.Color=style.Color
-                uistr.Transparency=style.Transparency
+                uistr.Color=style.Color or Color3.new(1,1,1)
+                uistr.Transparency=style.Transparency or 0
                 uistr.LineJoinMode=style.JoinMode
+            end
+            if configs.AspectRatio then
+                local style=configs.AspectRation
+                
             end
         end
     end
