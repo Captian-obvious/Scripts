@@ -130,6 +130,24 @@ local clientScript = NLS([[
             event:FireServer(sound.Playing,bufferLength,data,rms)
         end
     end
+    ]],[[
+    local plr=game:GetService('Players').LocalPlayer
+    local c = plr.Character or plr.CharacterAdded:Wait()
+    local h = c:FindFirstChildOfClass('Humanoid')
+    local event = c:WaitForChild('SpectrumMain')
+    local sound = h.RootPart:WaitForChild('Visualize')
+    local Replicated = game:GetService('ReplicatedStorage')
+    local analyserNode=fromurl('Scripts/analyserNode.lua')()
+    local analyser=analyserNode:CreateAnalyser(sound,]]..fftSize..[[)
+    local bufferLength = analyser.frequencyBinCount
+    while (script.Parent~=nil) do
+        task.wait()
+        local data = analyser:GetByteFrequencyData()
+        if (data~=nil) then
+            local rms = sound.PlaybackLoudness / 1000
+            event:FireServer(sound.Playing,bufferLength,data,rms)
+        end
+    end
 ]],script.Parent,false)
 event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data,rms)
     local info = TweenInfo.new(.4,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,0,false,0)
