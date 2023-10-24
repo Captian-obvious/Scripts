@@ -1,4 +1,4 @@
-local plr = script.Player.Value
+local plr = owner
 local star = require(id)
 function loadMessage()
     local printerScriptServer = NS(plr,[[
