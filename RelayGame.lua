@@ -21,14 +21,17 @@ function display(ty,ti,config)
 
     end
     if ty=='window' then
-        local uielement = baseui:FindFirstChild('main') or Instance.new('Frame',baseui)
+        local uielement = Instance.new('Frame',baseui)
         uielement.Name=config.Name or 'WINDOW_'
         uielement.BackgroundTransparency=configs.BGTrans or 1
         uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
         uielement.Position=configs.Position or UDim2.new(0,0,0,0)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
         if configs.elStyle then
-            
+            if configs.Stroke then
+                local strokeStyle = configs.Stroke
+                local uistr=Instance.new('UIStroke',uielement)
+            end
         end
     end
 end
