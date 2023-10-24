@@ -11,6 +11,7 @@ loadMessage()
 --[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
 script.Name='AudioSpectrum_Server'
+local analyserNode = require(id)
 local Character = plr.Character
 local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOfClass('Humanoid')
 local sound = Instance.new('Sound',Humanoid.RootPart)
@@ -106,11 +107,16 @@ function chats(message)
 end
 
 --[[ The actual script begins here --]]
-local visualizer = createVisualizer(Humanoid.RootPart.Position,5,64,Humanoid.Parent)
+local visualizer = createVisualizer(Humanoid.RootPart.Position,5,32,Humanoid.Parent)
 local clientScript = NLS([[
-local plr=game:GetService("Players").LocalPlayer
-local analyserNode=require
-]],plr.PlayerGui,true)
+    local plr=game:GetService('Players').LocalPlayer
+    local c = plr.Character or plr.CharacterAdded:Wait()
+    local h = c:FindFirstChildOfClass('Humanoid')
+    local sound = h.RootPart:WaitForChild('Visualize')
+    local Replicated = game:GetService('ReplicatedStorage')
+    local analyserNode=]]..analyserNode..[[
+    local analyser=analyserNode:CreateAnalyser(sound,64)
+]],Character,true)
 for i,v in pairs(visualizer:GetChildren()) do
     if v~=nil and v.Parent~=nil then
         task.spawn(function()
