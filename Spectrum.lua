@@ -19,7 +19,7 @@ event.Name='SpectrumMain'
 local light=nil
 
 function toboolean(val)
-    if val:lower()=='t' or val:lower()=='true' or val:lower()=='tr' or val:lower()=='tru' or tonumber(val)==1 then
+    if (val:lower()=='t' or val:lower()=='true' or val:lower()=='tr' or val:lower()=='tru' or tonumber(val)==1) then
         return true
     else
         return false
@@ -79,7 +79,7 @@ function chats(message)
         local styleflag = msg:sub(7)
         if (string.sub(styleflag,1,4):find('mat/')) then
             local material = styleflag:sub(5)
-            if Enum.Material[material] then
+            if (Enum.Material[material]) then
                 visMaterial = Enum.Material[material]
             else
                 
