@@ -2,9 +2,14 @@ local Players=game:GetService('Players')
 local Replicated=game:GetService('ReplicatedStorage')
 local plr = script.Player.Value
 local score=0
+function buildElementTree(parent,ch)
+    if parent~=nil and (ch~=nil and ch~={}) then
+        
+    end
+end
 function style(uielement,elStyle)
     if elStyle then
-        if elStyle.CloseButton then
+        if uielement.Name:find('WINDOW') and elStyle.CloseButton then
             local style=elStyle.CloseButton
             if style.Value==true then
                 local button = Instance.new('TextButton',uielement)
