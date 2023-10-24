@@ -18,6 +18,7 @@ local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEv
 event.Name='SpectrumMain'
 local light=nil
 
+
 function toboolean(val)
     if (val:lower()=='t' or val:lower()=='true' or val:lower()=='tr' or val:lower()=='tru' or tonumber(val)==1) then
         return true
@@ -104,3 +105,6 @@ function chats(message)
         end
     end
 end
+
+--[[ The actual script begins here --]]
+local visualizer = createVisualizer
