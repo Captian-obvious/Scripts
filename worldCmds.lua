@@ -1,4 +1,4 @@
-local plr = script.Player.Value
+local plr = owner
 local Replicated = game:GetService('ReplicatedStorage')
 local main = require(id)
 local connection = nil
