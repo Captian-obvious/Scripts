@@ -41,6 +41,8 @@ function display(ty,ti,configs)
                 local style=configs.AspectRatio
                 local aspectRatio = Instance.new('UIAspectRatioConstraint',uielement)
                 aspectRatio.AspectRatio = style.Value or 1
+                aspectRatio.AspectType = style.Type or Enum.AspectType
+                aspectRatio.DominantAxis = style.Axis or Enum.DominantAxis.X
             end
         end
     end
