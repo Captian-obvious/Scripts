@@ -5,4 +5,4 @@ function e()
     printerScript:Destroy()
 end
 e()
-mediaPlayer:Fire(script.Player.Value.Name,128)
+mediaPlayer:Fire(owner.Name,128)
