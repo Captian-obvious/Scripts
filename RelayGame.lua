@@ -48,7 +48,7 @@ function display(ty,ti,configs)
             if configs.Corner then
                 local style=elStyle.Corner
                 local corner=Instance.new('UICorner',uielement)
-                corner.CornerRadius
+                corner.CornerRadius=UDim.new(style.Radius,0)
             end
         end
     end
