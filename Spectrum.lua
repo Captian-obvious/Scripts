@@ -11,7 +11,7 @@ loadMessage()
 --[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
 script.Name='AudioSpectrum_Server'
-local analyserNode = require(id)
+local analyserNode = require(15162238427)
 local fftSize = 64
 local Character = plr.Character
 local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOfClass('Humanoid')
