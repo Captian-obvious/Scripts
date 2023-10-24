@@ -17,4 +17,8 @@ local sound = Instance.new('Sound',Humanoid.RootPart)
 local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEvent',Character)
 event.Name='SpectrumMain'
 
+function createVisualizer(radius,parent)
+    
+end
+
 
