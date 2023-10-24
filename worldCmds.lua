@@ -1,8 +1,9 @@
 local plr = script.Player.Value
 local Replicated = game:GetService('ReplicatedStorage')
 local connection = nil
-local prefix = '/'
-local seperator = '|'
+local Prefix = '/',
+local Seperator = '|',
+local StringSplitter = ' ',
 function loadMessage()
     local printerScript = NLS([[
         print('InsertWorld Command System Loaded!')
