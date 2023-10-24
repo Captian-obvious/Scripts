@@ -19,8 +19,11 @@ event.Name='SpectrumMain'
 
 function createVisualizer(radius,numParts,parent)
     local tau = 2 * math.pi
-    local angle = myItemNumber * tau / totalAmountOfItems
-    local positionOnCircle = Vector3.new(math.sin(angle), 0, math.cos(angle))
+    for i=1,numParts do
+        local angle = i * tau / totalAmountOfItems
+        local positionOnCircle = Vector3.new(math.sin(angle), 0, math.cos(angle))
+        
+    end
 end
 
 
