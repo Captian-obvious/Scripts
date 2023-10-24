@@ -127,7 +127,7 @@ local clientScript = NLS([[
         local data = analyser:GetByteFrequencyData()
         if (data~=nil) then
             local rms = sound.PlaybackLoudness / 1000
-            event:FireServer(bufferLength,data,rms)
+            event:FireServer(sound.Playing,bufferLength,data,rms)
         end
     end
 ]],Character,false)
