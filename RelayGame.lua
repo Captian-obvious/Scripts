@@ -2,6 +2,31 @@ local Players=game:GetService('Players')
 local Replicated=game:GetService('ReplicatedStorage')
 local plr = script.Player.Value
 local score=0
+function style(uielement,elStyle)
+    if elStyle then
+        if elStyle.Stroke then
+            local style=elStyle.Stroke
+            local uistr=Instance.new('UIStroke',uielement)
+            uistr.Thickness=style.Thickness or 2
+            uistr.ApplyStrokeMode=style.StrokeMode or Enum.ApplyStrokeMode.Border
+            uistr.Color=style.Color or Color3.new(1,1,1)
+            uistr.Transparency=style.Transparency or 0
+            uistr.LineJoinMode=style.JoinMode or Enum.LineJoinMode.Round
+        end
+        if elStyle.AspectRatio then
+            local style=elStyle.AspectRatio
+            local aspectRatio = Instance.new('UIAspectRatioConstraint',uielement)
+            aspectRatio.AspectRatio = style.Value or 1
+            aspectRatio.AspectType = style.Type or Enum.AspectType.FitWithinMaxSize
+            aspectRatio.DominantAxis = style.Axis or Enum.DominantAxis.X
+        end
+        if elStyle.Corner then
+            local style=elStyle.Corner
+            local corner=Instance.new('UICorner',uielement)
+            corner.CornerRadius=UDim.new(style.Radius,0)
+        end
+    end
+end
 function display(ty,ti,configs)
     local baseui = plr.PlayerGui:FindFirstChild('Dis_Win_Relay') or Instance.new('ScreenGui',plr.PlayerGui)
     baseui.Name='Dis_Win_Relay'
@@ -28,28 +53,7 @@ function display(ty,ti,configs)
         uielement.Position=configs.Position or UDim2.new(0,0,0,0)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
         if configs.elStyle then
-            elStyle = configs.elStyle
-            if configs.Stroke then
-                local style=elStyle.Stroke
-                local uistr=Instance.new('UIStroke',uielement)
-                uistr.Thickness=style.Thickness or 2
-                uistr.ApplyStrokeMode=style.StrokeMode or Enum.ApplyStrokeMode.Border
-                uistr.Color=style.Color or Color3.new(1,1,1)
-                uistr.Transparency=style.Transparency or 0
-                uistr.LineJoinMode=style.JoinMode or Enum.LineJoinMode.Round
-            end
-            if configs.AspectRatio then
-                local style=elStyle.AspectRatio
-                local aspectRatio = Instance.new('UIAspectRatioConstraint',uielement)
-                aspectRatio.AspectRatio = style.Value or 1
-                aspectRatio.AspectType = style.Type or Enum.AspectType.FitWithinMaxSize
-                aspectRatio.DominantAxis = style.Axis or Enum.DominantAxis.X
-            end
-            if configs.Corner then
-                local style=elStyle.Corner
-                local corner=Instance.new('UICorner',uielement)
-                corner.CornerRadius=UDim.new(style.Radius,0)
-            end
+            style(uielement,configs.elStyle)
         end
     end
 end
