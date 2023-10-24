@@ -20,9 +20,16 @@ function display(ty,ti,config)
     if ty=='msg' or ty=='text' then
 
     end
-    if ty=='window' or ty=='frame' then
+    if ty=='window' then
         local uielement = baseui:FindFirstChild('main') or Instance.new('Frame',baseui)
-        uielement.Name=config.Name or 'WINDOW_'..
+        uielement.Name=config.Name or 'WINDOW_'
+        uielement.BackgroundTransparency=configs.BGTrans or 1
+        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
+        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
+        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        if configs.elStyle then
+            
+        end
     end
 end
 function start()
