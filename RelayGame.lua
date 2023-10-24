@@ -17,16 +17,49 @@ function createElement(parent,ty,configs)
             buildElementTree(uielement,configs.childElements)
         end
     end
+    if ty=='label_text' then
+        local uielement = Instance.new('TextLabel',baseui)
+        uielement.Name=configs.Name or 'LTEXT_'
+        uielement.BackgroundTransparency=configs.BGTrans or 1
+        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
+        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
+        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        uielement.TextColor3=configs.TC3 or Color3.new(0,0,0)
+        uielement.TextTransparency=configs.TT or 0
+        uielement.Text = configs.Text or 'Label'
+        if configs.elStyle then
+            style(uielement,configs.elStyle)
+        end
+        if configs.childElements then
+            buildElementTree(uielement,configs.childElements)
+        end
+    end
+    if ty=='label_img' then
+        local uielement = Instance.new('TextLabel',baseui)
+        uielement.Name=configs.Name or 'LIMAGE_'
+        uielement.BackgroundTransparency=configs.BGTrans or 1
+        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
+        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
+        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        uielement.ImageColor3=configs.IC3 or Color3.new(0,0,0)
+        uielement.ImageTransparency=configs.IT or 0
+        uielement.Image = configs.Image or 'rbxasset://textures/imagePlaceholder.png'
+        uielement.HoverImage = configs.HImage or ''
+        uielement.PressedImage = configs.PImage or ''
+        if configs.elStyle then
+            style(uielement,configs.elStyle)
+        end
+        if configs.childElements then
+            buildElementTree(uielement,configs.childElements)
+        end
+    end
 end
 function buildElementTree(parent,ch)
     if parent~=nil and (ch~=nil and ch~={}) then
         for c,v in pairs(ch) do
             if v~=nil then
                 task.spawn(function()
-                    local newParent = createElement(parent,v.ElementType,v.Config)
-                    if v.childElements then
-                        buildElementTree(newParent,v.childElements)
-                    end
+                    createElement(parent,v.ElementType,v.Config)
                 end)
             end
         end
