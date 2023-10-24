@@ -15,6 +15,9 @@ local analyserNode = require(id)
 local Character = plr.Character
 local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOfClass('Humanoid')
 local sound = Instance.new('Sound',Humanoid.RootPart)
+sound.Looped=false
+sound.Volume = 1
+sound.Name='Visualize'
 local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEvent',Character)
 event.Name='SpectrumMain'
 local light=nil
@@ -112,10 +115,12 @@ local clientScript = NLS([[
     local plr=game:GetService('Players').LocalPlayer
     local c = plr.Character or plr.CharacterAdded:Wait()
     local h = c:FindFirstChildOfClass('Humanoid')
+    local event = c:WaitForChild('SpectrumMain')
     local sound = h.RootPart:WaitForChild('Visualize')
     local Replicated = game:GetService('ReplicatedStorage')
     local analyserNode=]]..analyserNode..[[
     local analyser=analyserNode:CreateAnalyser(sound,64)
+    
 ]],Character,true)
 for i,v in pairs(visualizer:GetChildren()) do
     if v~=nil and v.Parent~=nil then
