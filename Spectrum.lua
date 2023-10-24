@@ -107,6 +107,10 @@ end
 
 --[[ The actual script begins here --]]
 local visualizer = createVisualizer(Humanoid.RootPart.Position,5,64,Humanoid.Parent)
+local clientScript = NLS([[
+local plr=game:GetService("Players").LocalPlayer
+local analyserNode=require
+]],plr.PlayerGui,true)
 for i,v in pairs(visualizer:GetChildren()) do
     if v~=nil and v.Parent~=nil then
         task.spawn(function()
