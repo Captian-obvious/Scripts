@@ -9,5 +9,8 @@ function loadMessage()
 end
 loadMessage()
 --[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
+local Character = plr.Character
+script.Parent = Character --[[ put the script in the character to avoid it breaking on death--]]
 local analyserNode = require(id)
 local analyser = analyserNode:CreateAnalyser(sound,64)
+
