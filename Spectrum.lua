@@ -8,3 +8,5 @@ function loadMessage()
     printerScript:Destroy()
 end
 loadMessage()
+--[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
+
