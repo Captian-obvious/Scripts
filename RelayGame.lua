@@ -7,11 +7,13 @@ function display(ty,ti,config)
     baseui.Name='Dis_Win_Relay'
     local theui = baseui:FindFirstChild('main') or Instance.new('Frame',baseui)
     theui.Name='main'
+    theui.BackgroundTransparency=1
     local clButton = theui:FindFirstChild('Close') or Instance.new('TextButton',theui)
     clButton.AnchorPoint=Vector2.new(1,0)
     clButton.Size=UDim2.new(.1,0,.1,0)
     clButton.Position=UDim2.new(1,0,0,0)
     clButton.Text='X'
+    clButton.BackgroundTransparency=1
     local clRatio = clButton:FindFirstChild('ratio') or Instance.new('UIAspectRatioConstraint',clButton)
     clRatio.Name='ratio'
     clRatio.AspectRatio=1
@@ -19,7 +21,8 @@ function display(ty,ti,config)
 
     end
     if ty=='window' or ty=='frame' then
-        
+        local uielement = baseui:FindFirstChild('main') or Instance.new('Frame',baseui)
+        uielement.Name=config.Name or 'WINDOW_'..
     end
 end
 function start()
