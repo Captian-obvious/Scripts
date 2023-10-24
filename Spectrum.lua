@@ -22,6 +22,7 @@ sound.Name='Visualize'
 local event = Character:FindFirstChild('SpectrumMain') or Instance.new('RemoteEvent',Character)
 event.Name='SpectrumMain'
 local light=nil
+local maxHeight=10
 local bars={}
 function toboolean(val)
     if (val:lower()=='t' or val:lower()=='true' or val:lower()=='tr' or val:lower()=='tru' or tonumber(val)==1) then
@@ -112,6 +113,13 @@ end
 
 --[[ The actual script begins here --]]
 local visualizer = createVisualizer(Humanoid.RootPart.Position,5,32,Humanoid.Parent)
+for i,v in pairs(visualizer:GetChildren()) do
+    if v~=nil and v.Parent~=nil then
+        task.spawn(function()
+            bars[i]=v
+        end)
+    end
+end
 local clientScript = NLS([[
     local plr=game:GetService('Players').LocalPlayer
     local c = plr.Character or plr.CharacterAdded:Wait()
@@ -130,11 +138,47 @@ local clientScript = NLS([[
         end
     end
 ]],Character,true)
-for i,v in pairs(visualizer:GetChildren()) do
-    if v~=nil and v.Parent~=nil then
-        task.spawn(function()
-            bars[i]=v
-        end)
-    end
-end
 
+event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data)
+    local info = TweenInfo.new(.4,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,0,false,0)
+    if (bufferLength~=nil) then
+        if #bars > bufferLength then
+            visualizer:Destroy()
+            visualizer = createVisualizer(Humanoid.RootPart.Position,5,32,Humanoid.Parent)
+            for i,v in pairs(visualizer:GetChildren()) do
+                if v~=nil and v.Parent~=nil then
+                    task.spawn(function()
+                        bars[i]=v
+                    end)
+                end
+            end
+        end
+        if isPlaying==true then
+            for i,bar in pairs(bars) do
+                if bar~=nil and bar.Parent~=nil then
+                    task.spawn(function()
+                        local val = data[i]
+                        local obj = bar:FindFirstChild('scaled')
+                        local scaleTween = ts:Create(obj,info,{Scale=Vector3.new(1,val*maxHeight,1)})
+                        local colorTween = ts:Create(obj.Parent,info,{Color=Color3.fromRGB()})
+                        scaleTween:Play()
+                        colorTween:Play()
+                    end)
+                end
+            end
+        else
+            for i,bar in pairs(bars) do
+                if bar~=nil and bar.Parent~=nil then
+                    task.spawn(function()
+                        local val = data[i]
+                        local obj = bar:FindFirstChild('scaled')
+                        local scaleTween = ts:Create(obj,info,{Scale=Vector3.new(1,.5,1)})
+                        local colorTween = ts:Create(obj.Parent,info,{Color=Color3.fromRGB(27,27,27)})
+                        scaleTween:Play()
+                        colorTween:Play()
+                    end)
+                end
+            end
+        end
+    end
+end)
