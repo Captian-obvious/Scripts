@@ -2,9 +2,34 @@ local Players=game:GetService('Players')
 local Replicated=game:GetService('ReplicatedStorage')
 local plr = script.Player.Value
 local score=0
+function createElement(parent,ty,configs)
+    if ty=='frame' then
+        local uielement = Instance.new('Frame',baseui)
+        uielement.Name=configs.Name or 'FRAME_'
+        uielement.BackgroundTransparency=configs.BGTrans or 1
+        uielement.BackgroundColor3=configs.BGC3 or Color3.new(1,1,1)
+        uielement.Position=configs.Position or UDim2.new(0,0,0,0)
+        uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
+        if configs.elStyle then
+            style(uielement,configs.elStyle)
+        end
+        if configs.childElements then
+            buildElementTree(uielement,configs.childElements)
+        end
+    end
+end
 function buildElementTree(parent,ch)
     if parent~=nil and (ch~=nil and ch~={}) then
-        
+        for c,v in pairs(ch) do
+            if v~=nil then
+                task.spawn(function()
+                    local newParent = createElement(parent,v.ElementType,v.Config)
+                    if v.childElements then
+                        buildElementTree(newParent,v.childElements)
+                    end
+                end)
+            end
+        end
     end
 end
 function style(uielement,elStyle)
