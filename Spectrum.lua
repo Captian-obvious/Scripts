@@ -139,7 +139,7 @@ local clientScript = NLS([[
     end
 ]],Character,true)
 
-event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data)
+event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data,rms)
     local info = TweenInfo.new(.4,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,0,false,0)
     if (bufferLength~=nil) then
         if #bars > bufferLength then
@@ -154,6 +154,7 @@ event.OnServerEvent:Connect(function(p,isPlaying,bufferLength,data)
             end
         end
         if isPlaying==true then
+            light.Brightness=rms
             for i,bar in pairs(bars) do
                 if bar~=nil and bar.Parent~=nil then
                     task.spawn(function()
