@@ -1,6 +1,6 @@
 local Players=game:GetService('Players')
 local Replicated=game:GetService('ReplicatedStorage')
-local plr = script.Player.Value
+local plr = owner
 local score=0
 function createElement(parent,ty,configs)
     if ty=='frame' then
