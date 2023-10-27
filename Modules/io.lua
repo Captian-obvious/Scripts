@@ -4,6 +4,10 @@ local io = {
     Keypress = event.Event,
 }
 
+function io:Initialize()
+
+end
+
 function io:awaitKeypress(key)
     local plr,pressed = io.Keypress:Wait()
     if plr~=nil then
