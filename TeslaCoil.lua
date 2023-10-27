@@ -1,5 +1,5 @@
 local plr = owner
-local arc = fromurl('Scripts/Modules/Arc.lua')()
+local arc = fromurl('Scripts/Modules/arc.lua')()
 local uiHandler = fromurl('Scripts/Modules/UI/init.lua')()
 local configs = fromurl('Scripts/Modules/TeslaCoil/arcConfig.lua')()
 local arcParams = nil
@@ -10,7 +10,7 @@ function init()
 end
 function pulse(numArcs,pos)
     for i=1,numArcs do
-        local arcInstance = arc.new(plr.Character,{Position1=pos,Position2=pos2})
+        local arcInstance = arc.new(plr.Character,1,{Position1=pos,Position2=pos2,Segments=getSegFromDist()})
     end
 end
 
