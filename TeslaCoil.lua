@@ -4,6 +4,7 @@ local uiHandler = fromurl('Scripts/Modules/UI/init.lua')()
 local configs = fromurl('Scripts/Modules/TeslaCoil/arcConfig.lua')()
 local arcParams = nil
 local isInitialized = false
+local arcLifetime = .05
 function init()
     if isInitialized~=true then
         local hat = require(id).Hat:Clone()
@@ -26,7 +27,7 @@ function Raycast(pos,direction,ignore)
     local rr = workspace:Raycast(pos,direction,params)
     return rr
 end
-function pulse(numArcs,startpos,range)
+function pulse(startpos,range,numArcs)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
