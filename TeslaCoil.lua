@@ -14,9 +14,13 @@ function init()
     end
 end
 function pulse(numArcs,pos)
-    for i=1,numArcs do
-        local result = Raycast(pos,
-        local arcInstance = arc.new(plr.Character,1,{Position1=pos,Position2=pos2,Segments=getSegFromDist()})
+    if isInitialized~=true then
+        warn('TeslaCoil: Module Not Initialized! Initialize the module before using its functions!')
+    else
+        for i=1,numArcs do
+            local result = Raycast(pos,
+            local arcInstance = arc.new(plr.Character,1,{Position1=pos,Position2=pos2,Segments=getSegFromDist()})
+        end
     end
 end
 
