@@ -5,17 +5,22 @@ local configs = fromurl('Scripts/Modules/TeslaCoil/arcConfig.lua')()
 local arcParams = nil
 local isInitialized = false
 function init()
-    local hat = require(id).Hat:Clone()
-    hat.Parent = plr.Character
-    local tl = hat:FindFirstChild('topload')
-    if tl then
-        local pos = tl.Position
-        arcParams = configs.Initialize(pos)
+    if isInitialized~=true then
+        local hat = require(id).Hat:Clone()
+        hat.Parent = plr.Character
+        local tl = hat:FindFirstChild('topload')
+        if tl then
+            local pos = tl.Position
+            arcParams = configs.Initialize(pos)
+        end
+        isInitialized = true
+    else
+        warn('SSTC: Module Already Initialized!')
     end
 end
 function pulse(numArcs,pos)
     if isInitialized~=true then
-        warn('TeslaCoil: Module Not Initialized! Initialize the module before using its functions!')
+        warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
         for i=1,numArcs do
             local result = Raycast(pos,
@@ -23,4 +28,3 @@ function pulse(numArcs,pos)
         end
     end
 end
-
