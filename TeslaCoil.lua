@@ -18,6 +18,13 @@ function init()
         warn('SSTC: Module Already Initialized!')
     end
 end
+function Raycast(pos,direction,ignore)
+    local params = RaycastParams.new()
+    params.FilterType=Enum.RaycastFilterType.Exclude
+    params.FilterDescendantsInstances=ignore
+    local rr = workspace:Raycast(pos,direction,params)
+    return rr
+end
 function pulse(numArcs,startpos)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
