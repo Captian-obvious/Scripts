@@ -28,6 +28,7 @@ function createElement(parent,ty,configs)
         uielement.AnchorPoint=configs.AnchorPoint or Vector2.new(0,0)
         uielement.TextColor3=configs.TC3 or Color3.new(0,0,0)
         uielement.TextTransparency=configs.TT or 0
+        uielement.TextSize=configs.TSize or 14
         uielement.Text = configs.Text or 'Label'
         uielement.RichText=configs.RT or true
         uielement.TextScaled=configs.TS or false
@@ -69,6 +70,7 @@ function createElement(parent,ty,configs)
         uielement.TextColor3=configs.TC3 or Color3.new(0,0,0)
         uielement.TextTransparency=configs.TT or 0
         uielement.Text = configs.Text or 'Label'
+        uielement.TextSize=configs.TSize or 14
         uielement.RichText=configs.RT or true
         uielement.TextScaled=configs.TS or false
         if configs.elStyle then
@@ -239,6 +241,22 @@ function Initialize()
                                 },
                             },
                         },
+                    },
+                },
+                {
+                    ElementType='label_text',
+                    Config = {
+                        Name='Title',
+                        BGTrans=1,
+                        BGC3 = Color3.fromRGB(85,0,0),
+                        Position = UDim2.new(0,0,0,0),
+                        AnchorPoint = Vector2.new(0,0),
+                        Size=UDim2.new(1,-2,.1,0),
+                        TC3=Color3.new(1,0,0),
+                        TSize=20,
+                        Text='Relay Replacer',
+                        TS=true,
+                        RT=true,
                     },
                 },
             },
