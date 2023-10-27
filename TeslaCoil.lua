@@ -36,7 +36,10 @@ function pulse(numArcs,startpos,range)
             local pos = result.Position
             local dist = result.Distance
             local arcInstance = arc.new(plr.Character,1,{ArcColor3=electricBlue,Position1=startpos,Position2=pos,Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist)})
-            
+            spawn(function()
+                task.wait(arcLifetime)
+                arcInstance:Destroy()
+            end)
         end
     end
 end
