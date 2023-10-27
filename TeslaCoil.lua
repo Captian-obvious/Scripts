@@ -22,6 +22,7 @@ function Raycast(pos,direction,ignore)
     local params = RaycastParams.new()
     params.FilterType=Enum.RaycastFilterType.Exclude
     params.FilterDescendantsInstances=ignore
+    params.IgnoreWater = true
     local rr = workspace:Raycast(pos,direction,params)
     return rr
 end
@@ -30,7 +31,7 @@ function pulse(numArcs,startpos)
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
         for i=1,numArcs do
-            local result = Raycast(startpos,dir,plr.Character)
+            local result = Raycast(startpos,dir,{plr.Character})
             local arcInstance = arc.new(plr.Character,1,{Position1=pos,Position2=pos2,Segments=getSegFromDist()})
         end
     end
