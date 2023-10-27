@@ -1,7 +1,7 @@
 local event = script:FindFirstChild('Keypress') or Instance.new('BindableEvent',script)
 event.Name='Keypress'
 local io = {
-    Keypress = event.Event
+    Keypress = event.Event,
 }
 
 function io:awaitKeypress(key)
