@@ -18,12 +18,12 @@ function init()
         warn('SSTC: Module Already Initialized!')
     end
 end
-function pulse(numArcs,pos)
+function pulse(numArcs,startpos)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
         for i=1,numArcs do
-            local result = Raycast(pos,
+            local result = Raycast(startpos,dir,plr.Character)
             local arcInstance = arc.new(plr.Character,1,{Position1=pos,Position2=pos2,Segments=getSegFromDist()})
         end
     end
