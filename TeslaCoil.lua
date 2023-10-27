@@ -32,7 +32,10 @@ function pulse(numArcs,startpos)
     else
         for i=1,numArcs do
             local result = Raycast(startpos,dir,{plr.Character})
-            local arcInstance = arc.new(plr.Character,1,{Position1=pos,Position2=pos2,Segments=getSegFromDist()})
+            local pos = result.Position
+            local dist = result.Distance
+            local arcInstance = arc.new(plr.Character,1,{ArcColor3=electricBlue,Position1=startpos,Position2=pos,Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist)})
+            
         end
     end
 end
