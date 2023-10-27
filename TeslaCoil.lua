@@ -26,11 +26,12 @@ function Raycast(pos,direction,ignore)
     local rr = workspace:Raycast(pos,direction,params)
     return rr
 end
-function pulse(numArcs,startpos)
+function pulse(numArcs,startpos,range)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
         for i=1,numArcs do
+            local dir = Vector3.new(math.random(-180,180),math.random(0,90),math.random(-180,180)).Unit * range
             local result = Raycast(startpos,dir,{plr.Character})
             local pos = result.Position
             local dist = result.Distance
