@@ -56,7 +56,7 @@ function pulse(startpos,range,numArcs)
             local result = Raycast(startpos,dir.Unit * range,{plr.Character})
             local pos = result.Position
             local dist = result.Distance
-            local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.fromRGB(9, 137, 207),Position1=startpos,Position2=pos,Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist)})
+            local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.fromRGB(9, 137, 207),Segments=getSegFromDist(dist),Offset = getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
             spawn(function()
                 task.wait(arcLifetime)
                 arcInstance:Destroy()
