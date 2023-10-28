@@ -19,7 +19,7 @@ function distToWidth(dist)
 end
 
 function arc.new(parent,n1,props)
-    local n2 = props.Segements
+    local n2 = props.Segments
     local pos1 = props.Position0
     local pos2 = props.Position1
     local arcDist = (pos2-pos1).magnitude
