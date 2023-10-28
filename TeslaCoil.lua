@@ -68,6 +68,7 @@ function findTarget(pos,range,ignore)
                         data.hum = h
                         data.part = v
                     else
+                        --warn("no root")
                         data.part = v
                     end
                 elseif data.hum == nil then
