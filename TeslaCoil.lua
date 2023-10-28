@@ -60,7 +60,17 @@ function findTarget(pos,range,ignore)
             if mag <= range then
                 local h = v.Parent:FindFirstChildOfClass("Humanoid")
                 if h~=nil and h.Health > 0 then
-                    
+                    local root = h.Parent:FindFirstChild("HumanoidRootPart") or h.Parent:FindFirstChild("Head") or h.Parent:FindFirstChildWhichIsA("BasePart")
+                    if root~=nil then
+                        print("Found root")
+                        data.char = root.Parent
+                        data.hum = h
+                        data.part = v
+                    else
+                        data.part = v
+                    end
+                elseif data.hum == nil then
+                    data.part = v
                 end
             else
                 
