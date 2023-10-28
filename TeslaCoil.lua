@@ -22,7 +22,7 @@ end
 function Raycast(pos,direction,ignore)
     local params = RaycastParams.new()
     params.FilterType=Enum.RaycastFilterType.Exclude
-    params.FilterDescendantsInstances=ignore
+    params.FilterDescendantsInstances=ignore or {}
     params.IgnoreWater = true
     local rr = workspace:Raycast(pos,direction,params)
     return rr
