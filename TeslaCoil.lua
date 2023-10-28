@@ -51,16 +51,36 @@ function pulse(startpos,range,numArcs)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
-        for i=1,numArcs do
-            local dir = Vector3.new(math.random(-180,180),math.random(-180,180),math.random(-180,180))
-            local result = Raycast(startpos,dir.Unit * range,{plr.Character})
+        if (getClosestGround(startpos,range)~=nil) then
+            local ogPos = getClosestGround(startpos,range)
+            local dir = (ogPos - startPos).Unit * range
+            local result = Raycast(startpos,dir,{plr.Character})
             local pos = result.Position
             local dist = result.Distance
+            local hit = result.Instance
+            if hit~=nil then
+                local h = hit.Parent:FindFirstChildOfClass('Humanoid')
+                if h~=nil then
+                    h:TakeDamage(8)
+                end
+            end
             local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
             spawn(function()
                 task.wait(arcLifetime)
                 arcInstance:Destroy()
             end)
+        else
+            for i=1,numArcs do
+                local dir = Vector3.new(math.random(-180,180),math.random(-180,180),math.random(-180,180))
+                local result = Raycast(startpos,dir.Unit * range,{plr.Character})
+                local pos = result.Position
+                local dist = result.Distance
+                local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
+                spawn(function()
+                    task.wait(arcLifetime)
+                    arcInstance:Destroy()
+                end)
+            end
         end
     end
 end
