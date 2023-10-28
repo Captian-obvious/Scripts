@@ -1,19 +1,16 @@
 local plr = owner
 local arc = fromurl('Scripts/Modules/arc.lua')()
-local uiHandler = fromurl('Scripts/Modules/UI/init.lua')()
-local configs = fromurl('Scripts/Modules/TeslaCoil/arcConfig.lua')()
+local io = fromurl('Scripts/Modules/io.lua')()
+--local uiHandler = fromurl('Scripts/Modules/UI/init.lua')()
+--local configs = fromurl('Scripts/Modules/TeslaCoil/arcConfig.lua')()
 local arcParams = nil
 local isInitialized = false
 local arcLifetime = .05
+local dmg = 8
 function init()
     if isInitialized~=true then
         local hat = require(id).Hat:Clone()
         hat.Parent = plr.Character
-        local tl = hat:FindFirstChild('topload')
-        if tl then
-            local pos = tl.Position
-            arcParams = configs.Initialize(pos)
-        end
         isInitialized = true
     else
         warn('SSTC: Module Already Initialized!')
@@ -124,7 +121,7 @@ function targetArc(startpos,range,ogPos)
     if hit~=nil then
         local h = hit.Parent:FindFirstChildOfClass('Humanoid')
         if h~=nil then
-            h:TakeDamage(8)
+            h:TakeDamage(dmg)
         end
     end
     local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
@@ -153,3 +150,23 @@ function pulse(startpos,range,numArcs)
         end
     end
 end
+local sstc = {}
+function sstc:pulseOutput(range,damage)
+    dmg = damage or 8
+    range = range or 12
+    local hat = plr.Character:FindFirstChild('Hat')
+    if hat~=nil then
+        local topload = hat:FindFirstChild('Topload')
+        if topload then
+            b = topload:FindFirstChild('breakout')
+            if b~=nil then
+                local pos = b.WorldPosition
+                pulse(pos,range,math.random(3,4))
+            end
+        end
+    end
+end
+function sstc:cWave(range,ti)
+    -- not yet implemented.
+end
+return sstc
