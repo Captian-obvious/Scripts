@@ -101,12 +101,26 @@ function getOfsFromDist(dist)
     end
     return ret
 end
+function normArc(startpos,range,numArcs)
+    for i=1,numArcs do
+        local dir = Vector3.new(math.random(-180,180),math.random(-180,180),math.random(-180,180))
+        local result = Raycast(startpos,dir.Unit * range,{plr.Character})
+        local pos = result.Position
+        local dist = result.Distance
+        local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
+        spawn(function()
+            task.wait(arcLifetime)
+            arcInstance:Destroy()
+        end)
+    end
+end
 function pulse(startpos,range,numArcs)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
-        if (getClosestGround(startpos,range)~=nil) then
-            local ogPos = getClosestGround(startpos,range)
+        if (findTarget(startpos,range,{plr.Character})~=nil) then
+            local targetData = findTarget(startpos,range,{plr.Character})
+            local ogPos = findTarget(startpos,range,{plr.Character})
             local dir = (ogPos - startPos).Unit * range
             local result = Raycast(startpos,dir,{plr.Character})
             local pos = result.Position
@@ -124,17 +138,7 @@ function pulse(startpos,range,numArcs)
                 arcInstance:Destroy()
             end)
         else
-            for i=1,numArcs do
-                local dir = Vector3.new(math.random(-180,180),math.random(-180,180),math.random(-180,180))
-                local result = Raycast(startpos,dir.Unit * range,{plr.Character})
-                local pos = result.Position
-                local dist = result.Distance
-                local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
-                spawn(function()
-                    task.wait(arcLifetime)
-                    arcInstance:Destroy()
-                end)
-            end
+            normArc(startpos,range,numArcs)
         end
     end
 end
