@@ -9,7 +9,7 @@ local arcLifetime = .05
 local dmg = 8
 function init()
     if isInitialized~=true then
-        local hat = require(id).Hat:Clone()
+        local hat = require(15189106230).Hat:Clone()
         hat.Parent = plr.Character
         isInitialized = true
     else
