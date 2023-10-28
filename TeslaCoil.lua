@@ -27,6 +27,16 @@ function Raycast(pos,direction,ignore)
     local rr = workspace:Raycast(pos,direction,params)
     return rr
 end
+function findTarget(pos,range,ignore)
+    local function getParts(pos,size,ignore)
+        ignore = ignore or {}
+        local pos1 = pos + Vector3.new(size, size, size)
+        local pos2 = pos - Vector3.new(size, size, size)
+        local region = Region3.new(pos2, pos1)
+        local parts = workspace:FindPartsInRegion3WithIgnoreList(region, ignore, 2000)
+        return parts
+    end
+end
 function getSegFromDist(dist)
     local ret = 0
     if dist>20 then
