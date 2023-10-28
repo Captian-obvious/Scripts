@@ -57,6 +57,7 @@ function findTarget(pos,range,ignore)
     for _,v in pairs(partsInRadius) do
         if (v:IsA('BasePart')) then
             local mag = getDist(pos, v)
+            --print(v.Name .. " Distance: " .. math.round(mag * 100) / 100)
             if mag <= range then
                 local h = v.Parent:FindFirstChildOfClass("Humanoid")
                 if h~=nil and h.Health > 0 then
@@ -70,10 +71,11 @@ function findTarget(pos,range,ignore)
                         data.part = v
                     end
                 elseif data.hum == nil then
+                    --warn("no hum")
                     data.part = v
                 end
             else
-                
+                --warn("too far")
             end
         end
     end
