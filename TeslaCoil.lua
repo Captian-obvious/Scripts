@@ -54,6 +54,19 @@ function findTarget(pos,range,ignore)
         part=nil,
     }
     local partsInRadius = getParts(pos, range, ignore)
+    for _,v in pairs(partsInRadius) do
+        if (v:IsA('BasePart')) then
+            local mag = getDist(pos, v)
+            if mag <= range then
+                local h = v.Parent:FindFirstChildOfClass("Humanoid")
+                if h~=nil and h.Health > 0 then
+                    
+                end
+            else
+                
+            end
+        end
+    end
 end
 function getSegFromDist(dist)
     local ret = 0
