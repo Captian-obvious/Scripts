@@ -28,7 +28,24 @@ function Raycast(pos,direction,ignore)
     return rr
 end
 function getSegFromDist(dist)
-    local multiplier
+    local ret = 0
+    if dist>20 then
+        ret = math.floor(dist / 10)
+    elseif dist > 10 and dist <= 20 then
+        ret = math.floor(dist / 5)
+    elseif dist > 5 and dist <=10 then
+        ret = math.floor(dist)
+    else
+        ret = math.floor(dist*2)
+    end
+    return ret
+end
+function getOfsFromDist(dist)
+    local ret = dist / 100
+    if ret < .1 then
+        ret = .1
+    end
+    return ret
 end
 function pulse(startpos,range,numArcs)
     if isInitialized~=true then
