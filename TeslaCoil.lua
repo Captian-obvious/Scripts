@@ -48,6 +48,12 @@ function findTarget(pos,range,ignore)
         end
         return dist
     end
+    local data = {
+        char=nil,
+        hum=nil,
+        part=nil,
+    }
+    local partsInRadius = getParts(pos, range, ignore)
 end
 function getSegFromDist(dist)
     local ret = 0
