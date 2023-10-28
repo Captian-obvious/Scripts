@@ -151,6 +151,9 @@ function pulse(startpos,range,numArcs)
     end
 end
 local sstc = {}
+function sstc:Init()
+    init()
+end
 function sstc:pulseOutput(range,damage)
     dmg = damage or 8
     range = range or 12
