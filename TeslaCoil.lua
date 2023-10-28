@@ -80,6 +80,7 @@ function findTarget(pos,range,ignore)
             end
         end
     end
+    return data
 end
 function getSegFromDist(dist)
     local ret = 0
@@ -114,29 +115,39 @@ function normArc(startpos,range,numArcs)
         end)
     end
 end
+function targetArc(startpos,range,ogPos)
+    local dir = (ogPos - startPos).Unit * range
+    local result = Raycast(startpos,dir,{plr.Character})
+    local pos = result.Position
+    local dist = result.Distance
+    local hit = result.Instance
+    if hit~=nil then
+        local h = hit.Parent:FindFirstChildOfClass('Humanoid')
+        if h~=nil then
+            h:TakeDamage(8)
+        end
+    end
+    local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
+    spawn(function()
+        task.wait(arcLifetime)
+        arcInstance:Destroy()
+    end)
+end
 function pulse(startpos,range,numArcs)
     if isInitialized~=true then
         warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
     else
         if (findTarget(startpos,range,{plr.Character})~=nil) then
             local targetData = findTarget(startpos,range,{plr.Character})
-            local ogPos = findTarget(startpos,range,{plr.Character})
-            local dir = (ogPos - startPos).Unit * range
-            local result = Raycast(startpos,dir,{plr.Character})
-            local pos = result.Position
-            local dist = result.Distance
-            local hit = result.Instance
-            if hit~=nil then
-                local h = hit.Parent:FindFirstChildOfClass('Humanoid')
-                if h~=nil then
-                    h:TakeDamage(8)
-                end
+            if targetData.part~=nil then
+                local ogPos = targetData.part.Position
+                targetArc(startpos,range,ogPos)
+            elseif targetData.hum ~= nil and targetData.part~=nil and targetData.char~=nil then
+                local ogPos = targetData.part.Position
+                targetArc(startpos,range,ogPos)
+            else
+                normArc(startpos,range,numArcs)
             end
-            local arcInstance = arc.new(plr.Character,1,{ArcColor3=Color3.new(0.0352941, 0.537255, 0.811765),Segments=getSegFromDist(dist),Offset=getOfsFromDist(dist),Position0=startpos,Position1=pos,ignoreParts={plr.Character}})
-            spawn(function()
-                task.wait(arcLifetime)
-                arcInstance:Destroy()
-            end)
         else
             normArc(startpos,range,numArcs)
         end
