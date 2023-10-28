@@ -36,6 +36,18 @@ function findTarget(pos,range,ignore)
         local parts = workspace:FindPartsInRegion3WithIgnoreList(region, ignore, 2000)
         return parts
     end
+    local function getDist(pos, part)
+        local params = RaycastParams.new()
+        params.FilterType=Enum.RaycastFilterType.Exclude
+        params.IgnoreWater=true
+        params.FilterDescendantsInstances={part}
+        local dist = (part.Position - pos).magnitude
+        local result = workspace:Raycast(pos, CFrame.new(pos, part.Position).LookVector * dist, params)
+        if result then
+            dist = result.Distance
+        end
+        return dist
+    end
 end
 function getSegFromDist(dist)
     local ret = 0
