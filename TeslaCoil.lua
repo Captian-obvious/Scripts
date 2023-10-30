@@ -172,4 +172,20 @@ end
 function sstc:cWave(range,ti)
     -- not yet implemented.
 end
+function sstc:fire(ty,configs)
+    if ty=='pulsed' then
+        local ti = configs.TBP
+        local times = configs.Times
+        local damage = configs.Damags
+        if (ti==nil) then
+            ti=.15
+        end
+        if (times==nil) then
+            times=20
+        end
+        if (damage==nil) then
+            damage=8
+        end
+    end
+end
 return sstc
