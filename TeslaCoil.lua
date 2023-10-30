@@ -174,17 +174,13 @@ function sstc:cWave(range,ti)
 end
 function sstc:fire(ty,configs)
     if ty=='pulsed' then
-        local ti = configs.TBP
-        local times = configs.Times
-        local damage = configs.Damags
-        if (ti==nil) then
-            ti=.15
-        end
-        if (times==nil) then
-            times=20
-        end
-        if (damage==nil) then
-            damage=8
+        local ti = configs.TBP or .15
+        local times = configs.Times or 20
+        local damage = configs.Damage or 8
+        local range=configs.Range or 20
+        for i=1,times do
+            sstc:pulseOutput(range,damage)
+            wait(ti)
         end
     end
 end
