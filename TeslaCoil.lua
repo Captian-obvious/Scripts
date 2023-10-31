@@ -169,8 +169,22 @@ function sstc:pulseOutput(range,damage)
         end
     end
 end
-function sstc:cWave(range,ti)
-    -- not yet implemented.
+function sstc:cWave(range,ti,dps)
+    local deltaTime=0
+    local st=0
+    while deltaTime<ti do
+        t=task.wait()
+        deltaTime=deltaTime+t
+        st=st+t
+        if st>1 then
+            thedmg=dps
+            st=0
+        end
+        if deltaTime<ti then 
+            sstc:pulseOutput(range,thedmg)
+        end
+    end
+    deltaTime=0
 end
 function sstc:fire(ty,configs)
     if ty=='pulsed' then
@@ -182,6 +196,11 @@ function sstc:fire(ty,configs)
             sstc:pulseOutput(range,damage)
             wait(ti)
         end
+    elseif ty=='constant' then
+        local ti=configs.Time or 10
+        local dps=configs.Damage or 8
+        local range=configs.Range or 20
+        sstc:cWave(range,ti,dps)
     end
 end
 return sstc
