@@ -7,15 +7,6 @@ local arcParams = nil
 local isInitialized = false
 local arcLifetime = .05
 local dmg = 8
-function init()
-    if isInitialized~=true then
-        local hat = require(15189106230).Hat:Clone()
-        hat.Parent = plr.Character
-        isInitialized = true
-    else
-        warn('SSTC: Module Already Initialized!')
-    end
-end
 function Raycast(pos,direction,ignore)
     local params = RaycastParams.new()
     params.FilterType=Enum.RaycastFilterType.Exclude
@@ -152,55 +143,73 @@ function pulse(startpos,range,numArcs)
 end
 local sstc = {}
 function sstc:Init()
-    init()
+    if isInitialized~=true then
+        local hat = require(15189106230).Hat:Clone()
+        hat.Parent = plr.Character
+        isInitialized = true
+    else
+        warn('SSTC: Module Already Initialized!')
+    end
 end
 function sstc:pulseOutput(range,damage)
-    dmg = damage or 8
-    range = range or 12
-    local hat = plr.Character:FindFirstChild('Hat')
-    if hat~=nil then
-        local topload = hat:FindFirstChild('Topload')
-        if topload then
-            b = topload:FindFirstChild('breakout')
-            if b~=nil then
-                local pos = b.WorldPosition
-                pulse(pos,range,math.random(3,4))
+    if isInitialized~=true then
+        warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
+    else
+        dmg = damage or 8
+        range = range or 12
+        local hat = plr.Character:FindFirstChild('Hat')
+        if hat~=nil then
+            local topload = hat:FindFirstChild('Topload')
+            if topload then
+                b = topload:FindFirstChild('breakout')
+                if b~=nil then
+                    local pos = b.WorldPosition
+                    pulse(pos,range,math.random(3,4))
+                end
             end
         end
     end
 end
 function sstc:cWave(range,ti,dps)
-    local deltaTime=0
-    local st=0
-    while deltaTime<ti do
-        t=task.wait()
-        deltaTime=deltaTime+t
-        st=st+t
-        if st>1 then
-            thedmg=dps
-            st=0
+    if isInitialized~=true then
+        warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
+    else
+        local deltaTime=0
+        local st=0
+        while deltaTime<ti do
+            t=task.wait()
+            deltaTime=deltaTime+t
+            st=st+t
+            if st>1 then
+                thedmg=dps
+                st=0
+            end
+            if deltaTime<ti then 
+                sstc:pulseOutput(range,thedmg)
+            end
         end
-        if deltaTime<ti then 
-            sstc:pulseOutput(range,thedmg)
-        end
+        deltaTime=0
     end
-    deltaTime=0
 end
 function sstc:fire(ty,configs)
-    if ty=='pulsed' then
-        local ti = configs.TBP or .15
-        local times = configs.Times or 20
-        local damage = configs.Damage or 8
-        local range=configs.Range or 20
-        for i=1,times do
-            sstc:pulseOutput(range,damage)
-            wait(ti)
+    if isInitialized~=true then
+        warn('SSTC: Module Not Initialized! Initialize the module before using its functions!')
+    else
+        if ty=='pulsed' then
+            local ti = configs.TBP or .15
+            local times = configs.Times or 20
+            local damage = configs.Damage or 8
+            local range=configs.Range or 20
+            for i=1,times do
+                sstc:pulseOutput(range,damage)
+                wait(ti)
+            end
+        elseif ty=='constant' then
+            local ti=configs.Time or 10
+            local dps=configs.Damage or 8
+            local range=configs.Range or 20
+            sstc:cWave(range,ti,dps)
         end
-    elseif ty=='constant' then
-        local ti=configs.Time or 10
-        local dps=configs.Damage or 8
-        local range=configs.Range or 20
-        sstc:cWave(range,ti,dps)
     end
 end
 return sstc
