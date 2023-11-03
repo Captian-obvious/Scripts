@@ -144,8 +144,20 @@ end
 local sstc = {}
 function sstc:Init()
     if isInitialized~=true then
+        local function weld(Part0, Part1)
+    		local C1 = Part1.CFrame:inverse()*CFrame.new(Part0.Position)
+    		local C0 = Part0.CFrame:inverse()*CFrame.new(Part0.Position)
+    		local Weld = Instance.new("ManualWeld", Part0)
+    		Weld.Part0 = Part0
+    		Weld.Part1 = Part1
+    		Weld.C0 = C0
+    		Weld.C1 = C1
+    	end
         local hat = require(15189106230).Hat:Clone()
         hat.Parent = plr.Character
+        local cf = plr.Character.Head.CFrame * CFrame.new(0,2.225,0)
+        hat:SetPrimaryPartCFrame(cf)
+        weld(hat.root,plr.Character.Head)
         isInitialized = true
     else
         warn('SSTC: Module Already Initialized!')
@@ -157,9 +169,9 @@ function sstc:pulseOutput(range,damage)
     else
         dmg = damage or 8
         range = range or 12
-        local hat = plr.Character:FindFirstChild('Hat')
+        local hat = plr.Character:FindFirstChild('hat')
         if hat~=nil then
-            local Topload = hat:FindFirstChild('Topload')
+            local Topload = hat:WaitForChild('tower'):FindFirstChild('topload')
             if Topload then
                 b = Topload:FindFirstChild('breakout')
                 if b~=nil then
