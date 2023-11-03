@@ -159,9 +159,9 @@ function sstc:pulseOutput(range,damage)
         range = range or 12
         local hat = plr.Character:FindFirstChild('Hat')
         if hat~=nil then
-            local topload = hat:FindFirstChild('Topload')
-            if topload then
-                b = topload:FindFirstChild('breakout')
+            local Topload = hat:FindFirstChild('Topload')
+            if Topload then
+                b = Topload:FindFirstChild('breakout')
                 if b~=nil then
                     local pos = b.WorldPosition
                     pulse(pos,range,math.random(3,4))
