@@ -104,7 +104,7 @@ function normArc(startpos,range,numArcs)
     end
 end
 function targetArc(startpos,range,ogPos)
-    local dir = (ogPos - startPos).Unit * range
+    local dir = (ogPos - startpos).Unit * range
     local result = Raycast(startpos,dir,{plr.Character})
     local pos = result.Position
     local dist = result.Distance
@@ -176,6 +176,7 @@ function sstc:cWave(range,ti,dps)
     else
         local deltaTime=0
         local st=0
+        local thedmg=0
         while deltaTime<ti do
             t=task.wait()
             deltaTime=deltaTime+t
