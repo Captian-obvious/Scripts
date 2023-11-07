@@ -264,6 +264,22 @@ function Initialize()
         }
     )
 end
+function level1()
+    score=0
+    relays=5
+    broken=10
+    replaced=0
+    shipmentTine=20
+    while broken>0 do
+        keypress=io.awaitKeypress()
+        if (keypress==true) then
+            --[[ print('Relay replaced!')--]]
+            score=score+1
+            replaced=replaced+1
+            
+        end
+    end
+end
 function start()
     score=0
     
