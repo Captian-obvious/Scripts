@@ -1,5 +1,13 @@
 local c=owner.Character or owner.CharacterAdded:Wait()
 local h=c:FindFirstChildOfClass('Humanoid')
+local al=require(workspace.AudioLib)
+if (al.Initialized~=true) then
+    al:Init()
+end
+local actx=al:Create()
+local src=actx:CreateMediaInstanceSource(workspace.Sound)
+local analyser=actx:CreateAnalyser()
+src:Connect(analyser)
 if (h~=nil) then
     local root=h.RootPart
     function createVisualizer(parent,n,radius)
@@ -17,12 +25,4 @@ if (h~=nil) then
             part.Name=tostring(i)
         end
     end
-    local al=require(workspace.AudioLib)
-    if (al.Initialized~=true) then
-        al:Init()
-    end
-    local actx=al:Create()
-    local src=actx:CreateMediaInstanceSource(workspace.Sound)
-    local analyser=actx:CreateAnalyser()
-    src:Connect(analyser)
 end
