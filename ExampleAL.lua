@@ -6,7 +6,7 @@ if (al.Initialized~=true) then
 end
 local actx=al:Create()
 local src=actx:CreateMediaInstanceSource(workspace.Sound)
-local analyser=actx:CreateAnalyser()
+local analyser=actx:CreateAnalyser(64)
 src:Connect(analyser)
 if (h~=nil) then
     local root=h.RootPart
