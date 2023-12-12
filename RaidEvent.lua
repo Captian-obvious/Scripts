@@ -1,7 +1,7 @@
 local e=nil
 
 function doEvent()
-    script.air_raid_detected:Play()
+    script.detected:Play()
 end
 
 doEvent()
