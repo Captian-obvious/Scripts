@@ -6,15 +6,12 @@ local Services={
     InsertService=game:GetService("InsertService"),
     ReplicatedStorage=game:GetService("ReplicatedStorage")
 };
-function doFinal(plr:Player)
-    if plr.Character then
-        local h:Humanoid=plr.Character:FindFirstChildOfClass("Humanoid");
-    end;
-end;
 function spawnCage(cf:CFrame)
     local box_obj={
         maxSize=300,
         timer=420,
+        currentSize=0,
+        changedConnection=nil,
         shrinkTime=30,
         killSize=40,
     };
@@ -31,9 +28,27 @@ function spawnCage(cf:CFrame)
         local expandinfo=TweenInfo.new(2,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out,0,false,0);
         local expandTween=Services.TweenService:Create(thebox_meshpart,expandinfo,{Size=Vector3.new(self.maxSize,self.maxSize,self.maxSize)});
         expandTween:Play();
+        self.changedConnection=thebox_meshpart.Changed:Connect(function(prop)
+            if prop=="Size" then
+                self.currentSize=thebox_meshpart.Size.X;
+            end;
+        end);
     end;
     function box_obj.GetPlayersInsideTrap(self):{Player}
-        -- will implement soon
+        local trappedPlayers={};
+        local region=Region3.new(
+            thebox_meshpart.Position - Vector3.new(self.currentSize / 2, self.currentSize / 2, self.currentSize / 2),
+            thebox_meshpart.Position + Vector3.new(self.currentSize / 2, self.currentSize / 2, self.currentSize / 2)
+        );
+        local parts=workspace:FindPartsInRegion3(region, nil, math.huge);
+        for _,part in pairs(parts) do
+            local char=part.Parent;
+            local plr=Services.Players:GetPlayerFromCharacter(char);
+            if plr and char:FindFirstChildOfClass("Humanoid") then
+                table.insert(trappedPlayers,plr);
+            end;
+        end;
+        return trappedPlayers;
     end;
     function box_obj.timer_finished(self)
         -- plays a chain sound and then starts shrinking
@@ -57,8 +72,17 @@ function spawnCage(cf:CFrame)
                 end;
             end;
         end;
-        local finalTween=Services.TweenService:Create(thebox_meshpart,TweenInfo.new(0.2,Enum.EasingStyle.Exponential,Enum.EasingDirection.In,0,false,0),{Size=Vector3.new(.1,,.1.,1)});
+        if self.changedConnection then
+            self.changedConnection:Disconnect();
+            self.changedConnection=nil;
+        end;
+        local finalTween=Services.TweenService:Create(thebox_meshpart,TweenInfo.new(0.2,Enum.EasingStyle.Exponential,Enum.EasingDirection.In,0,false,0),{Size=Vector3.new(.1,.1.,1)});
         finalTween:Play();
+        finalTween.Completed:Connect(function(playbackState)
+            if playbackState==Enum.PlaybackState.Completed then
+                thebox:Destroy();
+            end;
+        end);
     end;
     return box_obj;
 end;
@@ -71,6 +95,10 @@ tool.Activated:Connect(function()
             local the_cframe=CFrame.new(mouse.Hit.Position);
             local theboxobj=spawnCage(the_cframe);
             theboxobj:start();
+            task.spawn(function()
+                task.wait(theboxobj.timer);
+                theboxobj:timer_finished();
+            end);
         end;
     end;
 end);
