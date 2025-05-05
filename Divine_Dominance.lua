@@ -8,6 +8,7 @@ local Services={
 };
 function spawnCage(cf:CFrame)
     local box_obj={
+        Instance=nil,
         maxSize=300,
         timer=420,
         currentSize=0,
@@ -17,28 +18,29 @@ function spawnCage(cf:CFrame)
     };
     local thebox=Instance.new("Model",workspace);
     thebox.Name="divine_dominance_trap";
-    local thebox_meshpart=Services.InsertService:CreateMeshPartAsync("the soon to be box meshid");
-    thebox_meshpart.Parent=thebox;
-    thebox_meshpart.Material=Enum.Material.ForceField;
-    thebox_meshpart.Color=Color3.fromRGB(255,200,0);
-    thebox_meshpart.Size=Vector3.new(1,1,1);
-    thebox_meshpart.Name="box_of_doom";
+    local box_of_doom=Services.InsertService:CreateMeshPartAsync("the soon to be box meshid");
+    box_of_doom.Parent=thebox;
+    box_of_doom.CFrame=cf;
+    box_of_doom.Material=Enum.Material.ForceField;
+    box_of_doom.Color=Color3.fromRGB(255,200,0);
+    box_of_doom.Size=Vector3.new(1,1,1);
+    box_of_doom.Name="box_of_doom";
     box_obj.Instance=thebox;
     function box_obj.start(self)
         local expandinfo=TweenInfo.new(2,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out,0,false,0);
-        local expandTween=Services.TweenService:Create(thebox_meshpart,expandinfo,{Size=Vector3.new(self.maxSize,self.maxSize,self.maxSize)});
+        local expandTween=Services.TweenService:Create(box_of_doom,expandinfo,{Size=Vector3.new(self.maxSize,self.maxSize,self.maxSize)});
         expandTween:Play();
-        self.changedConnection=thebox_meshpart.Changed:Connect(function(prop)
+        self.changedConnection=box_of_doom.Changed:Connect(function(prop)
             if prop=="Size" then
-                self.currentSize=thebox_meshpart.Size.X;
+                self.currentSize=box_of_doom.Size.X;
             end;
         end);
     end;
     function box_obj.GetPlayersInsideTrap(self):{Player}
         local trappedPlayers={};
         local region=Region3.new(
-            thebox_meshpart.Position - Vector3.new(self.currentSize / 2, self.currentSize / 2, self.currentSize / 2),
-            thebox_meshpart.Position + Vector3.new(self.currentSize / 2, self.currentSize / 2, self.currentSize / 2)
+            box_of_doom.Position - Vector3.new(self.currentSize / 2, self.currentSize / 2, self.currentSize / 2),
+            box_of_doom.Position + Vector3.new(self.currentSize / 2, self.currentSize / 2, self.currentSize / 2)
         );
         local parts=workspace:FindPartsInRegion3(region, nil, math.huge);
         for _,part in pairs(parts) do
@@ -52,9 +54,9 @@ function spawnCage(cf:CFrame)
     end;
     function box_obj.timer_finished(self)
         -- plays a chain sound and then starts shrinking
-        -- thebox_meshpart.TimeCount:Play()
+        -- box_of_doom.TimeCount:Play()
         local shrinkinfo=TweenInfo.new(self.shrinkTime,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0);
-        local shrinkTween=Services.TweenService:Create(thebox_meshpart,shrinkinfo,{Size=Vector3.new(self.killSize,self.killSize,self.killSize)});
+        local shrinkTween=Services.TweenService:Create(box_of_doom,shrinkinfo,{Size=Vector3.new(self.killSize,self.killSize,self.killSize)});
         shrinkTween:Play();
         shrinkTween.Completed:Connect(function(playbackState)
             if playbackState==Enum.PlaybackState.Completed then
@@ -76,8 +78,8 @@ function spawnCage(cf:CFrame)
             self.changedConnection:Disconnect();
             self.changedConnection=nil;
         end;
-        thebox_meshpart.CanCollide=false;
-        local finalTween=Services.TweenService:Create(thebox_meshpart,TweenInfo.new(0.2,Enum.EasingStyle.Exponential,Enum.EasingDirection.In,0,false,0),{Size=Vector3.new(.1,.1.,1)});
+        box_of_doom.CanCollide=false;
+        local finalTween=Services.TweenService:Create(box_of_doom,TweenInfo.new(0.2,Enum.EasingStyle.Exponential,Enum.EasingDirection.In,0,false,0),{Size=Vector3.new(.1,.1.,1)});
         finalTween:Play();
         finalTween.Completed:Connect(function(playbackState)
             if playbackState==Enum.PlaybackState.Completed then
