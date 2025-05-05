@@ -19,10 +19,10 @@ function spawnCage(cf:CFrame)
     thebox.Name="divine_dominance_trap";
     local thebox_meshpart=Services.InsertService:CreateMeshPartAsync("the soon to be box meshid");
     thebox_meshpart.Parent=thebox;
-    thebox_meshpart.Name="box_of_doom";
     thebox_meshpart.Material=Enum.Material.ForceField;
     thebox_meshpart.Color=Color3.fromRGB(255,200,0);
     thebox_meshpart.Size=Vector3.new(1,1,1);
+    thebox_meshpart.Name="box_of_doom";
     box_obj.Instance=thebox;
     function box_obj.start(self)
         local expandinfo=TweenInfo.new(2,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out,0,false,0);
@@ -53,7 +53,7 @@ function spawnCage(cf:CFrame)
     function box_obj.timer_finished(self)
         -- plays a chain sound and then starts shrinking
         -- thebox_meshpart.TimeCount:Play()
-        local shrinkinfo=TweenInfo.new(self.shrinkTime,Enum.EasingStyle.Exponential,Enum.EasingDirection.In,0,false,0);
+        local shrinkinfo=TweenInfo.new(self.shrinkTime,Enum.EasingStyle.Linear,Enum.EasingDirection.In,0,false,0);
         local shrinkTween=Services.TweenService:Create(thebox_meshpart,shrinkinfo,{Size=Vector3.new(self.killSize,self.killSize,self.killSize)});
         shrinkTween:Play();
         shrinkTween.Completed:Connect(function(playbackState)
@@ -76,6 +76,7 @@ function spawnCage(cf:CFrame)
             self.changedConnection:Disconnect();
             self.changedConnection=nil;
         end;
+        thebox_meshpart.CanCollide=false;
         local finalTween=Services.TweenService:Create(thebox_meshpart,TweenInfo.new(0.2,Enum.EasingStyle.Exponential,Enum.EasingDirection.In,0,false,0),{Size=Vector3.new(.1,.1.,1)});
         finalTween:Play();
         finalTween.Completed:Connect(function(playbackState)
