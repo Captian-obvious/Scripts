@@ -92,7 +92,8 @@ end;
 
 tool.Activated:Connect(function()
     local plr=Services.Players:GetPlayerFromCharacter(tool.Parent);
-    if plr then
+    if plr and tool.Enabled then
+        tool.Enabled=false;
         local mouse=plr:GetMouse();
         if mouse then
             local the_cframe=CFrame.new(mouse.Hit.Position);
@@ -101,6 +102,8 @@ tool.Activated:Connect(function()
             task.spawn(function()
                 task.wait(theboxobj.timer);
                 theboxobj:timer_finished();
+                task.wait(30);
+                tool:Destroy();
             end);
         end;
     end;
