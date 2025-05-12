@@ -1,5 +1,5 @@
 local plr = owner
-local star = require(id)
+local star = require(--[[ i have hidden this id as it was one of the very few allowed to be required --]])
 function loadMessage()
     local printerScriptServer = NS([[
         warn("User ']]..plr.Name..[[' has loaded Star Pet Commands Module. Keep Watch!")
