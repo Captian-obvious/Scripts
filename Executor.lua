@@ -15,4 +15,3 @@ function executeScript(code,parent,ty)
         return thescript
     end
 end
-

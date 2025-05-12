@@ -1,7 +1,7 @@
 local plr = owner
 --[[ Audio Spectrum Script Created by Fallen and Superduperdev2 --]]
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
-wait()
+task.wait()
 script.Name='AudioSpectrum_Server'
 local analyserNode = fromurl('Scripts/analyserNode.lua')()
 local fftSize = 64
