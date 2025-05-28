@@ -1,0 +1,30 @@
+(function(){
+    var paths=[
+        "/bin/bash", "/bin/ls", "/bin/cat", "/bin/pwd", "/bin/echo", "/bin/grep",
+        "/usr/bin/bash", "/usr/bin/ls", "/usr/bin/cat", "/usr/bin/pwd", "/usr/bin/echo", "/usr/bin/grep",
+        "/usr/local/bin/bash", "/usr/local/bin/ls", "/usr/local/bin/cat", "/usr/local/bin/pwd", "/usr/local/bin/echo", "/usr/local/bin/grep",
+        "~/Music/Elektronomia/Vitality.mp3",
+        "~/.local/share/serverlink/main.conf",
+        "~/.local/bin/pyexe",
+        "/var/log/syslog",
+        "/etc/passwd",
+        "/etc/hostname",
+        "/etc/fstab",
+        "/etc/hosts",
+        "/dev/null",
+        "/dev/random",
+        "/mnt/data/external_drive",
+        "~/Documents/report.docx",
+        "~/.bashrc",
+        "~/.vimrc",
+        "~/.config/myapp/settings.json",
+        "/tmp/session.lock",
+        "/tmp/cache/tempfile",
+        "~/Downloads/archive.tar.gz",
+        "~/Pictures/Screenshots/screenshot.png",
+        "/var/www/html/index.html",
+        "/var/backups/system_backup.tar.gz"
+    ];
+    var path=paths[Math.floor(Math.random()*paths.length)];
+    return path;
+})()
