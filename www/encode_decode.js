@@ -48,6 +48,17 @@
             } else {
                 return "Unsupported operation.";
             };
+        },
+        BINHEX: function(ciphertext, mode) {
+            if (mode === "encode") {
+                // Convert binary to hex
+                return ciphertext.split(" ").map(bin => parseInt(bin, 2).toString(16).toUpperCase()).join(" ");
+            } else if (mode === "decode") {
+                // Convert hex to binary, ensuring 8-bit alignment
+                return ciphertext.split(" ").map(hex => parseInt(hex, 16).toString(2).padStart(8, '0')).join(" ");
+            } else {
+                return "Unsupported operation.";
+            };
         }
     };
     var action=tag_action;
@@ -64,5 +75,7 @@
         return algs.BINASCII(ciphertext,action);
     }else if(alg.toLowerCase()=="bin"){
         return algs.BIN(ciphertext,action);
+    }else if(alg.toLowerCase()=="binhex"){
+        return algs.BINHEX(ciphertext,action);
     };
 })();
