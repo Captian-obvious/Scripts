@@ -6,7 +6,7 @@
     algs.ASCII=function(ciphertext,mode){
         return (mode.lower()=="decode") ? atob(ciphertext) : btoa(ciphertext);
     };
-    var args={args};
+    var args=window.command_args;
     var action=args[1];
     var alg=args[2];
     var ciphertext=args[3];
