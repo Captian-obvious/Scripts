@@ -12,6 +12,13 @@
                 return "Unsupported operation.";
             };
         },
+        ROT13: function(ciphertext, mode) {
+            return ciphertext.replace(/[A-Za-z]/g, function(char) {
+                return String.fromCharCode(
+                    char.charCodeAt(0) + (char.toLowerCase() < 'n' ? 13 : -13)
+                );
+            });
+        },
     };
     var action=tag_action;
     var alg=tag_alg;
@@ -21,5 +28,7 @@
         return algs.ASCII(ciphertext,action);
     }else if(alg.toLowerCase()=="base64"){
         return algs.BASE64(ciphertext,action);
+    }else if(alg.toLowerCase()=="rot13"){
+        return algs.ROT13(ciphertext,action);
     };
 })();
