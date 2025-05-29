@@ -16,12 +16,10 @@
     var action=tag_action;
     var alg=tag_alg;
     var ciphertext=tag_ciphered;
-    var key=tag_key || "";
-    var returned="";
+    var key=tag_key;
     if (alg.toLowerCase()=="ascii"){
-        returned=algs.ASCII(ciphertext,action);
+        return algs.ASCII(ciphertext,action);
     }else if(alg.toLowerCase()=="base64"){
-        returned=algs.BASE64(ciphertext,action);
+        return algs.BASE64(ciphertext,action);
     };
-    return returned;
 })();
