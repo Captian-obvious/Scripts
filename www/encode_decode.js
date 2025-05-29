@@ -19,6 +19,36 @@
                 );
             });
         },
+        BINASCII: function(ciphertext, mode) {
+            if (mode === "encode") {
+                return ciphertext.split("").map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(" ");
+            } else if (mode === "decode") {
+                return ciphertext.split(" ").map(bin => String.fromCharCode(parseInt(bin, 2))).join("");
+            } else {
+                return "Unsupported operation.";
+            };
+        },
+        BIN: function(ciphertext, mode) {
+            if (mode === "encode") {
+                let num = parseInt(ciphertext, 10);
+                if (isNaN(num)) return "Invalid input: Not a number";
+                let binary = num.toString(2);
+                let chunks = [];
+                // Split into 8-bit chunks (starting from the end)
+                while (binary.length > 8) {
+                    chunks.unshift(binary.slice(-8));
+                    binary = binary.slice(0, -8);
+                };
+                chunks.unshift(binary.padStart(8, '0')); // Ensure last chunk is padded to 8 bits
+                return chunks.join(" ");
+            } else if (mode === "decode") {
+                let parts = ciphertext.split(" ");
+                let num = parseInt(parts.join(""), 2);
+                return num.toString(10);
+            } else {
+                return "Unsupported operation.";
+            };
+        }
     };
     var action=tag_action;
     var alg=tag_alg;
@@ -30,5 +60,9 @@
         return algs.BASE64(ciphertext,action);
     }else if(alg.toLowerCase()=="rot13"){
         return algs.ROT13(ciphertext,action);
+    }else if(alg.toLowerCase()=="binascii"){
+        return algs.BINASCII(ciphertext,action);
+    }else if(alg.toLowerCase()=="bin"){
+        return algs.BIN(ciphertext,action);
     };
 })();
