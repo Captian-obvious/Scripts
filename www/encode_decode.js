@@ -1,7 +1,7 @@
 (function(){
     var algs={
         BASE64:function(ciphertext,mode){
-            return (mode.toLowerCase()=="decode") ? atob(ciphertext) : btoa(ciphertext)
+            return (mode.toLowerCase()=="decode") ? atob(ciphertext) : btoa(ciphertext);
         },
         ASCII:function(ciphertext,mode){
             if (mode == "encode") {
