@@ -13,10 +13,10 @@
             };
         },
     };
-    var action=window.tag_action;
-    var alg=window.tag_alg;
-    var ciphertext=window.tag_ciphered;
-    var key=window.tag_key || "";
+    var action=tag_action;
+    var alg=tag_alg;
+    var ciphertext=tag_ciphered;
+    var key=tag_key || "";
     var returned="";
     if (alg.toLowerCase()=="ascii"){
         returned=algs.ASCII(ciphertext,action);
