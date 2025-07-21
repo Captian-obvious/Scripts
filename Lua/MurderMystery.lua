@@ -197,3 +197,6 @@ end;
 --[[ Returns the round state
 
 ]]
+function thegame:GetRoundState()
+    return self.round; -- Return the current round state
+end;
