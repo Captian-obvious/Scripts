@@ -145,11 +145,11 @@ function thegame:updateTimer(timeLeft:number)
             local humanoid=player.Character.Humanoid;
             if humanoid.Health<=0 then
                 if player:FindFirstChild("PlayerGui") and v.PlayerGui:FindFirstChild("Timer") then
-                    player.PlayerGui.Timer.Text="You are dead!"; -- Update the timer UI for dead players
+                    player.PlayerGui.Timer.main.timeLeft.Text="You are dead!"; -- Update the timer UI for dead players
                 end;
             else
                 if player:FindFirstChild("PlayerGui") and v.PlayerGui:FindFirstChild("Timer") then
-                    player.PlayerGui.Timer.Text="Time Left: "..timeLeft.." seconds"; -- Update the timer UI for alive players
+                    player.PlayerGui.Timer.main.timeLeft.Text="Time Left: "..timeLeft.." seconds"; -- Update the timer UI for alive players
                 end;
             end;
         end;
