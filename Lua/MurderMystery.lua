@@ -195,8 +195,12 @@ function thegame:GetState()
     };
 end;
 --[[ Returns the round state
-
+    * This function returns the current round state, including the time left,
+    * gamemode, and player roles.
+    * @return: A table containing the current round state.
 ]]
 function thegame:GetRoundState()
     return self.round; -- Return the current round state
 end;
+
+return thegame; -- Return the game module
