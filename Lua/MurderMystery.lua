@@ -10,8 +10,9 @@ local thegame={
     specialRound=false,
     randomGamemodes={
         "Juggernaut",
-        "Massacre".
+        "Massacre",
         "Shootout",
+        "Mimic",
     },
     roundsToSpecial=math.random(5,7), -- Randomly set rounds to special between 5 and 7 (initialized)
     roundLength=180, -- Length of each round in seconds
@@ -46,6 +47,8 @@ function thegame:Start()
             main:StartMasGame(false);
         elseif chosenGamemode=="Shootout" then
             main:StartShoGame(false);
+        elseif chosenGamemode=="Mimic" then
+            main:StartMimGame(false);
         end;
     end;
     if not self.specialRound then
