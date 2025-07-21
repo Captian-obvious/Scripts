@@ -120,7 +120,7 @@ function thegame:updateTimer(timeLeft:number)
         main:aliveCheck(not self.isSpecialRound);
     else
         local text="murderer";
-        if self.Gamemode=="FFASheriff" then
+        if self.Gamemode=="Shootout" then
             text="sheriff";
         end;
         main:ffaAliveCheck(false,text);
