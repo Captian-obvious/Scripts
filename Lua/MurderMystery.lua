@@ -116,7 +116,7 @@ function thegame:updateTimer(timeLeft:number)
     if main.endedStatus then
         return;
     end;
-    if not self.Gamemode:lower():find("ffa") then
+    if not main.Gamemode:lower():find("ffa") then
         main:aliveCheck(not self.isSpecialRound);
     else
         local text="murderer";
