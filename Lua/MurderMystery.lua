@@ -78,25 +78,6 @@ function thegame:Timer()
         if not self.Gamemode or self.Gamemode=="" then
             self.Gamemode="Normal"; -- Default to Normal gamemode if not set
         end;
-        self.round.Roles={};
-        for _,player in pairs(Players:GetPlayers()) do
-            if player.Character and player.Character:FindFirstChild("Humanoid") then
-                local aliveStatus=player.Character:FindFirstChild("isAlive");
-                if aliveStatus then
-                    table.insert(self.round.Roles, {
-                        Name=player.Name,
-                        Role=main:GetRole(player),
-                        IsAlive=true,
-                    });
-                else
-                    table.insert(self.round.Roles, {
-                        Name=player.Name,
-                        Role=main:GetRole(player),
-                        IsAlive=false,
-                    });
-                end;
-            end;
-        end;
         self:updateTimer(timeLeft); -- Update player states and timer UI
         if main.endedStatus then
             break; -- Exit if the game has ended
