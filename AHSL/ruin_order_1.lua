@@ -3,7 +3,12 @@ local order={1,3,2,5,4,7,6,8};
 local baseIndex=20;
 local buttons={};
 for i=1,#order do
-    table.insert(buttons,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
+    local res,err=pcall(function()
+        table.insert(buttons,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
+    end);
+    if not res then
+        warn("No parts with index" ..tostring(baseIndex+order[i]).." were found, or an error occured during execution")
+    end;
 end;
 if #buttons>0 then
 
