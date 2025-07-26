@@ -7,6 +7,9 @@ for i=1,#order do
         table.insert(buttons,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
     end);
     if not res then
-        warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution")
+        warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution");
+        if err then
+            warn(err);
+        end;
     end;
 end;
