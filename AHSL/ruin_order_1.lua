@@ -4,19 +4,19 @@ local baseIndex=20;
 local maxDistance=10;
 local orderPart=0; -- the place where we are in the order
 local buttons={};
+local iterator=0;
 for i=1,#order do
-    orderPart=orderPart+1;
+    iterator=iterator+1;
     local res=pcall(function()
-        table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+orderPart)[1]);
+        table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+iterator)[1]);
     end);
     if not res[1] then
-        warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution");
+        warn("No parts with index " ..tostring(baseIndex+order[iterator]).." were found, or an error occured during execution");
         if res[2] then
             warn("Error: " .. tostring(res[2]));
         end;
     end;
 end;
-orderPart=0; -- reset order part to 0
 function handleButtonClick(player,button,currentButton)
     if not player or not button then return end;
     local tindex=table.find(buttons,button);
