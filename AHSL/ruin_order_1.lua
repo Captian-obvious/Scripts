@@ -6,10 +6,8 @@ for i=1,#order do
     local res=pcall(function()
         table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
     end);
-    if not res then
+    if res[2] then
         warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution");
-        if err then
-            warn(err);
-        end;
+        warn("Error: " .. tostring(res[2]));
     end;
 end;
