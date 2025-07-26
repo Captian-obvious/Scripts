@@ -14,7 +14,7 @@ for i=1,#order do
     end;
 end;
 
-if buttons[1] then
+if buttons[1] ~= nil then
     for i=1,#buttons do
         local v=buttons[i];
         if IsA(v,"BasePart") then
