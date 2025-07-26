@@ -10,8 +10,3 @@ for i=1,#order do
         warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution")
     end;
 end;
-if buttons~={} then
-    
-else
-    warn("No parts with indexes based around "..tostring(baseIndex).." found for order: "..table.concat(order,","));
-end;
