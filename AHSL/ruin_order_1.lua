@@ -15,13 +15,13 @@ for i=1,#order do
         end;
     end;
 end;
-function handleButtonClick(player,button)
+function handleButtonClick(player,button,currentButton)
     if not player or not button then return end;
     local tindex=table.find(buttons,button);
     if tindex then
         local index=order[tindex];
         print("Button clicked: " .. tostring(button.Name) .. " with index: " ..tostring(index));
-        if button==buttons[orderPart] then
+        if button==currentButton then
             print("Correct order on part "..tostring(orderPart));
             if orderPart==#order then
                 print("Successful order");
@@ -41,7 +41,7 @@ if buttons[1] ~= nil then
                 ClickDetector.MaxActivationDistance=maxDistance;
                 ClickDetector.MouseClick:Connect(function(player)
                     orderPart=orderPart+1;
-                    handleButtonClick(player,v);
+                    handleButtonClick(player,v,buttons[orderPart] or nil);
                 end);
             end);
         else
