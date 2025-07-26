@@ -36,12 +36,16 @@ if buttons[1] ~= nil then
     for i=1,#buttons do
         local v=buttons[i];
         if IsA(v,"BasePart") then
-            local ClickDetector=Instance.new("ClickDetector",v);
-            ClickDetector.MaxActivationDistance=maxDistance;
-            ClickDetector.MouseClick:Connect(function(player)
-                orderPart=orderPart+1;
-                handleButtonClick(player,v);
+            spawn(function()
+                local ClickDetector=Instance.new("ClickDetector",v);
+                ClickDetector.MaxActivationDistance=maxDistance;
+                ClickDetector.MouseClick:Connect(function(player)
+                    orderPart=orderPart+1;
+                    handleButtonClick(player,v);
+                end);
             end);
+        else
+            warn("Button at index " .. tostring(i) .. " is not a BasePart, skipping.");
         end;
     end;
 end;
