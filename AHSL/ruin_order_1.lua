@@ -5,8 +5,9 @@ local maxDistance=10;
 local orderPart=0; -- the place where we are in the order
 local buttons={};
 for i=1,#order do
+    orderPart=orderPart+1;
     local res=pcall(function()
-        table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
+        table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+orderPart)[1]);
     end);
     if not res[1] then
         warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution");
@@ -15,6 +16,7 @@ for i=1,#order do
         end;
     end;
 end;
+orderPart=0; -- reset order part to 0
 function handleButtonClick(player,button,currentButton)
     if not player or not button then return end;
     local tindex=table.find(buttons,button);
@@ -33,9 +35,11 @@ function handleButtonClick(player,button,currentButton)
     end;
 end;
 print(buttons);
+local iterator=0;
 if buttons[1] ~= nil then
     for i=1,#buttons do
-        local v=buttons[i];
+        iterator=iterator+1;
+        local v=buttons[iterator];
         if IsA(v,"BasePart") then
             spawn(function()
                 local ClickDetector=Instance.new("ClickDetector",v);
