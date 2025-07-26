@@ -19,8 +19,8 @@ function handleButtonClick(player,button)
     if not player or not button then return end;
     local tindex=table.find(buttons,button);
     if tindex then
-        local index=PartIndexing.GetIndexInPart(button);
-        if (index-baseIndex)==order[orderPart] then
+        local index=order[tindex];
+        if (index)==order[orderPart] then
             print("Correct order on part "..tostring(index));
             if orderPart==#order then
                 print("Successful order");
