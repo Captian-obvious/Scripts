@@ -20,7 +20,7 @@ function handleButtonClick(player,button)
     local tindex=table.find(buttons,button);
     if tindex then
         local index=PartIndexing.GetIndexInPart(button);
-        if index-baseIndex==order[orderPart] then
+        if (index-baseIndex)==order[orderPart] then
             print("Correct order on part "..tostring(index));
             if orderPart==#order then
                 print("Successful order");
