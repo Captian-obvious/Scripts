@@ -32,6 +32,7 @@ function handleButtonClick(player,button,currentButton)
         end;
     end;
 end;
+print("table of buttons: ".. tostring(table.concat(buttons, ", ")));
 if buttons[1] ~= nil then
     for i=1,#buttons do
         local v=buttons[i];
