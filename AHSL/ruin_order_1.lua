@@ -8,7 +8,7 @@ local iterator=0;
 for i=1,#order do
     iterator=iterator+1;
     local res=pcall(function()
-        table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+iterator)[1]);
+        table.insert(buttons,iterator,PartIndexing.GetPartsWithIndex(baseIndex+iterator)[1]);
     end);
     if not res[1] then
         warn("No parts with index " ..tostring(baseIndex+order[iterator]).." were found, or an error occured during execution");
