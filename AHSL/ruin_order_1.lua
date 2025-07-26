@@ -1,4 +1,4 @@
---!ahsl
+--!
 local order={1,3,2,5,4,7,6,8};
 local baseIndex=20;
 local buttons={};
@@ -14,9 +14,11 @@ for i=1,#order do
     end;
 end;
 
-for i=1,#buttons do
-    local v=buttons[i];
-    if IsA(v,"BasePart") then
-        local ClickDetector=Instance.new("ClickDetector",v);
+if #buttons>0 then
+    for i=1,#buttons do
+        local v=buttons[i];
+        if IsA(v,"BasePart") then
+            local ClickDetector=Instance.new("ClickDetector",v);
+        end;
     end;
 end;
