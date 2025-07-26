@@ -2,7 +2,7 @@
 local order={1,3,2,5,4,7,6,8};
 local buttons={};
 local ordered_buttons={};
-local raw_buttons=GetChildren(workspace.buttons)
+local raw_buttons=GetChildren(GetChild(workspace,"buttons"));
 local maxDistance=20;
 local orderPart=0;
 local baseName="button";
