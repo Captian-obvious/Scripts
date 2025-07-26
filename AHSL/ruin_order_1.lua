@@ -20,6 +20,7 @@ function handleButtonClick(player,button)
     local tindex=table.find(buttons,button);
     if tindex then
         local index=order[tindex];
+        print("Button clicked: " .. tostring(button.Name) .. " with index: " ..tostring(index));
         if index==order[orderPart] then
             print("Correct order on part "..tostring(index));
             if orderPart==#order then
