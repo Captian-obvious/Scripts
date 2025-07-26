@@ -20,7 +20,7 @@ function handleButtonClick(player,button)
     local tindex=table.find(buttons,button);
     if tindex then
         local index=order[tindex];
-        if (index)==order[orderPart] then
+        if index==order[orderPart] then
             print("Correct order on part "..tostring(index));
             if orderPart==#order then
                 print("Successful order");
