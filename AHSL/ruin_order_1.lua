@@ -32,7 +32,7 @@ function handleButtonClick(player,button,currentButton)
         end;
     end;
 end;
-print("table of buttons: ".. tostring(table.concat(buttons, ", ")));
+print(buttons);
 if buttons[1] ~= nil then
     for i=1,#buttons do
         local v=buttons[i];
@@ -46,7 +46,7 @@ if buttons[1] ~= nil then
                 end);
             end);
         else
-            warn("Button at index " .. tostring(i) .. " is not a BasePart, skipping.");
+            warn("Button at index " ..tostring(i) .. " is not a BasePart, skipping.");
         end;
     end;
 end;
