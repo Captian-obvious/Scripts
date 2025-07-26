@@ -7,11 +7,11 @@ for i=1,#order do
         table.insert(buttons,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
     end);
     if not res then
-        warn("No parts with index" ..tostring(baseIndex+order[i]).." were found, or an error occured during execution")
+        warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution")
     end;
 end;
-if #buttons>0 then
-
+if buttons~={} then
+    
 else
     warn("No parts with indexes based around "..tostring(baseIndex).." found for order: "..table.concat(order,","));
 end;
