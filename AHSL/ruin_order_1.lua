@@ -4,7 +4,7 @@ local baseIndex=20;
 local buttons={};
 for i=1,#order do
     local res,err=pcall(function()
-        table.insert(buttons,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
+        table.insert(buttons,i,PartIndexing.GetPartsWithIndex(baseIndex+order[i])[1]);
     end);
     if not res then
         warn("No parts with index " ..tostring(baseIndex+order[i]).." were found, or an error occured during execution");
