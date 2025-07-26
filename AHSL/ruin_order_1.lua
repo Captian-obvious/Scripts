@@ -21,7 +21,7 @@ function handleButtonClick(player,button)
     if tindex then
         local index=order[tindex];
         print("Button clicked: " .. tostring(button.Name) .. " with index: " ..tostring(index));
-        if index==order[orderPart] then
+        if button==buttons[orderPart] then
             print("Correct order on part "..tostring(orderPart));
             if orderPart==#order then
                 print("Successful order");
