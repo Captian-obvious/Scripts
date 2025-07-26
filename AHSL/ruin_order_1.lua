@@ -13,3 +13,9 @@ for i=1,#order do
         end;
     end;
 end;
+
+for i,v in pairs(buttons) do
+    if IsA(v,"BasePart") then
+        local ClickDetector=Instance.new("ClickDetector",v);
+    end;
+end;
