@@ -13,6 +13,12 @@
         "/etc/hosts",
         "/dev/null",
         "/dev/random",
+        "/dev/sda",
+        "/dev/sda1",
+        "/dev/sda2",
+        "/dev/sda3",
+        "/dev/sdb",
+        "/dev/nvme1n1",
         "/mnt/data/external_drive",
         "~/Documents/report.docx",
         "~/.bashrc",
@@ -23,7 +29,13 @@
         "~/Downloads/archive.tar.gz",
         "~/Pictures/Screenshots/screenshot.png",
         "/var/www/html/index.html",
-        "/var/backups/system_backup.tar.gz"
+        "/var/backups/system_backup.tar.gz",
+        "/vmlinuz",
+        "/boot/grub/grub.cfg",
+        "/etc/ssh/sshd_config",
+        "/etc/apache2/sites-available/000-default.conf",
+        "/etc/nginx/nginx.conf",
+        "/usr/share/doc/package/changelog.Debian.gz",
     ];
     var path=paths[Math.floor(Math.random()*paths.length)];
     return path;
