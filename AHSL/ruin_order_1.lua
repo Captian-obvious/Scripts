@@ -1,4 +1,4 @@
---!ahsl
+--ahsl
 local order={1,3,2,5,4,7,6,8};
 local buttons={};
 local ordered_buttons={};
@@ -29,7 +29,7 @@ end;
 --[[ Create the initial table of buttons, and also add click detectors --]]
 for i=1,#raw_buttons do
     v=raw_buttons[i];
-	if v and v.Parent and IsA(v,"BasePart") then
+    if v and v.Parent and IsA(v,"BasePart") then
         local tableIndex=tonumber(v.Name:sub(#baseName+1));
         table.insert(buttons,tableIndex,v);
         local clickDetector=Instance.new("ClickDetector",v);
