@@ -21,5 +21,4 @@
 :face targets 28999228 | :wait .3 | :face targets 28999228 | :wait .2 | :face targets 398675917 | :wait .25 | 
 :face targets 398675917 | :wait .2 | :face targets 28999228 | :wait .15 | :face targets 28999228 | :wait .3 | 
 :face targets 398675917 | :wait .2 | :face targets 398675917 | :wait .25 | :face targets 28999228 | :wait .2 | 
-:face targets 180660043 | :light targets Really red | :displayname targets & | :wait 2 | :unlight targets | 
-:invisible targets 
+:face targets 180660043 | :light targets Really red | :displayname targets & | :wait 2 | :unlight targets | :invisible targets 
