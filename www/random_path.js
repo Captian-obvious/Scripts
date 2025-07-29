@@ -1,5 +1,5 @@
 (function(){
-    var red="\x1b[91m";
-    var reset="\x1b[0m";
+    var red="\033[91m";
+    var reset="\033[0m";
     return `# \`${red}this tag has been disabled${reset}\`\n\n**In light of recent events, this tag has been disabled.**\n\n Im sorry for the inconvenience.\n\nif you have any questions, please contact the site administrator.\n\nthank you for your understanding.\n\n- Superduperdev2 Inc. Webserver team`;
 })()
