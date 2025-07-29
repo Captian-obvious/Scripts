@@ -1,1 +1,1 @@
-:target random | :runc betrayed_v1 | :sm Betrayed: The game has ended.
+:target random | :runc betrayed_mainloop | :sm Betrayed: The game has ended.
