@@ -1,0 +1,3 @@
+:runc evilify_v3 | :music 1837463656 false 1 1 5 | :wait 2 | :face targets 1016186364 | :gear targets 83704165 | :sm Betrayed: Someone in this server is evil... | 
+:wait 5 | :sm Identify them before they can kill us all! | :wait 5 | :sm You have 6 minutes | :wait 5 | :sm Good luck. You'll need it. | :hc 180 | 
+:wait 180 | :stopmusic 5
