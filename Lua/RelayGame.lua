@@ -1,6 +1,6 @@
 local Players=game:GetService('Players')
 local Replicated=game:GetService('ReplicatedStorage')
-local io = fromurl('Scripts/Modules/io.lua')()
+local io = fromurl('Scripts/Lua/Modules/io.lua')()
 local plr = owner
 local score=0
 function createElement(parent,ty,configs)

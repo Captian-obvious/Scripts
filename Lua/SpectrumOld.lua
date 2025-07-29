@@ -3,7 +3,7 @@ local plr = owner
 script.Parent = plr.Character --[[ put the script in the character to avoid it breaking on death--]]
 task.wait()
 script.Name='AudioSpectrum_Server'
-local analyserNode = fromurl('Scripts/analyserNode.lua')()
+local analyserNode = fromurl('Scripts/Lua/analyserNode.lua')()
 local fftSize = 64
 local Character = plr.Character
 local Humanoid = (Character and Character.Parent) and Character:FindFirstChildOfClass('Humanoid')
