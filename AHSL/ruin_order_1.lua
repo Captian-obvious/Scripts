@@ -42,8 +42,8 @@ for i=1,#raw_buttons do
 end;
 --[[ Create the ordered buttons list --]]
 for i=1,#order do
-local button=buttons[order[i]];
-if button then
-table.insert(ordered_buttons,button)
-end;
+    local button=buttons[order[i]];
+    if button then
+        table.insert(ordered_buttons,button)
+    end;
 end;
