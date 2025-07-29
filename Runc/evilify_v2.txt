@@ -1,12 +1,1 @@
-:face me 398675917 | :wait .2 | :face me 28999228 | :wait .3 | 
-:face me 28999228 | :wait .2 | :face me 398675917 | :wait .25 | 
-:face me 398675917 | :wait .2 | :face me 28999228 | :wait .15 | 
-:face me 28999228 | :wait .3 | :face me 398675917 | :wait .2 | 
-:face me 398675917 | :wait .25 | :face me 28999228 | :wait .2 | 
-:face me 28999228 | :wait .2 | :face me 398675917 | :wait .3 | 
-:face me 398675917 | :wait .2 | :face me 28999228 | :wait .1 | 
-:face me 28999228 | :wait .2 | :face me 398675917 | :wait .25 | 
-:face me 398675917 | :wait .2 | :face me 28999228 | :wait .15 | 
-:face me 28999228 | :wait .3 | :face me 398675917 | :wait .2 | 
-:face me 398675917 | :wait .25 | :face me 28999228 | :wait .2 | 
-:face me 28999228 | :wait .2 | :face me 398675917 | :wait .3 | 
+:face me 398675917 | :wait .2 | :face me 28999228 | :wait .3 | :face me 28999228 | :wait .2 | :face me 398675917 | :wait .25 | :face me 398675917 | :wait .2 | :face me 28999228 | :wait .15 | :face me 28999228 | :wait .3 | :face me 398675917 | :wait .2 | :face me 398675917 | :wait .25 | :face me 28999228 | :wait .2 | :face me 28999228 | :wait .2 | :face me 398675917 | :wait .3 | :face me 398675917 | :wait .2 | :face me 28999228 | :wait .1 | :face me 28999228 | :wait .2 | :face me 398675917 | :wait .25 | :face me 398675917 | :wait .2 | :face me 28999228 | :wait .15 | :face me 28999228 | :wait .3 | :face me 398675917 | :wait .2 | :face me 398675917 | :wait .25 | :face me 28999228 | :wait .2 | :face me 28999228 | :wait .2 | :face me 398675917 | :wait .3 | :face me 180660043 | :light me Really red | :displayname me & | :wait 2 | :unlight me | :invisible me
