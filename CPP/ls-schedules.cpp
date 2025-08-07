@@ -38,7 +38,7 @@ int main(int argc,char* argv[]){
         auto args = parseArgs(argc, argv);
         if (args.count("help")){
             printUsage();
-            return 0;
+            goto end;
         };
         if (args.count("user")){
             std::string user=args["user"];
@@ -62,5 +62,6 @@ int main(int argc,char* argv[]){
     }else{
         printUsage();
     };
+    end:
     return 0;
 };
