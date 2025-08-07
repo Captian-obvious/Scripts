@@ -38,10 +38,19 @@ int main(int argc,char* argv[]){
         auto args = parseArgs(argc, argv);
         if (args.count("help")){
             printUsage();
-            goto end;
+            return 0;
         };
         if (args.count("user")){
             std::string user=args["user"];
+            if (user=="true"){
+                print_err("User cannot be 'true'. Please specify a valid username.");
+                return 1;
+            };
+            if (user.empty()){
+                print_err("User cannot be empty. Please specify a valid username.");
+                return 1;
+            };
+            // Proceed with listing schedules for the specified user
             std::cout << "Listing schedules for user: " << user << std::endl;
             if (args.count("t")){
                 std::string time = args["t"];
@@ -62,6 +71,5 @@ int main(int argc,char* argv[]){
     }else{
         printUsage();
     };
-    end:
     return 0;
 };
