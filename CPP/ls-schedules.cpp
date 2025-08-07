@@ -36,7 +36,7 @@ void print_err(const std::string& msg) {
 int main(int argc,char* argv[]){
     if (argc>1){
         auto args = parseArgs(argc, argv);
-        if (args.count("help")) {
+        if (args.count("help")){
             printUsage();
             return 0;
         };
