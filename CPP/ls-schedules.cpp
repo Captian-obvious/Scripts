@@ -9,7 +9,6 @@ std::unordered_map<std::string, std::string> config={
     {"t","value"},
     {"debug","bool"}
 };
-
 std::unordered_map<std::string, std::string> parseArgs(int argc,char* argv[]) {
     std::unordered_map<std::string, std::string> args;
     for (int i=1;i<argc;i++){
