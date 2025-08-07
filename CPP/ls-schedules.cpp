@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 
+#ifdef __DEBUG_BUILD
 std::unordered_map<std::string,std::string> config={
     {"help","bool"},
     {"user","value"},
@@ -9,6 +10,14 @@ std::unordered_map<std::string,std::string> config={
     {"t","value"},
     {"debug","bool"}
 };
+#else
+std::unordered_map<std::string,std::string> config={
+    {"help","bool"},
+    {"user","value"},
+    {"tformat","value"},
+    {"t","value"}
+};
+#endif
 std::unordered_map<std::string, std::string> parseArgs(int argc,char* argv[]) {
     std::unordered_map<std::string,std::string> args;
     for (int i=1;i<argc;i++){
