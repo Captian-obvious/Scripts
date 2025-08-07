@@ -4,15 +4,15 @@
 
 std::unordered_map<std::string, std::string> parseArgs(int argc, char* argv[]) {
     std::unordered_map<std::string, std::string> args;
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 1; i < argc; ++i){
         std::string key = argv[i];
-        if (key.rfind("--", 0) == 0 && i + 1 < argc) {
-            std::string value = argv[i + 1];
-            if (value.rfind("--", 0) != 0) { // Ensure value isn't another flag
-                args[key.substr(2)] = value;
+        if (key.rfind("--", 0) == 0){
+            std::string flag = key.substr(2);
+            if (i + 1 < argc && std::string(argv[i + 1]).rfind("--", 0) != 0) {
+                args[flag] = argv[i + 1]; // Flag with value
                 i++;
-            } else {
-                args[key.substr(2)] = "";
+            }else{
+                args[flag] = "true"; // Boolean flag
             };
         };
     };
