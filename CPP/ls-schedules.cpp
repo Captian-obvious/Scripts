@@ -2,17 +2,33 @@
 #include <string>
 #include <unordered_map>
 
+std::unordered_map<std::string, std::string> config = {
+    {"help", "bool"},
+    {"user", "value"},
+    {"tformat", "value"},
+    {"t", "value"},
+    {"debug", "bool"}
+};
+
 std::unordered_map<std::string, std::string> parseArgs(int argc, char* argv[]) {
     std::unordered_map<std::string, std::string> args;
     for (int i = 1; i < argc; ++i){
         std::string key = argv[i];
         if (key.rfind("--", 0) == 0){
             std::string flag = key.substr(2);
-            if (i + 1 < argc && std::string(argv[i + 1]).rfind("--", 0) != 0) {
-                args[flag] = argv[i + 1]; // Flag with value
-                i++;
-            }else{
-                args[flag] = "true"; // Boolean flag
+            if (config.count(flag) == 0){
+                std::cerr << "Unknown flag: --" << flag << std::endl;
+                continue;
+            };
+            if (config[flag] == "bool"){
+                args[flag] = "true";
+            }else if (config[flag] == "value"){
+                if (i + 1 < argc && std::string(argv[i + 1]).rfind("--", 0) != 0){
+                    args[flag] = argv[i + 1];
+                    i++;
+                }else{
+                    std::cerr << "Expected value for --" << flag << std::endl;
+                };
             };
         };
     };
