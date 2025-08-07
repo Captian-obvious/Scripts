@@ -23,9 +23,10 @@ void printUsage() {
     std::cout << "Usage: ls-schedules --user <username>" << std::endl;
     std::cout << "List all stored schedules for a particular user." << std::endl;
     std::cout << "Options:" << std::endl;
-    std::cout << "  --user <username>   Specify the user to list schedules for." << std::endl;
-    std::cout << "  --t <time>          Specify the time to list schedules around. (Optional)" << std::endl;
-    std::cout << "  --help              Show this help message." << std::endl;
+    std::cout << "  --user <username>       Specify the user to list schedules for." << std::endl;
+    std::cout << "  --t <time>              Specify the time to list schedules around. (Optional)" << std::endl;
+    std::cout << "  --tformat <format>      Specify the time format. (Optional)" << std::endl;
+    std::cout << "  --help                  Show this help message." << std::endl;
 };
 
 void print_err(const std::string& msg) {
