@@ -2,7 +2,7 @@
 #include <string>
 #include <unordered_map>
 
-std::unordered_map<std::string, std::string> config={
+std::unordered_map<std::string,std::string> config={
     {"help","bool"},
     {"user","value"},
     {"tformat","value"},
