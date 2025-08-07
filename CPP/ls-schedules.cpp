@@ -2,12 +2,12 @@
 #include <string>
 #include <unordered_map>
 
-std::unordered_map<std::string, std::string> config = {
-    {"help", "bool"},
-    {"user", "value"},
-    {"tformat", "value"},
-    {"t", "value"},
-    {"debug", "bool"}
+std::unordered_map<std::string, std::string> config={
+    {"help","bool"},
+    {"user","value"},
+    {"tformat","value"},
+    {"t","value"},
+    {"debug","bool"}
 };
 
 std::unordered_map<std::string, std::string> parseArgs(int argc, char* argv[]) {
@@ -58,10 +58,6 @@ int main(int argc,char* argv[]){
         };
         if (args.count("user")){
             std::string user=args["user"];
-            if (user=="true"){
-                print_err("User cannot be 'true'. Please specify a valid username.");
-                return 1;
-            };
             if (user.empty()){
                 print_err("User cannot be empty. Please specify a valid username.");
                 return 1;
