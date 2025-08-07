@@ -44,16 +44,16 @@ int main(int argc,char* argv[]){
             std::string user=args["user"];
             std::cout<<user<<std::endl;
             std::cout << "Listing schedules for user: " << user << std::endl;
-            if (args.count("t")) {
+            if (args.count("t")){
                 std::string time = args["t"];
                 std::cout << "Time specified: " << time << std::endl;
-            } else {
+            }else{
                 std::cout << "No specific time provided." << std::endl;
             };
-            if (args.count("tformat")) {
+            if (args.count("tformat")){
                 std::string tformat = args["tformat"];
                 std::cout << "Time format specified: " << tformat << std::endl;
-            } else {
+            }else{
                 std::cout << "No specific time format provided." << std::endl;
             };
         }else{
