@@ -42,7 +42,6 @@ int main(int argc,char* argv[]){
         };
         if (args.count("user")){
             std::string user=args["user"];
-            std::cout<<user<<std::endl;
             std::cout << "Listing schedules for user: " << user << std::endl;
             if (args.count("t")){
                 std::string time = args["t"];
