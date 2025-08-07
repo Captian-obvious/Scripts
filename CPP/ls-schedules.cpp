@@ -43,6 +43,19 @@ int main(int argc,char* argv[]){
         if (args.count("user")){
             std::string user=args["user"];
             std::cout<<user<<std::endl;
+            std::cout << "Listing schedules for user: " << user << std::endl;
+            if (args.count("t")) {
+                std::string time = args["t"];
+                std::cout << "Time specified: " << time << std::endl;
+            } else {
+                std::cout << "No specific time provided." << std::endl;
+            };
+            if (args.count("tformat")) {
+                std::string tformat = args["tformat"];
+                std::cout << "Time format specified: " << tformat << std::endl;
+            } else {
+                std::cout << "No specific time format provided." << std::endl;
+            };
         }else{
             print_err("User not specified. Use --user <username> to specify a user.");
             return 1;
