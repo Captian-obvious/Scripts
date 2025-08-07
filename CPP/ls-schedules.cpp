@@ -42,6 +42,12 @@ std::unordered_map<std::string, std::string> parseArgs(int argc,char* argv[]) {
     };
     return args;
 };
+unordered_map<std::string,std::string> queryUserSchedules(const std::string& user, const std::string& time = "", const std::string& tformat = "") {
+    std::unordered_map<std::string,std::string> schedules;
+    // Placeholder implementation
+    schedules["2024-10-01 09:00"]="schedule1";
+    return schedules;
+};
 void printUsage() {
     std::cout << "Usage: ls-schedules --user <username>" << std::endl;
     std::cout << "List all stored schedules for a particular user." << std::endl;
@@ -90,6 +96,15 @@ int main(int argc,char* argv[]){
                 std::cout<<"Time format specified: "<<tformat<<std::endl;
             }else{
                 std::cout<<"No specific time format provided."<<std::endl;
+            };
+            auto schedules=queryUserSchedules(user, args.count("t") ? args["t"] : "", args.count("tformat") ? args["tformat"] : "");
+            if (schedules.empty()){
+                std::cout<<"No schedules found for user: "<<user<<std::endl;
+                return 0;
+            };
+            std::cout<<"Schedules for user "<<user<<":"<<std::endl;
+            for (const auto& schedule : schedules) {
+                std::cout<<"  - "<<schedule.first<<": "<<schedule.second<<std::endl
             };
         }else{
             print_err("User not specified. Use --user <username> to specify a user.");
