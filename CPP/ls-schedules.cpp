@@ -48,7 +48,7 @@ void print_err(const std::string& msg) {
 };
 int main(int argc,char* argv[]){
     if (argc>1){
-        auto args = parseArgs(argc, argv);
+        auto args=parseArgs(argc,argv);
         if (args.count("help")){
             printUsage();
             return 0;
@@ -60,18 +60,18 @@ int main(int argc,char* argv[]){
                 return 1;
             };
             // Proceed with listing schedules for the specified user
-            std::cout << "Listing schedules for user: " << user << std::endl;
+            std::cout<<"Listing schedules for user: "<<user<<std::endl;
             if (args.count("t")){
-                std::string time = args["t"];
-                std::cout << "Time specified: " << time << std::endl;
+                std::string time=args["t"];
+                std::cout<<"Time specified: "<<time<<std::endl;
             }else{
-                std::cout << "No specific time provided." << std::endl;
+                std::cout<<"No specific time provided."<<std::endl;
             };
             if (args.count("tformat")){
-                std::string tformat = args["tformat"];
-                std::cout << "Time format specified: " << tformat << std::endl;
+                std::string tformat=args["tformat"];
+                std::cout<<"Time format specified: "<<tformat<<std::endl;
             }else{
-                std::cout << "No specific time format provided." << std::endl;
+                std::cout<<"No specific time format provided."<<std::endl;
             };
         }else{
             print_err("User not specified. Use --user <username> to specify a user.");
