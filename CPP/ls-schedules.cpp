@@ -52,6 +52,14 @@ int main(int argc,char* argv[]){
             printUsage();
             return 0;
         };
+        if (args.count("debug")){
+            std::cout<<"Debug mode enabled."<<std::endl;
+            std::cout<<"Parsed arguments:"<<std::endl;
+            for (const auto& arg : args) {
+                std::cout<<"  --"<<arg.first<<": "<<arg.second<<std::endl;
+            };
+            return 0;
+        };
         if (args.count("user")){
             std::string user=args["user"];
             if (user.empty()){
