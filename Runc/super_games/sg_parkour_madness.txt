@@ -6,5 +6,5 @@
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 2</font> | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 1</font> | 
 :wait 1 | :speed all 32 | :chatmsgc all 0,255,255 <font face="Fantasy">GO!</font> |
-:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">First to finish wins!</font> | :hc 120 | :wait 120 | 
+:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">First to finish wins!</font> | :hc 300 | :wait 300 | 
 :chatmsgc all 0,255,255 <font face="Fantasy">Time's up! The race has ended.</font> | :wait 2 | :tphouse all | :unloadb parkour_madness_course
