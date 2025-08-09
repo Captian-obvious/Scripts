@@ -1,8 +1,8 @@
-:chatmsgc all 0,255,255 Minigame starting in 20 Seconds. | :music 1837849285 true 1 1 5 | 
+:chatmsgc all 0,255,255 <font face="Fantasy">Minigame starting in 20 Seconds.</font> | :music 1837849285 true 1 1 5 | 
 :if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in 
-| :hc 20 | :wait 20 | :chatmsgc all 0,255,255 MINIGAME STARTED! | :setmsg off | 
-:wait 1 | :chatmsgc all 0,255,255 Initializing.. | :wait 5 |
-:chatmsgc all 0,255,255 Loading Arena... | :loadb arena2 | 
+| :hc 20 | :wait 20 | :chatmsgc all 0,255,255 <font face="Fantasy">MINIGAME STARTED!</font> | :setmsg off | 
+:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Initializing..</font> | :wait 5 |
+:chatmsgc all 0,255,255 <font face="Fantasy">Loading Arena...</font> | :loadb arena2 | 
 :wait 10 | :music 5315095173 true 1 1.8 3 | :wait 1 | :hc 3 | :wait 1 | :sm Ready. | 
-:wait 1 | :sm SET! | :wait 1 | :sm GO!!!! | :give all | :hc 120 | :wait 120 | :chatmsgc all 0,255,255 Minigame Ended
+:wait 1 | :sm SET! | :wait 1 | :sm GO!!!! | :give all | :hc 120 | :wait 120 | :chatmsgc all 0,255,255 <font face="Fantasy">Minigame Ended</font>
  | :unloadb arena2 | :wait 2 | :smoothvolume .1 5 Linear InOut 5
