@@ -3,4 +3,7 @@
 | :hc 20 | :wait 20 | :chatmsgc all 0,255,255 <font face="Fantasy">MINIGAME STARTED!</font> | :f3x all |
  :setmsg util:stringmix,string:Theme%-%,string:var:build_theme | :hc 180 | :wait 180 | 
  :chatmsgc all 0,255,255 <font face="Fantasy">Times Up! Lets see what you built!</font> | :setmsg off 
- | :notools all | :wait 1 | :setmsg util:stringmix,string:Theme%-%,string:var:build_theme,string:%-%Voting | :hc 10 | :wait 10 |
+ | :notools all | :wait 1 | :setmsg util:stringmix,string:Theme%-%,string:var:build_theme,string:%-%Voting | :hc 30 | :wait 30 | 
+ :chatmsgc all 0,255,255 <font face="Fantasy">Voting over! And the winner is.....</font> | :setmsg off | 
+ :wait 5 | :chatmsgc all 0,255,255 util:stringmix,string:var:build_winner,string:%won%the%Build%Battle%with%a%score%of%,string:var:build_winner_score 
+ | :wait 5 | :chatmsgc all 0,255,255 <font face="Fantasy">Minigame End!</font> | :setmsg off
