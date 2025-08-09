@@ -2,4 +2,5 @@
 :if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in 
 | :hc 20 | :wait 20 | :chatmsgc all 0,255,255 <font face="Fantasy">MINIGAME STARTED!</font> | :f3x all |
  :setmsg util:stringmix,string:Theme%-%,string:var:build_theme | :hc 180 | :wait 180 | 
- :chatmsgc all 0,255,255 <font face="Fantasy">Times Up! Lets see what you built!</font>
+ :chatmsgc all 0,255,255 <font face="Fantasy">Times Up! Lets see what you built!</font> | :setmsg off 
+ | :notools all | :wait 1 | :setmsg util:stringmix,string:Theme%-%,string:var:build_theme,string:%-%Voting | :hc 10 | :wait 10 |
