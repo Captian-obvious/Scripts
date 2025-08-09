@@ -1,4 +1,8 @@
-:sm Game Starting in 20 Seconds. | :music 1837849285 false 1 1 5 | :setmsg First Game Starts in | :hc 20 | :wait 20 | 
-:sm GAME STARTED! | :setmsg off | :wait 1 | :sm LOADING! | :loadb arena2 | :wait 15 | 
-:music 5315095173 true 1 1.8 3 | :wait 1 | :hc 3 | :wait 1 | :sm Ready. | :wait 1 | :sm SET! | :wait 1 | :sm GO!!!! | 
+:sm Minigame starting in 20 Seconds. | :music 1837849285 false 1 1 5 | 
+:if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in 
+| :hc 20 | :wait 20 | :sm GAME STARTED! | :setmsg off | :wait 1 | :sm LOADING! | :loadb arena2 | 
+:wait 15 | :music 5315095173 true 1 1.8 3 | :wait 1 | :hc 3 | :wait 1 | :sm Ready. | 
+:wait 1 | :sm SET! | :wait 1 | :sm GO!!!! | 
 :sm You have 2 Minutes, FIGHT! | :hc 120 | :wait 120 | :sm Game Ended | :unloadb arena2
+
+:sm Game Starting in 20 Seconds. | :music 1837849285 false 1 1 5 | :setmsg First Game Starts in | :hc 20 | :wait 20 | :sm GAME STARTED! |
