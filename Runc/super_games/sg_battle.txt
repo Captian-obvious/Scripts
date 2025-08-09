@@ -3,6 +3,6 @@
 | :hc 20 | :wait 20 | :chatmsgc all 0,255,255 <font face="Fantasy">MINIGAME STARTED!</font> | :setmsg off | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Initializing..</font> | :wait 5 |
 :chatmsgc all 0,255,255 <font face="Fantasy">Loading Arena...</font> | :loadb arena2 | 
-:wait 10 | :music 5315095173 true 1 1.8 3 | :wait 1 | :hc 3 | :wait 1 | :sm Ready. | 
+:wait 10 | :tp all 2000,30,2000 | :chatmsgc all 255,0,0 SPREAD OUT! | :speed all 32 | :music 5315095173 true 1 1.8 3 | :wait 1 | :hc 3 | :wait 1 | :sm Ready. | 
 :wait 1 | :sm SET! | :wait 1 | :sm GO!!!! | :sword all | :hc 120 | :wait 120 | :notools all | :chatmsgc all 0,255,255 <font face="Fantasy">Minigame Ended</font>
  | :unloadb arena2 | :wait 2 | :smoothvolume .1 5 Linear InOut 5
