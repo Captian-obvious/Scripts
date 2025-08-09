@@ -5,6 +5,5 @@
 :wait 1 | :setmsg Games will begin in | :hc 30 | :wait 30 | 
 :sm Games Have Begun! | :setmsg off | :wait 3 | :sm Game - BATTLE! | 
 :wait 1 | :setmsg First Game Starts in | :rc sg_battle | :setmsg Next game will start in | 
-:hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off | 
-:music 95519440732286 true 1 1 5 |  :sm Game Ended! Next Game starts in 1 min! | 
+:hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off | :rc sg_ :chatmsgc all 0,255,255 <font face="Fantasy">Game Ended! Next Game starts in 1 min!</font> | 
 :setmsg Next game will start in | :hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off
