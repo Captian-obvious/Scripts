@@ -1,0 +1,2 @@
+:sm Game 2 - 'Build' | :wait 1 | 
+:sm Game 'Build' Starts in 20 seconds! | :setmsg Game starts in | :hc 20 | :wait 20 | :setmsg off | 90718505 | :f3x all | :sm Game Started! You have two goals, one is to not get blown up, The other is defense score. You have to survive for 3 minutes | :hc 180 | :wait 180 | :smoothvolume .1 5 Linear InOut 5 | :sm Game Ended! Next Game starts in 1 min!
