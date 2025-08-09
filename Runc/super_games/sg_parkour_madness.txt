@@ -6,4 +6,5 @@
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 2</font> | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 1</font> | 
 :wait 1 | :speed all 16 | :chatmsgc all 0,255,255 <font face="Fantasy">GO!</font> |
-:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">First to finish wins!</font> |
+:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">First to finish wins!</font> | :hc 120 | :wait 120 | 
+:chatmsgc all 0,255,255 <font face="Fantasy">Time's up! The race has ended.</font>
