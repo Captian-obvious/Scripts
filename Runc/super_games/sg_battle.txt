@@ -5,4 +5,4 @@
 :chatmsgc all 0,255,255 <font face="Fantasy">Loading Arena...</font> | :loadb arena2 | 
 :wait 10 | :tp all 2000,30,2000 | :chatmsgc all 255,0,0 SPREAD OUT! | :speed all 32 | :music 5315095173 true 1 1.8 3 | :wait 1 | :hc 3 | :wait 1 | :sm Ready. | 
 :wait 1 | :sm SET! | :wait 1 | :sm GO!!!! | :sword all | :hc 120 | :wait 120 | :notools all | :chatmsgc all 0,255,255 <font face="Fantasy">Minigame Ended</font>
- | :unloadb arena2 | :tphouse all | :wait 2 | :smoothvolume .1 5 Linear InOut 5
+ | :unloadb arena2 | :tphouse all | :speed all 16 | :wait 2 | :smoothvolume .1 5 Linear InOut 5
