@@ -1,7 +1,7 @@
 :chatmsgc all 0,255,255 <font face="Fantasy">Minigame 'Rocket Chaos' starting in 20 seconds!</font> | 
-:music 1837838080 true 1 1 5 |:if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in | 
+:music 1846476088 true 1 1 5 |:if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in | 
 :hc 20 | :wait 20 | :setmsg off | :chatmsgc all 0,255,255 [Server] Minigame "Rocket Chaos" Started! | 
-:wait 5 | :chatmsgc all 0,255,255 [Server] GOAL: Survive for 1 minute. | :wait 3 | 90718505 | 
-:music 1842286824 true 1 1 5 | :chatmsgc all 0,255,255 [Server] BEGIN! | :hc 60 | :wait 60 | 
-:chatmsgc all 0,255,255 [Server] GAME END! Congratulations to those who survived! | :notools all | 
-sm Game Over! More coming Soon!
+:wait 5 | :chatmsgc all 0,255,255 [Server] GOAL: Survive for 2 minutes. | :wait 3 | 90718505 | 
+:music 1842286824 true 1 1 5 | :chatmsgc all 0,255,255 [Server] BEGIN! | :hc 120 | :wait 120 | 
+:chatmsgc all 0,255,255 [Server] GAME END! Congratulations to those who survived! | :notools all | :wait 5 | 
+:smoothvolume .1 5 Linear InOut 5 
