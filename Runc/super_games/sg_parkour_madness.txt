@@ -1,7 +1,7 @@
 :chatmsgc all 0,255,255 <font face="Fantasy">Minigame 'Parkour Madness' starting in 20 seconds!</font> | 
 :music 1837838080 true 1 1 5 |:if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in 
 | :hc 20 | :wait 20 | :chatmsgc all 0,255,255 <font face="Fantasy">MINIGAME STARTED!</font> | 
-:loadb parkour_madness_course | :tp all -74,30,261 | :speed all 0 | 
+:loadb parkour_madness_course | :tp all -74,30,261 | :speed all 0 | :runmod parkour_madness_handler | 
 :wait 3 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 3</font> | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 2</font> | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 1</font> | 
