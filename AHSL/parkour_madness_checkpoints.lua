@@ -4,7 +4,7 @@ local playerStatuses={};
 local characterAddedChecks={};
 local baseIndex=130;
 
-function HandleCheckpoint(player, checkpoint:{num:number,part:BasePart})
+function HandleCheckpoint(player, checkpoint)
     if not checkpoints[player] then
         playerStatuses[player]={
             lastCheckpoint=checkpoint,
