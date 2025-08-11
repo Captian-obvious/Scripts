@@ -12,14 +12,14 @@ function HandleCheckpoint(player, checkpoint)
             checkpointReached=os.time()
         };
         characterAddedChecks[player]=player.CharacterAdded:Connect(function(character)
-            if character and character:IsA("Model") then
-                local humanoid=character:FindFirstChildOfClass("Humanoid");
+            if character then
+                local humanoid=character.FindFirstChildOfClass("Humanoid");
                 if humanoid then
                     if playerStatuses[player] then
                         local theCheckpoint=playerStatuses[player].lastCheckpoint;
                         if theCheckpoint and theCheckpoint.part then
                             local part=theCheckpoint.part;
-                            if part:IsA("BasePart") then
+                            if IsA(part,"BasePart") then
                                 --workaround because AHSL apparently doesnt allow vector3 addition
                                 local newPosition=Vector3.new(part.Position.X, part.Position.Y+5, part.Position.Z);
                                 character.MoveTo(newPosition);
@@ -55,7 +55,7 @@ for i=1,3 do
             part=checkpointPart
         };
         checkpointPart.Touched:Connect(function(hit)
-            local player=game:GetService("Players"):GetPlayerFromCharacter(hit.Parent);
+            local player=game.GetService("Players").GetPlayerFromCharacter(hit.Parent);
             if player then
                 HandleCheckpoint(player, checkpoints[checkpointPart]);
             end;
