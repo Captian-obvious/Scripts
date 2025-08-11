@@ -23,7 +23,7 @@ for i=1,#spinParts do
         end;
     end);
     task.spawn(function()
-        while PartIndexing.GetPartsWithIndex(6)[1]; do
+        while PartIndexing.GetPartsWithIndex(6)[1] do
             --AHSL workaround for tweens because TweenService is not available in AHSL
             local t=Tween.Create(part,TweenInfo.new(3,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut,0,false,0),{CFrame=math.multiply(part.CFrame,CFrame.Angles(0,math.rad(90),0))});
             t:Play();
