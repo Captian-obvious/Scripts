@@ -55,7 +55,7 @@ for i=1,3 do
             part=checkpointPart
         };
         checkpointPart.Touched:Connect(function(hit)
-            local player=game.GetService("Players").GetPlayerFromCharacter(hit.Parent);
+            local player=game.Players.GetPlayerFromCharacter(hit.Parent);
             if player then
                 HandleCheckpoint(player, checkpoints[checkpointPart]);
             end;
