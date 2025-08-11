@@ -3,7 +3,7 @@ local killParts=PartIndexing.GetPartsWithIndex(5);
 local spinParts=PartIndexing.GetPartsWithIndex(6);
 local running=true;
 
-RegisterAdonisCommand("stopmadness","",function(args)
+RegisterAdonisCommand("stopmadness",function(args)
 	running=false;
 end);
 
