@@ -22,7 +22,7 @@ function HandleCheckpoint(player, checkpoint)
                             if part:IsA("BasePart") then
                                 --workaround because AHSL apparently doesnt allow vector3 addition
                                 local newPosition=Vector3.new(part.Position.X, part.Position.Y+5, part.Position.Z);
-                                character:MoveTo(newPosition);
+                                character.MoveTo(newPosition);
                                 humanoid.Health=humanoid.MaxHealth;
                                 playerStatuses[player].checkpointReached=os.time();
                             end;
