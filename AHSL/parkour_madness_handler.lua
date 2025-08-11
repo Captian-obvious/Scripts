@@ -1,6 +1,11 @@
 --!ahsl
 local killParts=PartIndexing.GetPartsWithIndex(5);
 local spinParts=PartIndexing.GetPartsWithIndex(6);
+local running=true;
+
+RegisterAdonisCommand("stopmadness","",function(args)
+	running=false;
+end);
 
 for i=1,#killParts do
     local part=killParts[i];
@@ -23,7 +28,7 @@ for i=1,#spinParts do
         end;
     end);
     task.spawn(function()
-        while true do
+        while running do
             part.CFrame=part.CFrame*CFrame.Angles(0,math.rad(5),0);
             task.wait(0.1);
         end;
