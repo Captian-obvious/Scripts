@@ -33,10 +33,12 @@ function HandleCheckpoint(player, checkpoint)
         end);
     else
         local status=playerStatuses[player];
-        if checkpoint.num > status.lastCheckpoint.num then
+        if checkpoint.num == status.lastCheckpoint.num+1 then
             status.lastCheckpoint=checkpoint;
             status.checkpointsPassed=status.checkpointsPassed+1;
             status.checkpointReached=os.time();
+        elseif checkpoint.num > status.lastCheckpoint.num + 1 then
+            print("Player " .. player.Name .. " skipped a checkpoint from " .. status.lastCheckpoint.num .. " to " .. checkpoint.num);
         else
             -- Player has returned to a previous checkpoint, do nothing
             print("Player " .. player.Name .. " returned to a previous checkpoint: " .. checkpoint.num);
