@@ -42,3 +42,22 @@ function HandleCheckpoint(player, checkpoint:{num:number,part:BasePart})
         end;
     end;
 end;
+
+for i=1,3 do
+    local theindex=baseIndex + i;
+    local checkpointPart=PartIndexing.GetPartsWithIndex(theindex)[1];
+    if checkpointPart then
+        checkpoints[checkpointPart] = {
+            num=i,
+            part=checkpointPart
+        };
+        checkpointPart.Touched:Connect(function(hit)
+            local player=game.Players:GetPlayerFromCharacter(hit.Parent);
+            if player then
+                HandleCheckpoint(player, checkpoints[checkpointPart]);
+            end;
+        end);
+    else
+        warn("Checkpoint part with index " .. theindex .. " not found.");
+    end;
+end;
