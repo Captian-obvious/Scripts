@@ -9,4 +9,6 @@
 :sm Game 2 - BUILD BATTLE! | :setmsg Minigame starts in | :rc sg_build_battle | :chatmsgc all 0,255,255 <font face="Fantasy">Game Ended! Next Game starts in 1 min!</font> | 
 :setmsg Next game will start in | :hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off | 
 :sm Game 3 - PARKOUR MADNESS! | :setmsg Minigame starts in | :rc sg_parkour_madness | :setmsg Next game will start in | 
-:hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off | 
+:hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off | :sm Game 4 - ROCKET CHAOS! | :setmsg Minigame starts in | 
+:rc sg_rocket_chaos | :setmsg Next game will start in | 
+:hc 60 | :wait 5 | :stopmusic 5 | :wait 55 | :setmsg off |
