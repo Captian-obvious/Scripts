@@ -1,5 +1,5 @@
 --!ahsl
-RunAdonisCommand(":touchexe 6 started .1 1 :trip exe");
+RunAdonisCommand(":touchexe 6 started .1 1 :trip exe [] :damage exe 30");
 task.spawn(function()
     while PartIndexing.GetPartsWithIndex(6)[1] do
         RunAdonisCommand(":rotatepart 6 relative 0,90,0 5 Linear Out");
