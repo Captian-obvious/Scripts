@@ -1,11 +1,11 @@
 :chatmsgc all 0,255,255 <font face="Fantasy">Minigame 'Parkour Madness' starting in 20 seconds!</font> | 
-:music 1837838080 true 1 1 5 |:if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in 
+:music 1837838080 false 1 1 5 |:if var:from_super_games == true :runahsl print("From Super Games, no setmsg required")/:setmsg Minigame Starts in 
 | :hc 20 | :wait 20 | :chatmsgc all 0,255,255 <font face="Fantasy">MINIGAME STARTED!</font> | 
-:loadb parkour_madness_course | :tp all -74,30,261 | :speed all 0 | :runmod parkour_madness_handler | 
+:loadb parkour_madness_course | :tp all -74,30,261 | :speed all 0 | :setmsg off | :runmod parkour_madness_handler | 
 :wait 3 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 3</font> | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 2</font> | 
 :wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">Race starts in 1</font> | 
 :wait 1 | :speed all 32 | :chatmsgc all 0,255,255 <font face="Fantasy">GO!</font> |
-:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">First to finish wins!</font> | :damagepart 5 100 .1 300
+:wait 1 | :chatmsgc all 0,255,255 <font face="Fantasy">First to finish wins!</font> | :damagepart 5 100 .1 300 | :setmsg Race ends in
 | :hc 300 | :wait 300 | :chatmsgc all 0,255,255 <font face="Fantasy">Time's up! The race has ended.</font>
-| :wait 2 | :tphouse all | :unloadb parkour_madness_course
+| :setmsg off | :wait 2 | :tph all | :unloadb parkour_madness_course
