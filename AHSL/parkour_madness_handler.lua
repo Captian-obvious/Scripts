@@ -25,7 +25,7 @@ for i=1,#spinParts do
     task.spawn(function()
         while PartIndexing.GetPartsWithIndex(6)[1] do
             --AHSL workaround for tweens because TweenService is not available in AHSL
-            RunAdonisCommand(":rotatepart 6 relative 0,90,0 5 Linear Out")
+            RunAdonisCommand(":rotatepart 6 relative 0,90,0 5 Linear Out");
             task.wait(5);
             if not running then
                 break;
