@@ -1,6 +1,4 @@
-const os=require("os"),fs=require("fs"),path=require("path");
-var platform=os.platform();
-const userAgent=`Superduperdev2IncFetchUtil/1.0.0 {(${os.type()} ${os.release()} [${os.arch()}]) on ${platform}}`;
+const userAgent=`Superduperdev2IncFetchUtil/1.0.0`;
 const base_url="https://captianobvious.pythonanywhere.com/api/v3/asset";
 var assetid=tag_assetid;
 (async function(){
