@@ -20,11 +20,11 @@ var assetid=tag_assetid;
             return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${await response.text()})\n\`\`\``;
         };
         return {
-            'content': `Asset fetched`,
-            'files':[
+            content:`Asset fetched`,
+            files:[
                 {
-                    "name":`${assetid}.json`,
-                    "content":await response.text(),
+                    name:`${assetid}.json`,
+                    content:await response.text(),
                 }
             ]
         };
