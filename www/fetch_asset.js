@@ -1,9 +1,10 @@
 const os=require("os"),fs=require("fs"),path=require("path");
 var platform=os.platform();
 const userAgent=`Superduperdev2IncFetchUtil/1.0.0 {(${os.type()} ${os.release()} [${os.arch()}]) on ${platform}}`;
-const url="";
+const base_url="https://captianobvious.pythonanywhere.com/api/v3/asset";
 (async function(){
     try {
+        var url=base_url+"/";
         var response=await fetch(url,{
             "headers":{
                 "User-Agent":userAgent,
@@ -11,6 +12,11 @@ const url="";
             },
             "method":"GET",
         });
+        var message=response.statusText;
+        var code=response.status;
+        if (!response.ok){ 
+            console.log("Request Error: "+message+" ("+code+")");
+        };
     }catch(error){
         console.log("An error occured while running this command", error);
         return "**An error occured while running this command!**\nTraceback:\n"+error;
