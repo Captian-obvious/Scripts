@@ -27,7 +27,7 @@ var assetid=tag_assetid;
                     "content":await response.text(),
                 }
             ]
-        }
+        };
     }catch(error){
         console.log("An error occured while running this command", error);
         return "**An error occured while running this command!**\nTraceback:\n"+error;
