@@ -16,7 +16,7 @@ const base_url="https://captianobvious.pythonanywhere.com/api/v3/asset";
         var code=response.status;
         if (!response.ok){ 
             console.log("Request Error: "+message+` (${code})`);
-            return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})`+` \`\`\`json\n${await response.text()})\n\`\`\``;
+            return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${await response.text()})\n\`\`\``;
         };
     }catch(error){
         console.log("An error occured while running this command", error);
