@@ -1,7 +1,7 @@
 const userAgent=`Superduperdev2IncFetchUtil/1.0.0`;
 const base_url="https://captianobvious.pythonanywhere.com/api/v3/asset";
 var assetid=tag_assetid;
-(async function(){
+(async ()=>{
     try{
         var url=base_url+"/"+assetid+"?placeId=7081918890";
         var response=await fetch(url,{
