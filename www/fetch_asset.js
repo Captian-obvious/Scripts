@@ -19,7 +19,15 @@ var assetid=tag_assetid;
             console.log("Request Error: "+message+` (${code})`);
             return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${await response.text()})\n\`\`\``;
         };
-        return `\`\`\`json\n${await response.text()}\`\`\``;
+        return {
+            'content': `Asset fetched`,
+            'files':[
+                {
+                    "name":`${assetid}.json`,
+                    "content":await response.text(),
+                }
+            ]
+        }
     }catch(error){
         console.log("An error occured while running this command", error);
         return "**An error occured while running this command!**\nTraceback:\n"+error;
