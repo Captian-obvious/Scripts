@@ -4,7 +4,7 @@ const userAgent=`Superduperdev2IncFetchUtil/1.0.0 ($)`;
     try {
         var response=await fetch(url,{
             "headers":{
-                "User-Agent":"",
+                "User-Agent":userAgent,
             }
         });
     }catch(error){
