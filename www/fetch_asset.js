@@ -1,4 +1,4 @@
-const userAgent="Superduperdev2IncFetchUtil/1.0.0 on ";
+const userAgent=`Superduperdev2IncFetchUtil/1.0.0 ($)`;
 (async function(){
     const url="";
     try {
