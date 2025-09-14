@@ -15,7 +15,7 @@ var assetid=tag_assetid;
         var code=response.status;
         if (!response.ok){
             console.log("Request Error: "+message+` (${code})`);
-            return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${await response.text()})\n\`\`\``;
+            return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${await response.text()}\n\`\`\``;
         };
         return {
             content:`Asset ${assetid} fetched successfully!`,
