@@ -3,7 +3,7 @@ const base_url="https://captianobvious.pythonanywhere.com/api/v3/asset";
 var assetid=tag_assetid;
 (async function(){
     try{
-        var url=base_url+"/"+assetid;
+        var url=base_url+"/"+assetid+"?placeId=7081918890";
         var response=await fetch(url,{
             "headers":{
                 "User-Agent":userAgent,
