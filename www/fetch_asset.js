@@ -13,17 +13,17 @@ var assetid=tag_assetid;
         });
         var message=response.statusText;
         var code=response.status;
-        var returnedJSON=await response.json();
+        var returnedJSON=await response.text();
         if (!response.ok){
             console.log("Request Error: "+message+` (${code})`);
-            return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${JSON.stringify(returnedJSON)}\n\`\`\``;
+            return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${returnedJSON}\n\`\`\``;
         };
         return {
             content:`Asset ${assetid} fetched successfully!`,
             files:[
                 {
                     name:`${assetid}.json`,
-                    content:JSON.stringify(returnedJSON)
+                    content:returnedJSON
                 }
             ]
         };
