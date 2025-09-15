@@ -4,7 +4,7 @@ var placeid=7081918890;
 var assetid=tag_assetid;
 (async ()=>{
     try{
-        var url=base_url+"/"+assetid;
+        var url=`${base_url}/${assetid}?placeId=${placeid}`;
         var response=await fetch(url,{
             "headers":{
                 "User-Agent":userAgent,
@@ -19,7 +19,7 @@ var assetid=tag_assetid;
             console.log("Request Error: "+message+` (${code})`);
             return "**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${returnedJSON}\n\`\`\``;
         };
-        return `${assetid} fetched successfully!`;
+        return "_";
     }catch(error){
         console.log("An error occured while running this command", error);
         return "**An error occured while running this command!**\nTraceback:\n"+error;
