@@ -20,12 +20,6 @@ var assetid=tag_assetid;
         };
         return {
             content:`Asset ${assetid} fetched successfully!`,
-            files:[
-                {
-                    name:`${assetid}.json`,
-                    content:returnedJSON
-                }
-            ]
         };
     }catch(error){
         console.log("An error occured while running this command", error);
