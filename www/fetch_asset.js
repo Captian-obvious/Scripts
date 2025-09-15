@@ -20,6 +20,9 @@ var assetid=tag_assetid;
             console.log("Request Error: "+message+` (${code})`);
             respond="**An error occured while running this command!**\nREQUEST FAILED:\n"+message+` (${code})\n`+` \`\`\`json\n${returnedJSON}\n\`\`\``;
         };
+        respond={
+            content: "Message content",
+        };
     }catch(error){
         console.log("An error occured while running this command", error);
         respond="**An error occured while running this command!**\nTraceback:\n"+error;
