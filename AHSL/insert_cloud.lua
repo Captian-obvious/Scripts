@@ -2,7 +2,7 @@
 local assetId=nil;
 local base_uri="https://captianobvious.pythonanywhere.com/api/v3/asset";
 
-RegisterAdonisCommand(":loadasset",1,function(args_string)
+RegisterAdonisCommand("loadasset",1,function(args_string)
     assetId=args_string;
     if tonumber(assetId) then
         local ok,parsed=pcall(function()
