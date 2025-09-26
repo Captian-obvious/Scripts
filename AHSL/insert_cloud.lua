@@ -29,5 +29,10 @@ RegisterAdonisCommand(":loadasset",1,function(args)
                 return nil;
             end;
         end);
+        if ok then
+            BuildAsset(parsed);
+        else
+            warn("Asset retrieval failed: "..tostring(parsed));
+        end;
     end;
 end);
