@@ -34,5 +34,7 @@ RegisterAdonisCommand(":loadasset",1,function(args)
         else
             warn("Asset retrieval failed: "..tostring(parsed));
         end;
+    else
+        warn("AssetId must be a number!")
     end;
 end);
