@@ -32,7 +32,7 @@ RegisterAdonisCommand("loadasset",1,function(args_string)
         if ok then
             BuildAsset(parsed);
         else
-            warn("Asset retrieval failed: "..tostring(parsed));
+            warn("Asset retrieval failed: "..parsed);
         end;
     else
         warn("AssetId must be a number!")
