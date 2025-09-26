@@ -13,7 +13,7 @@ RegisterAdonisCommand(":loadasset",1,function(args)
                     "Accept":"application/json",
                 },
             });
-            if response.ok then
+            if response.Success then
                 print("Response size:",#response.Body);
                 local ok,dat = pcall(function()
                     return Http.JSONDecode(response.Body);
