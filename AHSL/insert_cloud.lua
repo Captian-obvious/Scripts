@@ -25,7 +25,7 @@ RegisterAdonisCommand(":loadasset",1,function(args)
                     return nil;
                 end;
             else
-                warn("Request to fetch asset failed due to request error: "..response.StatusMessage.."("..tostring(response.StatusCode)..")");
+                warn("Request to fetch asset failed due to request error: "..response.StatusMessage.." ("..tostring(response.StatusCode)..")");
                 return nil;
             end;
         end);
