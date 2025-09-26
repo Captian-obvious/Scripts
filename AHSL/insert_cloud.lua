@@ -21,7 +21,7 @@ RegisterAdonisCommand(":loadasset",1,function(args)
                 if ok then
                     return dat;
                 else
-                    warn("Failed to parse JSON for asset " .. tostring(assetid) .. ": " .. tostring(dat))
+                    warn("Failed to parse JSON for asset " .. assetId .. ": " .. tostring(dat))
                     return nil;
                 end;
             else
