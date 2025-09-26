@@ -38,3 +38,7 @@ RegisterAdonisCommand(":loadasset",1,function(args)
         warn("AssetId must be a number!")
     end;
 end);
+
+function BuildAsset(data)
+    print(data);
+end;
