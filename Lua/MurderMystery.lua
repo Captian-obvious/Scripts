@@ -32,14 +32,14 @@ function thegame:Start()
          * In the actual game, this will be triggered after 5-7 games.
          * This is to ensure that the first special round occurs in a reasonable time frame for testing purposes.
          ]]
-    if (gameCount>2 and not self.hasFirstSpecialOccured) or (gameCount>self.roundsToSpecial) then
+    if (self.gameCount>2 and not self.hasFirstSpecialOccured) or (self.gameCount>self.roundsToSpecial) then
         self.specialRound=true;
         self.roundsToSpecial=math.random(5,7); -- Reset rounds to special for the next cycle
         self.gameCount=0; -- Reset game count after a special round
         if not self.hasFirstSpecialOccured then
             self.hasFirstSpecialOccured=true;
         end;
-        local chosenGamemode=self.randomGamemodes[math.random(1,#randomGamemodes)];
+        local chosenGamemode=self.randomGamemodes[math.random(1,#self.randomGamemodes)];
         self.Gamemode=chosenGamemode; -- Set the chosen gamemode for the special round
         if chosenGamemode=="Juggernaut" then
             main:StartJugGame(false);
@@ -128,11 +128,11 @@ function thegame:updateTimer(timeLeft:number)
             end;
             local humanoid=player.Character.Humanoid;
             if humanoid.Health<=0 then
-                if player:FindFirstChild("PlayerGui") and v.PlayerGui:FindFirstChild("Timer") then
+                if player:FindFirstChild("PlayerGui") and player.PlayerGui:FindFirstChild("Timer") then
                     player.PlayerGui.Timer.main.timeLeft.Text="You are dead!"; -- Update the timer UI for dead players
                 end;
             else
-                if player:FindFirstChild("PlayerGui") and v.PlayerGui:FindFirstChild("Timer") then
+                if player:FindFirstChild("PlayerGui") and player.PlayerGui:FindFirstChild("Timer") then
                     player.PlayerGui.Timer.main.timeLeft.Text="Time Left: "..timeLeft.." seconds"; -- Update the timer UI for alive players
                 end;
             end;
