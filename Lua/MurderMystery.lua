@@ -96,7 +96,7 @@ end;
     * @param timeLeft: The time left in the current round.
     * @return: None
 ]]
-function thegame:updateTimer(timeLeft:number)
+function thegame:updateTimer(timeLeft)
     if main.endedStatus then
         return;
     end;
@@ -147,7 +147,7 @@ end;
     * @param msg: The message to display when ending the game (optional).
     * @return: None
 ]]
-function thegame:End(msg:string)
+function thegame:End(msg)
     if not main.endedStatus then
         main:EndGame(msg or "Game Over");
     end;
