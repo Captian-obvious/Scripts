@@ -27,7 +27,7 @@ function thegame:Start()
     if not main.endedStatus then
         return;
     end;
-    self.gameCount+=1;
+    self.gameCount=self.gameCount+1;
     --[[ For testing, this triggers the first special round after 3 games.
          * In the actual game, this will be triggered after 5-7 games.
          * This is to ensure that the first special round occurs in a reasonable time frame for testing purposes.
