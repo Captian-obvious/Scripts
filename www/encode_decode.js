@@ -83,6 +83,8 @@
         return algs.ROT13(ciphertext,action);
     }else if(alg.toLowerCase()=="binascii"){
         return algs.BINASCII(ciphertext,action);
+    }else if(alg.toLowerCase()=="hexascii"){
+        return algs.HEXASCII(ciphertext,action);
     }else if(alg.toLowerCase()=="bin"){
         return algs.BIN(ciphertext,action);
     }else if(alg.toLowerCase()=="binhex"){
