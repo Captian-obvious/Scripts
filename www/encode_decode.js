@@ -1,5 +1,6 @@
 (function(){
     var algs={
+        //.toString(16).toUpperCase()
         BASE64:function(ciphertext,mode){
             return (mode.toLowerCase()=="decode") ? atob(ciphertext) : btoa(ciphertext);
         },
@@ -8,6 +9,15 @@
                 return ciphertext.split("").map(char => char.charCodeAt(0)).join(" ");
             } else if (mode == "decode") {
                 return ciphertext.split(" ").map(code => String.fromCharCode(parseInt(code, 10))).join("");
+            } else {
+                return "Unsupported operation.";
+            };
+        },
+        HEXASCII:function(ciphertext,mode){
+            if (mode == "encode") {
+                return ciphertext.split("").map(char => char.charCodeAt(0).toString(16).toLowerCase()).join(" ");
+            } else if (mode == "decode") {
+                return ciphertext.split(" ").map(code => String.fromCharCode(parseInt(code, 16))).join("");
             } else {
                 return "Unsupported operation.";
             };
@@ -52,7 +62,7 @@
         BINHEX: function(ciphertext, mode) {
             if (mode === "encode") {
                 // Convert binary to hex
-                return ciphertext.split(" ").map(bin => parseInt(bin, 2).toString(16).toUpperCase()).join(" ");
+                return ciphertext.split(" ").map(bin => parseInt(bin, 2).toString(16).toLowerCase()).join(" ");
             } else if (mode === "decode") {
                 // Convert hex to binary, ensuring 8-bit alignment
                 return ciphertext.split(" ").map(hex => parseInt(hex, 16).toString(2).padStart(8, '0')).join(" ");
