@@ -39,7 +39,8 @@ function mod.array(elementCount,defaultValue)
     function t:append(value)
         table.insert(self,value);
     end;
-    setmetatable(t,{__index=table});
+    local metatable={__index=table};
+    setmetatable(t,metatable);
     for i=1,elementCount do
         t[i]=defaultValue;
     end;
@@ -72,6 +73,13 @@ function mod.dictionary()
         end;
         return valuesArray;
     end;
+    local metatable={
+        __index=table,
+        __newindex=function(table,key,value)
+            rawset(table,key,value);
+        end
+    };
+    setmetatable(t,metatable);
     return t;
 end;
 return mod;
