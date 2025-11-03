@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 
+typedef unsigned char byte;
+
 typedef struct {
     unsigned short sizeof_mesh2Head;
     byte sizeof_mesh2Vertex;
