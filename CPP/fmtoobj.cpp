@@ -11,7 +11,7 @@ struct mesh2Head {
 
     uint vert_cnt;
     uint face_cnt;
-}
+};
 
 struct mesh2 {
     mesh2Head header
