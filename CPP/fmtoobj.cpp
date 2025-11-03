@@ -11,8 +11,8 @@ typedef struct {
     byte sizeof_mesh2Vertex;
     byte sizeof_mesh2Face;
 
-    unsigned int vert_cnt;
-    unsigned int face_cnt;
+    uint vert_cnt;
+    uint face_cnt;
 } mesh2Head;
 
 typedef struct {
