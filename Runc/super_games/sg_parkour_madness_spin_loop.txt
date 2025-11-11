@@ -1,0 +1,1 @@
+:rotatepart 6 relative 0,90,0 5 Linear Out | :wait 5 | :if var:isSpinLoopRunning == true :rc sg_parkour_madness_spin_loop
