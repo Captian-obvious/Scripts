@@ -1,55 +1,55 @@
 local msg = require(10638367095)
 local cameraShake = require(11958971616)
 function makeHint()
-	local timerHint = Instance.new('ScreenGui', script)
-	timerHint.Name = 'h'
-	local hintFrame = Instance.new('Frame', timerHint)
-	hintFrame.Size = UDim2.new(1,0,0.04,0)
-	hintFrame.Position = UDim2.new(0.5,0,0,0)
-	hintFrame.AnchorPoint = Vector2.new(0.5,0)
-	hintFrame.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
-	hintFrame.BackgroundTransparency = 0.7
-	hintFrame.Name = 'f'
-	local h = Instance.new('TextLabel', hintFrame)
-	h.Size = UDim2.new(1,-10,1,-10)
-	h.Position = UDim2.new(0.5,0,0.5,0)
-	h.AnchorPoint = Vector2.new(0.5,0.5)
-	h.TextColor3 = Color3.new(1,1,1)
-	h.TextScaled = true
-	h.BackgroundTransparency = 1
-	h.Name = 't'
-	return timerHint
+    local timerHint = Instance.new('ScreenGui', script)
+    timerHint.Name = 'h'
+    local hintFrame = Instance.new('Frame', timerHint)
+    hintFrame.Size = UDim2.new(1,0,0.04,0)
+    hintFrame.Position = UDim2.new(0.5,0,0,0)
+    hintFrame.AnchorPoint = Vector2.new(0.5,0)
+    hintFrame.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+    hintFrame.BackgroundTransparency = 0.7
+    hintFrame.Name = 'f'
+    local h = Instance.new('TextLabel', hintFrame)
+    h.Size = UDim2.new(1,-10,1,-10)
+    h.Position = UDim2.new(0.5,0,0.5,0)
+    h.AnchorPoint = Vector2.new(0.5,0.5)
+    h.TextColor3 = Color3.new(1,1,1)
+    h.TextScaled = true
+    h.BackgroundTransparency = 1
+    h.Name = 't'
+    return timerHint
 end
 function makeSound(id,vol,loop,name, pitch)
-	pitch = pitch or 1
-	local folder = workspace:FindFirstChild('Sounds') or Instance.new('Folder',workspace)
-	folder.Name = 'Sounds'
-	local s = Instance.new('Sound', folder)
-	s.SoundId = id
-	s.Volume = vol
-	s.Looped = loop
-	s.Pitch = pitch
-	s.Name = name
-	return s
+    pitch = pitch or 1
+    local folder = workspace:FindFirstChild('Sounds') or Instance.new('Folder',workspace)
+    folder.Name = 'Sounds'
+    local s = Instance.new('Sound', folder)
+    s.SoundId = id
+    s.Volume = vol
+    s.Looped = loop
+    s.Pitch = pitch
+    s.Name = name
+    return s
 end
 function finale()
-	local dynamicExplosion = require(11380416673)
-	local music = makeSound('rbxassetid://1839246711',1.5,false,'finale')
-	local tenToZero = makeSound('rbxassetid://131018898',1.5,false,'tentozero')
-	local kaboom = makeSound('rbxassetid://131026234',1.5,false,'kaboom')
-	music:Play()
-	task.wait(13)
-	tenToZero:Play()
-	task.wait(12)
-	local r = 2000
-	cameraShake:shakeCamera(10,35)
-	kaboom:Play()
-	local e=dynamicExplosion.new(workspace, {BaseSize=Vector3.new(2,2,2),Position=Vector3.new(0,0,0),Material=Enum.Material.Neon, ExplosionColor3=Color3.new(1,0.5,0),ExplosionOpacity=0.5,DestroyJointRadiusPercent=1,BlastRadius = r, BlastPressure = 60})
-	task.wait(65)
-	if e~=nil and e.Parent~=nil then
-		e:Destroy()
-	end
-	msg:MakeSystemMessage("all", {Text = [[[Ending]: Reactor exploded, thanks for playing!]], Color = Color3.new(1,0,0), Font = Enum.Font.SourceSansBold,})
+    local dynamicExplosion = require(11380416673)
+    local music = makeSound('rbxassetid://1839246711',1.5,false,'finale')
+    local tenToZero = makeSound('rbxassetid://131018898',1.5,false,'tentozero')
+    local kaboom = makeSound('rbxassetid://131026234',1.5,false,'kaboom')
+    music:Play()
+    task.wait(13)
+    tenToZero:Play()
+    task.wait(12)
+    local r = 2000
+    cameraShake:shakeCamera(10,35)
+    kaboom:Play()
+    local e=dynamicExplosion.new(workspace, {BaseSize=Vector3.new(2,2,2),Position=Vector3.new(0,0,0),Material=Enum.Material.Neon, ExplosionColor3=Color3.new(1,0.5,0),ExplosionOpacity=0.5,DestroyJointRadiusPercent=1,BlastRadius = r, BlastPressure = 60})
+    task.wait(65)
+    if e~=nil and e.Parent~=nil then
+        e:Destroy()
+    end
+    msg:MakeSystemMessage("all", {Text = [[[Ending]: Reactor exploded, thanks for playing!]], Color = Color3.new(1,0,0), Font = Enum.Font.SourceSansBold,})
 end
 local ann1 = makeSound('rbxassetid://1474008656',2,false,'evacatonce')
 ann1:Play()
@@ -171,30 +171,30 @@ local timer = 120
 local timerHint = makeHint()
 timerHint.f.t.Text ='Explosion in: '..timer
 for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
-	if plr then
-		local gui = timerHint:Clone()
-		gui.Parent = plr.PlayerGui
-		game:GetService('Debris'):AddItem(gui, 0.99)
-	end
+    if plr then
+        local gui = timerHint:Clone()
+        gui.Parent = plr.PlayerGui
+        game:GetService('Debris'):AddItem(gui, 0.99)
+    end
 end
 for i=1,timer do
-	local ct = timer - i
-	timerHint.f.t.Text ='Explosion in: '..ct
-	if ct == 24 or timerHint.f.t.Text == 'Explosion in: 24' then
-		music3:Stop()
-		task.spawn(function()
-			finale()
-		end)
-	end
-	for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
-		if plr then
-			local gui = timerHint:Clone()
-			gui.Parent = plr.PlayerGui
-			game:GetService('Debris'):AddItem(gui, 0.99)
-		end
-	end
-	if ct == 10 or timerHint.f.t.Text == 'Explosion in: 10' then
-		break
-	end
-	task.wait(1)
+    local ct = timer - i
+    timerHint.f.t.Text ='Explosion in: '..ct
+    if ct == 24 or timerHint.f.t.Text == 'Explosion in: 24' then
+        music3:Stop()
+        task.spawn(function()
+            finale()
+        end)
+    end
+    for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
+        if plr then
+            local gui = timerHint:Clone()
+            gui.Parent = plr.PlayerGui
+            game:GetService('Debris'):AddItem(gui, 0.99)
+        end
+    end
+    if ct == 10 or timerHint.f.t.Text == 'Explosion in: 10' then
+        break
+    end
+    task.wait(1)
 end;
