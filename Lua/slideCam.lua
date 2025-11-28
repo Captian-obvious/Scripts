@@ -32,7 +32,7 @@ if RunServ:IsClient() then
     end);
     RunServ.RenderStepped:Connect(function(deltaTime)
         local head=plrChar:FindFirstChild("Head");
-        if isViewing and head then
+        if isViewing and fp and head then
             cam.CameraType=Enum.CameraType.Scriptable;
             cam.CFrame=head.CFrame*CFrame.new(0,0,-0.5);
             cam.FieldOfView=90;
