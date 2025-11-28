@@ -5,6 +5,8 @@ local plrChar=plr.Character;
 local RunServ=game:GetService("RunService");
 local UserInputServ=game:GetService("UserInputService");
 if RunServ:IsClient() then
+    print("slideCam Script loaded! Press V to toggle First Person");
+    warn("Warning!\nThis script may cause motion sickness if in First Person when being flung around!")
     UserInputServ.InputBegan:Connect(function(input,gpe)
         if not gpe then
             if input.KeyCode==Enum.KeyCode.V then
