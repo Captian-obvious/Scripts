@@ -18,6 +18,7 @@ if RunServ:IsClient() then
                     local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=1});
                     fovTween:Play();
                     fovTween.Completed:Wait();
+                    cam.FieldOfView=90;
                     fp=true;
                 else
                     print("First Person View Disabled");
@@ -35,7 +36,6 @@ if RunServ:IsClient() then
         if fp and head then
             cam.CameraType=Enum.CameraType.Scriptable;
             cam.CFrame=head.CFrame*CFrame.new(0,0,-0.5);
-            cam.FieldOfView=90;
         else
             cam.CameraType=Enum.CameraType.Custom;
         end;
