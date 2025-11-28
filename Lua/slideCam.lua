@@ -1,9 +1,11 @@
 local cam=workspace.CurrentCamera;
 local plr=owner;
 local isViewing=false;
+local fp=false;
 local plrChar=plr.Character;
 local RunServ=game:GetService("RunService");
 local UserInputServ=game:GetService("UserInputService");
+local TweenService=game:GetService("TweenService");
 if RunServ:IsClient() then
     print("slideCam Script loaded! Press V to toggle First Person");
     warn("Warning!\nThis script may cause motion sickness if in First Person when being flung around!")
@@ -11,6 +13,20 @@ if RunServ:IsClient() then
         if not gpe then
             if input.KeyCode==Enum.KeyCode.V then
                 isViewing=not isViewing;
+                if isViewing then
+                    print("First Person View Enabled");
+                    local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=1});
+                    fovTween:Play();
+                    fovTween.Completed:Wait();
+                    fp=true;
+                else
+                    print("First Person View Disabled");
+                    cam.FieldOfView=1;
+                    local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=70});
+                    fovTween:Play();
+                    fovTween.Completed:Wait();
+                    fp=false;
+                end;
             end;
         end;
     end);
