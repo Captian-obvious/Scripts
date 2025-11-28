@@ -22,10 +22,10 @@ if RunServ:IsClient() then
                 else
                     print("First Person View Disabled");
                     cam.FieldOfView=1;
+                    fp=false;
                     local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=70});
                     fovTween:Play();
                     fovTween.Completed:Wait();
-                    fp=false;
                 end;
             end;
         end;
