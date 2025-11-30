@@ -35,7 +35,7 @@ end
 function finale()
     local dynamicExplosion = require(11380416673)
     local music = makeSound('rbxassetid://1839246711',1.5,false,'finale')
-    local tenToZero = makeSound('rbxassetid://131018898',1.5,false,'tentozero')
+    local tenToZero = makeSound('rbxassetid://15487574881',1.5,false,'tentozero')
     local kaboom = makeSound('rbxassetid://131026234',1.5,false,'kaboom')
     music:Play()
     task.wait(13)
