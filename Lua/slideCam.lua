@@ -109,6 +109,13 @@ if RunServ:IsClient() then
 			end;
         else
             cam.CameraType=Enum.CameraType.Custom;
+            for _,d in pairs(parts) do
+				if d:IsA("BasePart") then
+					task.spawn(function()
+						d.LocalTransparencyModifier = 0;
+					end);
+				end;
+			end;
         end;
     end);
 else
