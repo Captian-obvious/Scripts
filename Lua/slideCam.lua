@@ -6,7 +6,7 @@ local plrChar=plr.Character;
 local RunServ=game:GetService("RunService");
 local UserInputServ=game:GetService("UserInputService");
 local TweenService=game:GetService("TweenService");
-function raycast(he,ignore): BasePart
+function raycast(he,ignore)
 	local cf = he.CFrame * CFrame.new(0,0,-2);
 	local direction = (he.CFrame.Position-cf.Position);
 	local params = RaycastParams.new();
