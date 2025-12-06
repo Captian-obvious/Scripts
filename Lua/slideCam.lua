@@ -53,6 +53,7 @@ end;
 if RunServ:IsClient() then
     print("slideCam Script loaded! Press V to toggle First Person");
     warn("Warning!\nThis script may cause motion sickness if in First Person when being flung around!")
+    local parts=plrChar:GetDescendants();
     UserInputServ.InputBegan:Connect(function(input,gpe)
         if not gpe then
             if input.KeyCode==Enum.KeyCode.V then
@@ -66,6 +67,13 @@ if RunServ:IsClient() then
                     fp=true;
                 else
                     print("First Person View Disabled");
+                    for _,d in pairs(parts) do
+                        if d:IsA("BasePart") then
+                            task.spawn(function()
+                                d.LocalTransparencyModifier = 0;
+                            end);
+                        end;
+                    end;
                     cam.FieldOfView=1;
                     fp=false;
                     local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=70});
@@ -77,10 +85,10 @@ if RunServ:IsClient() then
     end);
     RunServ.RenderStepped:Connect(function(deltaTime)
         local head=plrChar:FindFirstChild("Head");
+        parts=plrChar:GetDescendants();
         if fp and head then
             cam.CameraType=Enum.CameraType.Scriptable;
             cam.CFrame=head.CFrame*CFrame.new(0,0,-0.5);
-            local parts=plrChar:GetDescendants();
             for _,d in pairs(parts) do
 				if d:IsA("BasePart") then
 					task.spawn(function()
@@ -109,13 +117,6 @@ if RunServ:IsClient() then
 			end;
         else
             cam.CameraType=Enum.CameraType.Custom;
-            for _,d in pairs(parts) do
-				if d:IsA("BasePart") then
-					task.spawn(function()
-						d.LocalTransparencyModifier = 0;
-					end);
-				end;
-			end;
         end;
     end);
 else
