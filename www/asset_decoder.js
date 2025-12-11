@@ -9,7 +9,7 @@ async function ParseAsset(jsonData) {
     let TREE=asset["tree"];
     let CLASSREF=asset["class_ref"];
     console.log(`Asset contains ${asset["instance_count"]} instances and ${asset["class_count"]} unique classes.`);
-    
+
 };
 async function grabUnionData(childData){
     let response=await fetch(base_url+"/parse",{
@@ -17,6 +17,7 @@ async function grabUnionData(childData){
         body:childData,
         headers:{
             "Accept":"application/json",
+            "User-Agent":userAgent,
         },
     });
     if (response.ok){
