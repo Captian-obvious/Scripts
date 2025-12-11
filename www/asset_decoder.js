@@ -15,7 +15,7 @@ async function ParseAsset(jsonData) {
     };
     return asset;
 };
-async function grabUnionData(childData){
+async function applyChildData(childData){
     let response=await fetch(base_url+"/parse",{
         method:"POST",
         body:childData,
