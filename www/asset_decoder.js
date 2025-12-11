@@ -6,10 +6,14 @@ async function ParseAsset(jsonData) {
     if (asset["metadata"] && asset["metadata"]["ExplicitAutoJoints"]) {
         console.log("Asset was authored with ExplicitAutoJoints, Instance:MakeJoints() will be required to properly display this model.");
     };
-    let TREE=asset["tree"];
-    let CLASSREF=asset["class_ref"];
-    console.log(`Asset contains ${asset["instance_count"]} instances and ${asset["class_count"]} unique classes.`);
-
+    try {
+        let TREE=asset.tree;
+        let CLASSREF=asset.class_ref;
+        console.log(`Asset contains ${asset["instance_count"]} instances and ${asset["class_count"]} unique classes.`);
+    } catch (e) {
+        console.error("Failed to parse asset data:", e);
+    };
+    return asset;
 };
 async function grabUnionData(childData){
     let response=await fetch(base_url+"/parse",{
