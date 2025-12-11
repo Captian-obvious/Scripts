@@ -8,6 +8,7 @@ async function ParseAsset(jsonData) {
     };
     let TREE=asset["tree"];
     let CLASSREF=asset["class_ref"];
+    console.log(`Asset contains ${asset["instance_count"]} instances and ${asset["class_count"]} unique classes.`);
     
 };
 async function grabUnionData(childData){
