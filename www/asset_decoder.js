@@ -3,7 +3,7 @@ const base_url="https://captianobvious.pythonanywhere.com/api/v3";
 var placeid=7081918890;
 async function ParseAsset(jsonData) {
     const asset = JSON.parse(jsonData);
-    if (asset["metadata"] && asset["metadata"]["ExplicitAutoJoints"]) {
+    if (asset["metadata"] && asset.metadata["ExplicitAutoJoints"]) {
         console.log("Asset was authored with ExplicitAutoJoints, Instance:MakeJoints() will be required to properly display this model.");
     };
     try {
