@@ -10,6 +10,17 @@ async function ParseAsset(jsonData) {
         let TREE=asset.tree;
         let CLASSREF=asset.class_ref;
         console.log(`Asset contains ${asset.instance_count} instances and ${asset.class_count} unique classes.`);
+        for (let instance of TREE){
+            if (instance.ClassId!==undefined){
+                let ref_pointer=CLASSREF[instance.ClassId];
+                instance.ClassName=ref_pointer.Name; // if somehow ClassName is missing, add it
+                for (let property in ref_pointer.Properties){
+                    if (instance.properties===undefined){
+                        instance.properties={};
+                    };
+                };
+            };
+        };
     } catch (e) {
         console.error("Failed to parse asset data:", e);
     };
