@@ -9,7 +9,7 @@ async function ParseAsset(jsonData) {
     try {
         let TREE=asset.tree;
         let CLASSREF=asset.class_ref;
-        console.log(`Asset contains ${asset["instance_count"]} instances and ${asset["class_count"]} unique classes.`);
+        console.log(`Asset contains ${asset.instance_count} instances and ${asset.class_count} unique classes.`);
     } catch (e) {
         console.error("Failed to parse asset data:", e);
     };
