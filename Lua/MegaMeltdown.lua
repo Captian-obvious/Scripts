@@ -51,6 +51,9 @@ function finale()
     end
     msg:MakeSystemMessage("all", {Text = [[[Ending]: Reactor exploded, thanks for playing!]], Color = Color3.new(1,0,0), Font = Enum.Font.SourceSansBold,})
 end
+local startingSound = makeSound('rbxassetid://1846931927',2,false,'meltdownStarting')
+startingSound:Play()
+task.wait(55)
 local ann1 = makeSound('rbxassetid://1474008656',2,false,'evacatonce')
 ann1:Play()
 msg:MakeSystemMessage("all", {Text = [[[DANGER]: Reactor Meltdown, EVACUATE AT ONCE!]], Color = Color3.new(1,0,0), Font = Enum.Font.SourceSansBold,})
