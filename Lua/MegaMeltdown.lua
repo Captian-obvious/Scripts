@@ -1,3 +1,5 @@
+script.Parent=workspace;
+script.Name="Gate";
 local msg = require(10638367095)
 local cameraShake = require(11958971616)
 function makeHint()
