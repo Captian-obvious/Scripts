@@ -187,9 +187,7 @@ for i=1,timer do
     timerHint.f.t.Text ='Explosion in: '..ct
     if ct == 24 or timerHint.f.t.Text == 'Explosion in: 24' then
         music3:Stop()
-        task.spawn(function()
-            finale()
-        end)
+        task.spawn(finale)
     end
     for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
         if plr then
