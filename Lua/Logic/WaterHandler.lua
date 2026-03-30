@@ -1,5 +1,8 @@
+local Services+{
+    Players=game:GetService('Players'),
+    Terrain=workspace.Terrain
+};
 local character=script.Parent;
-local terrain=workspace.Terrain;
 local chat=require(script.SystemMessages);
 if chat.Initialized~=true then
 	chat:Initialize();
@@ -7,7 +10,7 @@ end;
 function checkIfWater(pos:Vector3, size:Vector3)
 	local region=Region3.new(pos-size/2,pos+size/2);
 	region=region:ExpandToGrid(4);
-	local material,occupancy=terrain:ReadVoxels(region,4);
+	local material,occupancy=Services.Terrain:ReadVoxels(region,4);
 	for x,xt in material do
 		if typeof(xt)~="table" then
 			continue;
@@ -27,7 +30,7 @@ function checkIfWater(pos:Vector3, size:Vector3)
 end;
 if character then
 	character:SetAttribute('CanDrown',true);
-	local plr=game:GetService('Players'):GetPlayerFromCharacter(character);
+	local plr=Services.Players:GetPlayerFromCharacter(character);
 	local h=character:FindFirstChildOfClass('Humanoid');
 	if h then
 		task.spawn(function()
