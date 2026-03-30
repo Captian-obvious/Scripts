@@ -72,9 +72,8 @@ if character then
 			local dt=task.wait();
 			local head=h.Parent:FindFirstChild('Head');
 			if head then
-				if checkIfWater(head.CFrame.Position) and character:GetAttribute('CanDrown')==true then
+				if checkIfWater(head.CFrame.Position+Vector3.new(0,2,0)) and character:GetAttribute('CanDrown')==true then
 					passedTime+=dt;
-					print("Player is underwater"); --debug, will remove once i confirm something
 					if not hasStartedSequence and passedTime>=timeToDamage then
 						hasStartedSequence=true;
 						if event then
