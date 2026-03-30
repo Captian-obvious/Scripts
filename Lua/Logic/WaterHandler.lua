@@ -46,11 +46,11 @@ if character then
                 local dt=task.wait();
                 local head=h.Parent:FindFirstChild('Head');
                 if head then
+                    local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
                     if checkIfWater(head.Position) then
                         passedTime+=dt;
                         if passedTime>=timeToDamage and not hasStartedSequence then
                             hasStartedSequence=true;
-                            local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
                             if event then
                                 event:FireClient(plr,"start_drown",20,hasStartedSequence);
                             end;
@@ -68,7 +68,6 @@ if character then
                         damageApplying=false;
                         if passedTime>=timeToDamage and hasStartedSequence then
                             hasStartedSequence=false;
-                            local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
                             if event then
                                 event:FireClient(plr,"start_drown",damageTimer,hasStartedSequence);
                             end;
