@@ -68,7 +68,7 @@ if character then
                         if not hasStartedSequence and passedTime>=timeToDamage then
                             hasStartedSequence=true;
                             if event then
-                                event:FireClient(plr,"start_drown",20,hasStartedSequence);
+                                event:FireClient(plr,"start_drown",damageTimerMax,hasStartedSequence);
                             end;
                             task.spawn(damageApplyer,h);
                         end;
