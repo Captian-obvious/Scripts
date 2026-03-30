@@ -57,34 +57,6 @@ if character then
     local plr=Services.Players:GetPlayerFromCharacter(character);
     local h=character:FindFirstChildOfClass('Humanoid');
     if h then
-        task.spawn(function()
-            while h and h.Health>0 do
-                local dt=task.wait();
-                local head=h.Parent:FindFirstChild('Head');
-                if head then
-                    local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
-                    if checkIfWater(head.CFrame.Position) and character:GetAttribute('CanDrown')==true then
-                        passedTime+=dt;
-                        if not hasStartedSequence and passedTime>=timeToDamage then
-                            hasStartedSequence=true;
-                            if event then
-                                event:FireClient(plr,"start_drown",damageTimerMax,hasStartedSequence);
-                            end;
-                            task.spawn(damageApplyer,h);
-                        end;
-                    else
-                        damageApplying=false;
-                        if passedTime>=timeToDamage and hasStartedSequence then
-                            hasStartedSequence=false;
-                            if event then
-                                event:FireClient(plr,"start_drown",damageTimer,hasStartedSequence);
-                            end;
-                        end;
-                        passedTime=0;
-                    end;
-                end;
-            end;
-        end);
         h.Died:Connect(function()
             local rootPart=h.RootPart;
             local head=h.Parent:FindFirstChild('Head');
@@ -94,5 +66,31 @@ if character then
                 end;
             end;
         end);
+        while h and h.Health>0 do
+            local dt=task.wait();
+            local head=h.Parent:FindFirstChild('Head');
+            if head then
+                local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
+                if checkIfWater(head.CFrame.Position) and character:GetAttribute('CanDrown')==true then
+                    passedTime+=dt;
+                    if not hasStartedSequence and passedTime>=timeToDamage then
+                        hasStartedSequence=true;
+                        if event then
+                            event:FireClient(plr,"start_drown",damageTimerMax,hasStartedSequence);
+                        end;
+                        task.spawn(damageApplyer,h);
+                    end;
+                else
+                    damageApplying=false;
+                    if passedTime>=timeToDamage and hasStartedSequence then
+                        hasStartedSequence=false;
+                        if event then
+                            event:FireClient(plr,"start_drown",damageTimer,hasStartedSequence);
+                        end;
+                    end;
+                    passedTime=0;
+                end;
+            end;
+        end;
     end;
 end;
