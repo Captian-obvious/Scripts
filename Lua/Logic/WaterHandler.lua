@@ -39,15 +39,15 @@ end;
 local timeToDamage=120;
 local passedTime=0;
 local damageTimerMax=20;
-local damageTimer=20;
+local damageTimer=0;
 local hasStartedSequence=false;
 local damageApplying=false;
 local function damageApplyer(h)
     damageApplying=true;
-    while damageApplying and damageTimer>0 do
-        damageTimer-=task.wait();
+    while damageApplying and damageTimer<damageTimerMax do
+        damageTimer+=task.wait();
     end;
-    damageTimer=damageTimerMax;
+    damageTimer=0;
     if damageApplying then
         h:TakeDamage(h.MaxHealth);
     end;
