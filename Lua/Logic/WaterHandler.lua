@@ -82,7 +82,6 @@ if character then
             local head=h.Parent:FindFirstChild('Head');
             if rootPart then
                 if checkIfWater(rootPart.Position) then
-                    --print('Player is in water');
                     if character:GetAttribute('CanDrown')==true then
                         chat:MakeSystemMessage(plr.Name,{Text="You drowned!",Color=Color3.new(1,64/255,77/255),Font='Ubuntu'});
                     end;
