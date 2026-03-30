@@ -8,7 +8,7 @@ if chat.Initialized~=true then
     chat:Initialize();
 end;
 function checkIfWater(pos:Vector3)
-    local voxelSize=4;
+    local voxelSize=4; --DO NOT CHANGE
     local size=Vector3.new(voxelSize,voxelSize,voxelSize);
     local region=Region3.new(pos-size/2,pos+size/2);
     region=region:ExpandToGrid(voxelSize);
