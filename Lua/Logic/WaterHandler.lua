@@ -36,6 +36,15 @@ local passedTime=0;
 local damageTimer=20;
 local hasStartedSequence=false;
 local damageApplying=false;
+local function damageApplyer(h)
+    damageApplying=true;
+    while damageTimer>0 and damageApplying do
+        damageTimer-=task.wait();
+    end;
+    if damageApplying then
+        h:TakeDamage(h.MaxHealth);
+    end;
+end;
 if character then
     character:SetAttribute('CanDrown',true);
     local plr=Services.Players:GetPlayerFromCharacter(character);
@@ -54,15 +63,7 @@ if character then
                             if event then
                                 event:FireClient(plr,"start_drown",20,hasStartedSequence);
                             end;
-                            task.spawn(function()
-                                damageApplying=true;
-                                while damageTimer>0 and damageApplying do
-                                    damageTimer-=task.wait();
-                                end;
-                                if damageApplying then
-                                    h:TakeDamage(h.MaxHealth);
-                                end;
-                            end);
+                            task.spawn(damageApplyer,h);
                         end;
                     else
                         damageApplying=false;
