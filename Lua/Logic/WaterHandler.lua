@@ -9,7 +9,7 @@ local Services={
     Terrain=workspace.Terrain
 };
 local character=script.Parent;
-local chat=require(script.SystemMessages);
+local chat=require(script.ServerMessages);
 local timeToDamage=120;
 local passedTime=0;
 local damageTimerMax=20;
