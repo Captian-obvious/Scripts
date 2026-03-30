@@ -56,9 +56,9 @@ if character then
                 local head=h.Parent:FindFirstChild('Head');
                 if head then
                     local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
-                    if checkIfWater(head.Position) then
+                    if checkIfWater(head.Position) and character:GetAttribute('CanDrown')==true then
                         passedTime+=dt;
-                        if passedTime>=timeToDamage and not hasStartedSequence then
+                        if not hasStartedSequence and passedTime>=timeToDamage then
                             hasStartedSequence=true;
                             if event then
                                 event:FireClient(plr,"start_drown",20,hasStartedSequence);
