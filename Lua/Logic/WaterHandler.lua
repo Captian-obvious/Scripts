@@ -10,6 +10,12 @@ local Services={
 };
 local character=script.Parent;
 local chat=require(script.SystemMessages);
+local timeToDamage=120;
+local passedTime=0;
+local damageTimerMax=20;
+local damageTimer=0;
+local hasStartedSequence=false;
+local damageApplying=false;
 if chat.Initialized~=true then
     chat:Initialize();
 end;
@@ -36,13 +42,7 @@ function checkIfWater(pos:Vector3)
     end;
     return false;
 end;
-local timeToDamage=120;
-local passedTime=0;
-local damageTimerMax=20;
-local damageTimer=0;
-local hasStartedSequence=false;
-local damageApplying=false;
-local function damageApplyer(h)
+function damageApplyer(h)
     damageApplying=true;
     while damageApplying and damageTimer<damageTimerMax do
         damageTimer+=task.wait();
