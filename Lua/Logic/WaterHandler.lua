@@ -63,7 +63,7 @@ if character then
                 local head=h.Parent:FindFirstChild('Head');
                 if head then
                     local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
-                    if checkIfWater(head.Position) and character:GetAttribute('CanDrown')==true then
+                    if checkIfWater(head.CFrame.Position) and character:GetAttribute('CanDrown')==true then
                         passedTime+=dt;
                         if not hasStartedSequence and passedTime>=timeToDamage then
                             hasStartedSequence=true;
@@ -89,7 +89,7 @@ if character then
             local rootPart=h.RootPart;
             local head=h.Parent:FindFirstChild('Head');
             if rootPart then
-                if checkIfWater(rootPart.Position) and character:GetAttribute('CanDrown')==true then
+                if checkIfWater(rootPart.CFrame.Position) and character:GetAttribute('CanDrown')==true then
                     chat:MakeSystemMessage(plr.Name,{Text="You drowned!",Color=Color3.new(1,64/255,77/255),Font='Ubuntu'});
                 end;
             end;
