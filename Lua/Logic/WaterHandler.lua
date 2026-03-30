@@ -7,10 +7,12 @@ local chat=require(script.SystemMessages);
 if chat.Initialized~=true then
 	chat:Initialize();
 end;
-function checkIfWater(pos:Vector3, size:Vector3)
+function checkIfWater(pos:Vector3)
+	local voxelSize=4;
+	local size=Vector3.new(voxelSize,voxelSize,voxelSize);
 	local region=Region3.new(pos-size/2,pos+size/2);
-	region=region:ExpandToGrid(4);
-	local material,occupancy=Services.Terrain:ReadVoxels(region,4);
+	region=region:ExpandToGrid(voxelSize);
+	local material,occupancy=Services.Terrain:ReadVoxels(region,voxelSize);
 	for x,xt in material do
 		if typeof(xt)~="table" then
 			continue;
@@ -38,7 +40,7 @@ if character then
 				task.wait();
 				local head=h.Parent:FindFirstChild('Head');
 				if head then
-					if checkIfWater(head.Position,Vector3.new(5,5,5)) then
+					if checkIfWater(head.Position) then
 						--print('Player is drown-able');
 					end;
 				end;
@@ -48,7 +50,7 @@ if character then
 			local rootPart=h.RootPart;
 			local head=h.Parent:FindFirstChild('Head');
 			if rootPart then
-				if checkIfWater(rootPart.Position,Vector3.new(5,5,5)) then
+				if checkIfWater(rootPart.Position) then
 					--print('Player is in water');
 					if character:GetAttribute('CanDrown')==true then
 						chat:MakeSystemMessage(plr.Name,{Text="You drowned!",Color=Color3.new(1,64/255,77/255),Font='Ubuntu'});
