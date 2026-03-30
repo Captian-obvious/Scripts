@@ -1,5 +1,6 @@
 local Services={
     Players=game:GetService('Players'),
+    ReplicatedStorage=game:GetService("ReplicatedStorage"),
     Terrain=workspace.Terrain
 };
 local character=script.Parent;
@@ -30,6 +31,11 @@ function checkIfWater(pos:Vector3)
     end;
     return false;
 end;
+local timeToDamage=120;
+local passedTime=0;
+local damageTimer=20;
+local hasStartedSequence=false;
+local damageApplying=false;
 if character then
     character:SetAttribute('CanDrown',true);
     local plr=Services.Players:GetPlayerFromCharacter(character);
@@ -37,11 +43,37 @@ if character then
     if h then
         task.spawn(function()
             while h and h.Health>0 do
-                task.wait();
+                local dt=task.wait();
                 local head=h.Parent:FindFirstChild('Head');
                 if head then
                     if checkIfWater(head.Position) then
-                        --print('Player is drown-able');
+                        passedTime+=dt;
+                        if passedTime>=timeToDamage and not hasStartedSequence then
+                            hasStartedSequence=true;
+                            local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
+                            if event then
+                                event:FireClient(plr,"start_drown",20,hasStartedSequence);
+                            end;
+                            task.spawn(function()
+                                damageApplying=true;
+                                while damageTimer>0 and damageApplying do
+                                    damageTimer-=task.wait();
+                                end;
+                                if damageApplying then
+                                    h:TakeDamage(h.MaxHealth);
+                                end;
+                            end);
+                        end;
+                    else
+                        damageApplying=false;
+                        if passedTime>=timeToDamage and hasStartedSequence then
+                            hasStartedSequence=false;
+                            local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler");
+                            if event then
+                                event:FireClient(plr,"start_drown",damageTimer,hasStartedSequence);
+                            end;
+                        end;
+                        passedTime=0;
                     end;
                 end;
             end;
