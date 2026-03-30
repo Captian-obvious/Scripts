@@ -43,7 +43,7 @@ local hasStartedSequence=false;
 local damageApplying=false;
 local function damageApplyer(h)
     damageApplying=true;
-    while damageTimer>0 and damageApplying do
+    while damageApplying and damageTimer>0 do
         damageTimer-=task.wait();
     end;
     if damageApplying then
