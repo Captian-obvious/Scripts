@@ -22,4 +22,3 @@ function spawnEntity(entityName:string,cf:CFrame)
     return entity;
 end;
 
-
