@@ -22,3 +22,14 @@ function spawnEntity(entityName:string,cf:CFrame)
     return entity;
 end;
 
+local rift = workspace:FindFirstChild("DarkRift");
+if not rift then
+    error("There is no rift, chase will NOT start");
+end;
+local riftHandlerModule=rift:FindFirstChild("Rift");
+if riftHandlerModule then
+    local riftHandler=require(riftHandlerModule);
+    riftHandler:open();
+    task.wait(17);
+    riftHandler:close();
+end;
