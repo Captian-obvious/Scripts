@@ -30,8 +30,9 @@ local riftHandlerModule=rift:FindFirstChild("Rift");
 if riftHandlerModule then
     local riftHandler=require(riftHandlerModule);
     riftHandler:open();
-    task.wait(4);
-    task.wait(4);
-    task.wait(9);
+    task.wait(2);
+    Modules.CameraShake:shakeCamera("all",1,5,7,1,5);
+    task.wait(8);
+    task.wait(7);
     riftHandler:close();
 end;
