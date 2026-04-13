@@ -30,8 +30,8 @@ local riftHandlerModule=rift:FindFirstChild("Rift");
 if riftHandlerModule then
     local riftHandler=require(riftHandlerModule);
     riftHandler:open();
-    task.wait(3);
-    task.wait(5);
+    task.wait(4);
+    task.wait(4);
     task.wait(9);
     riftHandler:close();
 end;
