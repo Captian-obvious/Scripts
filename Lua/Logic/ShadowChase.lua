@@ -32,7 +32,8 @@ if riftHandlerModule then
     riftHandler:open();
     task.wait(2);
     Modules.CameraShake:shakeCamera("all",1,5,7,1,5);
-    task.wait(8);
-    task.wait(7);
+    task.wait(5);
+    task.wait(5);
+    task.wait(5);
     riftHandler:close();
 end;
