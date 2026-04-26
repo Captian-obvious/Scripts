@@ -10,7 +10,7 @@ local Services={
 };
 local character=script.Parent;
 local chat=require(script.ServerMessages);
-local timeToDamage=120; --time until it kills the player
+local timeToDamage=110; --time until it kills the player
 local passedTime=0;
 local damageTimerMax=20;
 local damageTimer=0;
