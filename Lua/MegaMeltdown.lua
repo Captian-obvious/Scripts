@@ -1,7 +1,8 @@
+task.wait(3);
 script.Parent=workspace;
 script.Name="Gate";
 local msg = require(10638367095)
-local cameraShake = require(11958971616)
+local cameraShake = require(game:GetService("ServerScriptService"):FindFirstChild("CameraShake"))
 function makeHint()
     local timerHint = Instance.new('ScreenGui', script)
     timerHint.Name = 'h'
@@ -111,7 +112,7 @@ ann1:Play()
 msg:MakeSystemMessage("all", {Text = [[[DANGER]: Reactor Meltdown, EVACUATE AT ONCE!]], Color = Color3.new(1,0,0), })
 task.wait(10)
 metalexplosion:Play()
-cameraShake:shakeCamera(3,35)
+cameraShake:shakeCamera("all",3,10,2.5,1,5);
 task.wait(1)
 shockwave:Play()
 task.wait(9)
@@ -151,9 +152,12 @@ alarm:Stop()
 task.wait(10)
 ann3:Play()
 msg:MakeSystemMessage("all", {Text = [[[Warning]: Reactor Core is at critical temp^@w6]], Color = Color3.new(1,0,0), })
-task.wait(73)
 shockwave:Play()
-cameraShake:shakeCamera(3,35)
+cameraShake:shakeCamera("all",3,10,2.5,1,5);
+task.wait(10);
+task.wait(63);
+shockwave:Play()
+cameraShake:shakeCamera("all",3,10,2.5,1,5);
 music3:Play()
 task.wait(5)
 evac:Play()
