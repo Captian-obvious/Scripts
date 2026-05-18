@@ -1,4 +1,6 @@
 local ts=game:GetService("TweenService");
+local debris=game:GetService('Debris');
+local players=game:GetService('Players');
 local cameraShake=require(127899128442444);
 local dynamicExplosion = require(11380416673);
 local sf=workspace:FindFirstChild("MusicFolder") or Instance.new('Folder',workspace);
@@ -106,11 +108,11 @@ task.wait(24);
 local timer = 90;
 local timerHint = makeHint();
 timerHint.f.t.Text ='Explosion in: '..timer;
-for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
+for _,plr in pairs(players:GetPlayers()) do
     if plr then
         local gui = timerHint:Clone();
         gui.Parent = plr.PlayerGui;
-        game:GetService('Debris'):AddItem(gui, 0.99);
+        debris:AddItem(gui, 0.99);
     end;
 end;
 for i=1,timer do
@@ -120,11 +122,11 @@ for i=1,timer do
         music3:Stop();
         task.spawn(finale);
     end;
-    for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
+    for _,plr in pairs(players:GetPlayers()) do
         if plr then
             local gui = timerHint:Clone();
             gui.Parent = plr.PlayerGui;
-            game:GetService('Debris'):AddItem(gui, 0.99);
+            debris:AddItem(gui, 0.99);
         end;
     end;
     if ct == 10 or timerHint.f.t.Text == 'Explosion in: 10' then
