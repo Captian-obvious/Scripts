@@ -57,6 +57,8 @@ end;
 while not music1.IsLoaded do
   task.wait();
 end;
+finale();
+--[[
 music1:Play();
 sdm1:Play();
 task.wait(120);
@@ -65,3 +67,4 @@ task.wait(120);
 music3:Play();
 task.wait(69);
 sdm2:Play();
+--]]
