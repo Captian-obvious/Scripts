@@ -17,8 +17,9 @@ local kaboom = sf:FindFirstChild('kaboom') or makeSound('rbxassetid://131026234'
 local countdown=sf:FindFirstChild('tentozero') or makeSound("rbxassetid://15487574881",3,false,'tentozero');
 local sdm1=sf:FindFirstChild('t6min') or makeSound("rbxassetid://1000895732",2,false,'t6min');
 local music1=sf:FindFirstChild('music1') or makeSound("rbxassetid://9254549777",2,false,'music1');
-local music2=sf:FindFirstChild('music2') or makeSound("rbxassetid://9254549777",2,false,'music2');
-local music3=sf:FindFirstChild('music3') or makeSound("rbxassetid://9254549777",2,false,'music3');
+local music2=sf:FindFirstChild('music2') or makeSound("rbxassetid://9254568037",2,false,'music2');
+local music3=sf:FindFirstChild('music3') or makeSound("rbxassetid://9254607488",2,false,'music3');
+local music4=sf:FindFirstChild('music4') or makeSound("rbxassetid://9254632812",2,false,'music4');
 while not music1.IsLoaded do
   task.wait()
 end;
