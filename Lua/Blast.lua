@@ -13,6 +13,20 @@ function makeSound(id,vol,loop,name, pitch)
     s.Name = name;
     return s;
 end;
+local ann1 = makeSound('rbxassetid://1474008656',2,false,'evacatonce');
+local ann2 = makeSound('rbxassetid://159445410',2,false,'overheat');
+local evac = makeSound('rbxassetid://147296378',2,false,'evac');
+local alarm = makeSound('rbxassetid://2451364019',2,true,'alarm');;
+local ann3 = makeSound('rbxassetid://168877716',2,false,'critical');
+local ann4 = makeSound('rbxassetid://147296324',2,false,'safeguards');
+local kaboom = sf:FindFirstChild('kaboom') or makeSound('rbxassetid://131026234',1.5,false,'kaboom');
+local countdown=sf:FindFirstChild('tentozero') or makeSound("rbxassetid://15487574881",3,false,'tentozero');
+local sdm1=sf:FindFirstChild('t6min') or makeSound("rbxassetid://1000895732",2,false,'t6min');
+local sdm2=sf:FindFirstChild('selfdestruct') or makeSound("rbxassetid://1000895732",2,false,'t6min');
+local music1=sf:FindFirstChild('music1') or makeSound("rbxassetid://9254549777",2,false,'music1');
+local music2=sf:FindFirstChild('music2') or makeSound("rbxassetid://9254568037",2,false,'music2');
+local music3=sf:FindFirstChild('music3') or makeSound("rbxassetid://9254607488",2,false,'music3');
+local music4=sf:FindFirstChild('music4') or makeSound("rbxassetid://9254632812",2,false,'music4');
 function makeHint()
     local timerHint = Instance.new('ScreenGui', script);
     timerHint.Name = 'h';
@@ -33,20 +47,13 @@ function makeHint()
     h.Name = 't';
     return timerHint;
 end;
-local ann1 = makeSound('rbxassetid://1474008656',2,false,'evacatonce');
-local ann2 = makeSound('rbxassetid://159445410',2,false,'overheat');
-local evac = makeSound('rbxassetid://147296378',2,false,'evac');
-local alarm = makeSound('rbxassetid://2451364019',2,true,'alarm');;
-local ann3 = makeSound('rbxassetid://168877716',2,false,'critical');
-local ann4 = makeSound('rbxassetid://147296324',2,false,'safeguards');
-local kaboom = sf:FindFirstChild('kaboom') or makeSound('rbxassetid://131026234',1.5,false,'kaboom');
-local countdown=sf:FindFirstChild('tentozero') or makeSound("rbxassetid://15487574881",3,false,'tentozero');
-local sdm1=sf:FindFirstChild('t6min') or makeSound("rbxassetid://1000895732",2,false,'t6min');
-local sdm2=sf:FindFirstChild('selfdestruct') or makeSound("rbxassetid://1000895732",2,false,'t6min');
-local music1=sf:FindFirstChild('music1') or makeSound("rbxassetid://9254549777",2,false,'music1');
-local music2=sf:FindFirstChild('music2') or makeSound("rbxassetid://9254568037",2,false,'music2');
-local music3=sf:FindFirstChild('music3') or makeSound("rbxassetid://9254607488",2,false,'music3');
-local music4=sf:FindFirstChild('music4') or makeSound("rbxassetid://9254632812",2,false,'music4');
+function finale()
+    music4:Play();
+    task.wait(39);
+    countdown:Play();
+    task.wait(11);
+    kaboom:Play();
+end;
 while not music1.IsLoaded do
   task.wait();
 end;
