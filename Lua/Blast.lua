@@ -49,7 +49,7 @@ function makeHint()
 end;
 function finale()
     music4:Play();
-    task.wait(39);
+    task.wait(29);
     countdown:Play();
     task.wait(11);
     kaboom:Play();
