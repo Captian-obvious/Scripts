@@ -17,6 +17,7 @@ local ann1 = sf:FindFirstChild('evacatonce') or makeSound('rbxassetid://14740086
 local ann2 = sf:FindFirstChild('overheat') or makeSound('rbxassetid://159445410',1.5,false,'overheat');
 local evac = sf:FindFirstChild('evac') or makeSound('rbxassetid://147296378',1.5,false,'evac');
 local alarm = sf:FindFirstChild('alarm') or makeSound('rbxassetid://2451364019',1.5,true,'alarm');
+local alarm2 = sf:FindFirstChild('alarm2') or makeSound('rbxassetid://2451364019',1.5,true,'alarm2',1.1);
 local ann3 = sf:FindFirstChild('critical') or makeSound('rbxassetid://168877716',1.5,false,'critical');
 local ann4 = sf:FindFirstChild('safeguards') or makeSound('rbxassetid://147296324',1.5,false,'safeguards');
 local metalexplosion = sf:FindFirstChild('metalexplosion') or makeSound('rbxassetid://178962800', 1, false, 'metalexplosion');
