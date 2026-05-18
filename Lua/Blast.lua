@@ -61,11 +61,42 @@ ann4:Play();
 task.wait(5);
 music1:Play();
 sdm1:Play();
-task.wait(120);
+task.wait(26);
+shockwave:Play();
+cameraShake:shakeCamera(nil,5,10,3.6,1,5);
+task.wait(94);
 music2:Play();
 task.wait(120);
 music3:Play();
-task.wait(75);
+task.wait(51);
 sdm2:Play();
-task.wait(45);
-finale();
+task.wait(24);
+local timer = 90;
+local timerHint = makeHint();
+timerHint.f.t.Text ='Explosion in: '..timer;
+for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
+    if plr then
+        local gui = timerHint:Clone();
+        gui.Parent = plr.PlayerGui;
+        game:GetService('Debris'):AddItem(gui, 0.99);
+    end;
+end;
+for i=1,timer do
+    local ct = timer - i;
+    timerHint.f.t.Text ='Explosion in: '..ct;
+    if ct == 45 or timerHint.f.t.Text == 'Explosion in: 45' then
+        music3:Stop();
+        task.spawn(finale);
+    end;
+    for _,plr in pairs(game:GetService('Players'):GetPlayers()) do
+        if plr then
+            local gui = timerHint:Clone();
+            gui.Parent = plr.PlayerGui;
+            game:GetService('Debris'):AddItem(gui, 0.99);
+        end;
+    end;
+    if ct == 10 or timerHint.f.t.Text == 'Explosion in: 10' then
+        break;
+    end;
+    task.wait(1);
+end;
