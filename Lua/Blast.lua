@@ -21,7 +21,7 @@ local music2=sf:FindFirstChild('music2') or makeSound("rbxassetid://9254568037",
 local music3=sf:FindFirstChild('music3') or makeSound("rbxassetid://9254607488",2,false,'music3');
 local music4=sf:FindFirstChild('music4') or makeSound("rbxassetid://9254632812",2,false,'music4');
 while not music1.IsLoaded do
-  task.wait()
+  task.wait();
 end;
 music1:Play();
 sdm1:Play();
