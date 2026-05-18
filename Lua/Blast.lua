@@ -16,7 +16,7 @@ end;
 local ann1 = makeSound('rbxassetid://1474008656',2,false,'evacatonce');
 local ann2 = makeSound('rbxassetid://159445410',2,false,'overheat');
 local evac = makeSound('rbxassetid://147296378',2,false,'evac');
-local alarm = makeSound('rbxassetid://2451364019',2,true,'alarm');;
+local alarm = makeSound('rbxassetid://2451364019',2,true,'alarm');
 local ann3 = makeSound('rbxassetid://168877716',2,false,'critical');
 local ann4 = makeSound('rbxassetid://147296324',2,false,'safeguards');
 local kaboom = sf:FindFirstChild('kaboom') or makeSound('rbxassetid://131026234',1.5,false,'kaboom');
