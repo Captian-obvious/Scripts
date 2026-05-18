@@ -57,6 +57,8 @@ end;
 while not music1.IsLoaded do
   task.wait();
 end;
+ann4:Play();
+task.wait(5);
 music1:Play();
 sdm1:Play();
 task.wait(120);
