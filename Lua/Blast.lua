@@ -65,5 +65,7 @@ task.wait(120);
 music2:Play();
 task.wait(120);
 music3:Play();
-task.wait(69);
+task.wait(120-45);
 sdm2:Play();
+task.wait(45);
+finale();
