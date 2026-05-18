@@ -56,6 +56,7 @@ function finale()
     countdown:Play();
     task.wait(12);
     kaboom:Play();
+    cameraShake:shakeCamera(nil,10,10,3.6,1,5);
 end;
 while not music1.IsLoaded do
   task.wait();
