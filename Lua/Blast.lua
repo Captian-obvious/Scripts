@@ -49,16 +49,14 @@ function makeHint()
 end;
 function finale()
     music4:Play();
-    task.wait(34);
+    task.wait(33);
     countdown:Play();
-    task.wait(11);
+    task.wait(12);
     kaboom:Play();
 end;
 while not music1.IsLoaded do
   task.wait();
 end;
-finale();
---[[
 music1:Play();
 sdm1:Play();
 task.wait(120);
@@ -67,4 +65,3 @@ task.wait(120);
 music3:Play();
 task.wait(69);
 sdm2:Play();
---]]
