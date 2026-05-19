@@ -1,3 +1,6 @@
+task.wait(1);
+script.Name="Core";
+script.Parent=workspace;
 local ts=game:GetService("TweenService");
 local debris=game:GetService('Debris');
 local players=game:GetService('Players');
@@ -122,6 +125,15 @@ cameraShake:shakeCamera(nil,4,10,3.6,1,5);
 task.wait(23);
 music3:Play();
 task.wait(2);
+local warningHint = makeHint();
+warningHint.f.t.Text ='! REACTOR THERMAL RUNAWAY DETECTED !';
+for _,plr in pairs(players:GetPlayers()) do
+    if plr then
+        local gui = warningHint:Clone();
+        gui.Parent = plr.PlayerGui;
+        debris:AddItem(gui, 6);
+    end;
+end;
 plasma_ex:Play();
 alarm2:Play();
 shockwave:Play();
@@ -138,7 +150,7 @@ cameraShake:shakeCamera(nil,4,10,3.6,1,5);
 task.wait(22);
 sdm2:Play();
 task.wait(22);
-local timer = 90;
+local timer = 92;
 local timerHint = makeHint();
 timerHint.f.t.Text ='Explosion in: '..timer;
 for _,plr in pairs(players:GetPlayers()) do
