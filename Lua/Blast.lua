@@ -137,7 +137,7 @@ for _,plr in pairs(players:GetPlayers()) do
     if plr then
         local gui = warningHint:Clone();
         gui.Parent = plr.PlayerGui;
-        debris:AddItem(gui, 6);
+        debris:AddItem(gui, 12);
     end;
 end;
 plasma_ex:Play();
