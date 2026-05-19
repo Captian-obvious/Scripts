@@ -63,6 +63,12 @@ function finale()
     task.wait(12);
     kaboom:Play();
     cameraShake:shakeCamera(nil,10,10,3.6,1,5);
+    local r=2500;
+    local e=dynamicExplosion.new(workspace, {BaseSize=Vector3.new(2,2,2),Position=Vector3.new(0,0,0),Material=Enum.Material.Neon, ExplosionColor3=Color3.new(1,0.5,0),ExplosionOpacity=0.5,DestroyJointRadiusPercent=1,BlastRadius = r, BlastPressure = 60})
+    task.wait(65)
+    if e~=nil and e.Parent~=nil then
+        e:Destroy()
+    end
 end;
 while not music1.IsLoaded do
   task.wait();
