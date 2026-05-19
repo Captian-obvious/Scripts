@@ -122,7 +122,7 @@ task.wait(23);
 music3:Play();
 task.wait(51);
 sdm2:Play();
-task.wait(24);
+task.wait(22);
 local timer = 90;
 local timerHint = makeHint();
 timerHint.f.t.Text ='Explosion in: '..timer;
