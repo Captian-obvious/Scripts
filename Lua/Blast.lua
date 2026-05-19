@@ -24,6 +24,7 @@ local ann3 = sf:FindFirstChild('critical') or makeSound('rbxassetid://168877716'
 local ann4 = sf:FindFirstChild('safeguards') or makeSound('rbxassetid://147296324',1.5,false,'safeguards');
 local metalexplosion = sf:FindFirstChild('metalexplosion') or makeSound('rbxassetid://178962800', 1, false, 'metalexplosion');
 local shockwave = sf:FindFirstChild('shockwave') or makeSound('rbxassetid://610327604', 2, false, 'shockwave');
+local plasma_ex= sf:FindFirstChild('plasma_ex') or makeSound('rbxassetid://13590927594',2,false,'plasma_ex');
 local kaboom = sf:FindFirstChild('kaboom') or makeSound('rbxassetid://131026234',1.5,false,'kaboom');
 local countdown=sf:FindFirstChild('tentozero') or makeSound("rbxassetid://15487574881",2,false,'tentozero');
 local sdm1=sf:FindFirstChild('t6min') or makeSound("rbxassetid://1000895732",1.2,false,'t6min');
