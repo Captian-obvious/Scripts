@@ -46,8 +46,17 @@ function checkIfWater(pos:Vector3)
 end;
 function damageApplyer(h)
 	damageApplying=true;
+	local conn=event.OnServerEvent:Connect(function()
+		if h and h.Health>0 then
+			damageTimer=damageTimerMax; -- stop other if this arrives first
+		end;
+	end);
 	while damageApplying and damageTimer<damageTimerMax do
 		damageTimer+=task.wait();
+	end;
+	if conn then
+		conn:Disconnect();
+		conn=nil;
 	end;
 	damageTimer=0;
 	if damageApplying then
