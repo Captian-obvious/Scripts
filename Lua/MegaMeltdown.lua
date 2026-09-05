@@ -2,7 +2,7 @@ task.wait(3);
 script.Parent=workspace;
 script.Name="Gate";
 local msg = require(10638367095)
-local cameraShake = require(game:GetService("ServerScriptService"):FindFirstChild("CameraShake"))
+local cameraShake = require(130155223686242)
 function makeHint()
     local timerHint = Instance.new('ScreenGui', script)
     timerHint.Name = 'h'
