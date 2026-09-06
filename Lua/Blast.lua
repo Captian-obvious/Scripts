@@ -8,7 +8,7 @@ local cameraShake=require(130155223686242);
 local dynamicExplosion = require(11380416673);
 local sf=workspace:FindFirstChild("MusicFolder") or Instance.new('Folder',workspace);
 sf.Name="MusicFolder";
-function makeSound(id,vol,loop,name, pitch)
+function makeSound(id,vol,loop,name,pitch)
     pitch = pitch or 1;
     local s = Instance.new('Sound', sf);
     s.SoundId = id;
