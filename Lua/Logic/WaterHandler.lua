@@ -8,19 +8,27 @@ local Services={
 	ReplicatedStorage=game:GetService("ReplicatedStorage"),
 	Terrain=workspace.Terrain
 };
+local oldprint,oldwarn=print,warn;
+local DEBUG_PREFIX="[WaterHandler]:";
+local function print(...)
+	if not game:GetService("RunService"):IsStudio() then return; end;
+	oldprint(DEBUG_PREFIX,...);
+end;
+local function warn(...)
+	if not game:GetService("RunService"):IsStudio() then return; end;
+	oldwarn(DEBUG_PREFIX,...);
+end;
 local character=script.Parent;
 local chat=require(script.ServerMessages);
-local timeToDamage=100; --time until it kills the player
+local timeToDamage=100;
 local passedTime=0;
 local damageTimerMax=20;
 local damageTimer=0;
 local hasStartedSequence=false;
 local damageApplying=false;
-if chat.Initialized~=true then
-	chat:Initialize();
-end;
-local event=Services.ReplicatedStorage:FindFirstChild("DrownCallbackHandler") or Instance.new("RemoteEvent",Services.ReplicatedStorage);
-event.Name="DrownCallbackHandler";
+local callbackName="DamageCallbackHandler";
+local event=Services.ReplicatedStorage:FindFirstChild(callbackName) or Instance.new("RemoteEvent",Services.ReplicatedStorage);
+event.Name=callbackName;
 function checkIfWater(pos:Vector3)
 	local voxelSize=4; --DO NOT CHANGE
 	local size=Vector3.new(voxelSize,voxelSize,voxelSize);
@@ -44,25 +52,24 @@ function checkIfWater(pos:Vector3)
 	end;
 	return false;
 end;
-function damageApplyer(h)
-	damageApplying=true;
-	local conn=event.OnServerEvent:Connect(function()
-		if h and h.Health>0 then
-			damageTimer=damageTimerMax; -- stop other if this arrives first
-		end;
-	end);
-	while damageApplying and damageTimer<damageTimerMax do
+local conn=nil;
+function damageApplyer(h:Humanoid)
+	print("Damage applyer started, damageTimer Value:",damageTimer);
+	while damageTimer<damageTimerMax do
 		damageTimer+=task.wait();
 	end;
 	if conn then
 		conn:Disconnect();
 		conn=nil;
 	end;
-	damageTimer=0;
+	print("Damage applyer ended, damageTimer Value:",damageTimer);
 	if damageApplying then
+		damageApplying=false;
 		h:TakeDamage(h.MaxHealth);
 	end;
+	hasStartedSequence=false;
 end;
+local timerCoroutine=nil;
 if character then
 	character:SetAttribute('CanDrown',true);
 	local plr=Services.Players:GetPlayerFromCharacter(character);
@@ -83,23 +90,38 @@ if character then
 			if head then
 				if checkIfWater(head.CFrame.Position+Vector3.new(0,2,0)) and character:GetAttribute('CanDrown')==true then --snap to voxel above head, prevents shallow drown
 					passedTime+=dt;
-					--print("Player is underwater"); --debug, will remove once i confirm something
 					if not hasStartedSequence and passedTime>=timeToDamage then
 						hasStartedSequence=true;
-						if event then
-							event:FireClient(plr,"start_drown",damageTimerMax,hasStartedSequence);
+						event:FireClient(plr,"damage_overlay",damageTimerMax,hasStartedSequence);
+						--task.spawn(damageApplyer,h);
+						if not timerCoroutine then
+							damageApplying=true;
+							timerCoroutine=coroutine.create(damageApplyer);
+							coroutine.resume(timerCoroutine,h);
+							conn=event.OnServerEvent:Connect(function(plr)
+								if plr.Character~=character then return end; --must be the correct character
+								if h and h.Health>0 then
+									damageTimer=damageTimerMax; -- stop other if this arrives first
+								end;
+							end);
 						end;
-						task.spawn(damageApplyer,h);
 					end;
 				else
 					damageApplying=false;
 					if passedTime>=(timeToDamage-damageTimerMax) and hasStartedSequence then
 						hasStartedSequence=false;
-						if event then
-							event:FireClient(plr,"start_drown",damageTimer,hasStartedSequence);
+						event:FireClient(plr,"damage_overlay",damageTimer,hasStartedSequence);
+						if timerCoroutine then
+							coroutine.close(timerCoroutine);
+							timerCoroutine=nil;
+						end;
+						if conn then
+							conn:Disconnect();
+							conn=nil;
 						end;
 					end;
 					passedTime=0;
+					damageTimer=0;
 				end;
 			end;
 		end;
