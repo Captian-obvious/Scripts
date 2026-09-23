@@ -89,7 +89,7 @@ if RunServ:IsClient() then
         parts=plrChar:GetDescendants();
         fp=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
         if h then
-            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.75);
+            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.95);
         end;
         if fp and head then
             cam.FieldOfView=90;
