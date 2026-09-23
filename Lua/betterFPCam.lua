@@ -4,7 +4,6 @@ local isViewing=false;
 local fp=false;
 local plrChar=plr.Character;
 local RunServ=game:GetService("RunService");
-local UserInputServ=game:GetService("UserInputService");
 local TweenService=game:GetService("TweenService");
 function raycast(he,ignore)
     local cf = he.CFrame * CFrame.new(0,0,-2);
@@ -55,41 +54,12 @@ if RunServ:IsClient() then
     warn("Warning!\nThis script may cause motion sickness if in First Person when being flung around!")
     local parts=plrChar:GetDescendants();
     local h=plrChar:FindFirstChildOfClass("Humanoid");
-    UserInputServ.InputBegan:Connect(function(input,gpe)
-        if not gpe then
-            if input.KeyCode==Enum.KeyCode.V then
-                isViewing=not isViewing;
-                if isViewing then
-                    print("First Person View Enabled");
-                    local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=1});
-                    fovTween:Play();
-                    fovTween.Completed:Wait();
-                    cam.FieldOfView=90;
-                    fp=true;
-                else
-                    print("First Person View Disabled");
-                    for _,d in pairs(parts) do
-                        if d:IsA("BasePart") then
-                            task.spawn(function()
-                                d.LocalTransparencyModifier = 0;
-                            end);
-                        end;
-                    end;
-                    cam.FieldOfView=1;
-                    fp=false;
-                    local fovTween=TweenService:Create(cam,TweenInfo.new(.5,Enum.EasingStyle.Quad,Enum.EasingDirection.Out,0,false,0),{FieldOfView=70});
-                    fovTween:Play();
-                    fovTween.Completed:Wait();
-                end;
-            end;
-        end;
-    end);
     RunServ.RenderStepped:Connect(function(deltaTime)
         local head=plrChar:FindFirstChild("Head");
         parts=plrChar:GetDescendants();
         fp=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
         if h then
-            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.95);
+            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,0.95);
         end;
         if fp and head then
             cam.FieldOfView=90;
