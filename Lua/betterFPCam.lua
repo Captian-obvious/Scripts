@@ -55,7 +55,6 @@ if RunServ:IsClient() then
     warn("Warning!\nThis script may cause motion sickness if in First Person when being flung around!")
     local parts=plrChar:GetDescendants();
     local h=plrChar:FindFirstChildOfClass("Humanoid");
-    isFirstPerson=false;
     UserInputServ.InputBegan:Connect(function(input,gpe)
         if not gpe then
             if input.KeyCode==Enum.KeyCode.V then
@@ -88,19 +87,18 @@ if RunServ:IsClient() then
     RunServ.RenderStepped:Connect(function(deltaTime)
         local head=plrChar:FindFirstChild("Head");
         parts=plrChar:GetDescendants();
-        isFirstPerson=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
+        fp=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
         if h then
-            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,-1);
+            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.75);
         end;
-        if isFirstPerson and head then
+        if fp and head then
+            cam.FieldOfView=90;
             for _,d in pairs(parts) do
                 if d:IsA("BasePart") then
                     task.spawn(function()
                         if d.LocalTransparencyModifier ~= d.Transparency and not d.Parent:IsA('Accoutrement') then
                             d.LocalTransparencyModifier = d.Transparency;
                         elseif d.Parent:IsA('Accoutrement') then
-                            --local isBlocked = a:IsBlockedAccessory(d.Parent);
-                            --local isTrans = a:IsTransAccessory(d.Parent)
                             if d.LocalTransparencyModifier ~= 0 then
                                 d.LocalTransparencyModifier = 0;
                             end;
@@ -118,7 +116,7 @@ if RunServ:IsClient() then
                 end;
             end;
         else
-            cam.CameraType=Enum.CameraType.Custom;
+            cam.FieldOfView=70;
         end;
     end);
 else
