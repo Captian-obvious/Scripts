@@ -1,5 +1,5 @@
 local cam=workspace.CurrentCamera;
-local plr=owner;
+local plr=game.Players.LocalPlayer;
 local isViewing=false;
 local fp=false;
 local plrChar=plr.Character;
@@ -92,7 +92,7 @@ if RunServ:IsClient() then
         if h then
             h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,-1);
         end;
-        if fp and head then
+        if isFirstPerson and head then
             for _,d in pairs(parts) do
                 if d:IsA("BasePart") then
                     task.spawn(function()
