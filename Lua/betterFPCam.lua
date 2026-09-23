@@ -91,5 +91,5 @@ if RunServ:IsClient() then
         end;
     end);
 else
-    warn("The slideCam script is meant to be run on the client side!");
+    warn("Better First Person Cam Script is meant to be run on the client side!");
 end;
