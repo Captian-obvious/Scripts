@@ -61,7 +61,7 @@ if RunServ:IsClient() then
         parts=plrChar:GetDescendants();
         fp=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
         if h then
-            h.CameraOffset=(not fp) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.75);
+            h.CameraOffset=(not fp) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.5);
         end;
         if fp and head then
             cam.FieldOfView=90;
@@ -71,8 +71,8 @@ if RunServ:IsClient() then
                         if d.LocalTransparencyModifier ~= d.Transparency and not d.Parent:IsA('Accoutrement') then
                             d.LocalTransparencyModifier = d.Transparency;
                         elseif d.Parent:IsA('Accoutrement') then
-                            if d.LocalTransparencyModifier ~= 0 then
-                                d.LocalTransparencyModifier = 0;
+                            if d.LocalTransparencyModifier ~= 1 then
+                                d.LocalTransparencyModifier = 1;
                             end;
                         end;
                     end);
