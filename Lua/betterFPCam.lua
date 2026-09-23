@@ -4,6 +4,7 @@ local isViewing=false;
 local fp=false;
 local plrChar=plr.Character;
 local RunServ=game:GetService("RunService");
+local UserInputServ=game:GetService("UserInputService");
 local TweenService=game:GetService("TweenService");
 function raycast(he,ignore)
     local cf = he.CFrame * CFrame.new(0,0,-2);
@@ -48,6 +49,7 @@ function GetBlockingAccessories(plr)
             return accessories;
         end;
     end;
+    
 end;
 if RunServ:IsClient() then
     print("Better First Person Cam Script loaded! Press V to toggle First Person");
@@ -59,7 +61,7 @@ if RunServ:IsClient() then
         parts=plrChar:GetDescendants();
         fp=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
         if h then
-            h.CameraOffset=(not isFirstPerson) and Vector3.new(0,0,0) or Vector3.new(0,0,0.95);
+            h.CameraOffset=(not fp) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.75);
         end;
         if fp and head then
             cam.FieldOfView=90;
