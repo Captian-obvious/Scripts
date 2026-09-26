@@ -69,10 +69,6 @@ if RunServ:IsClient() then
                     task.spawn(function()
                         if d.LocalTransparencyModifier ~= 0 and not d.Parent:IsA('Accoutrement') and d~=head then
                             d.LocalTransparencyModifier = 0;
-                        elseif d.Parent:IsA('Accoutrement') then
-                            if d.LocalTransparencyModifier ~= 1 then
-                                d.LocalTransparencyModifier = 1;
-                            end;
                         end;
                     end);
                 end;
