@@ -60,14 +60,14 @@ if RunServ:IsClient() then
         parts=plrChar:GetDescendants();
         fp=(cam.Focus.Position-cam.CFrame.Position).Magnitude<=0.6;
         if h then
-            h.CameraOffset=(not fp) and Vector3.new(0,0,0) or Vector3.new(0,0,-0.9);
+            h.CameraOffset=(not fp) and Vector3.new(0,0,0) or Vector3.new(0,-0.2,-0.9);
         end;
         if fp and head then
             cam.FieldOfView=90;
             for _,d in pairs(parts) do
                 if d:IsA("BasePart") then
                     task.spawn(function()
-                        if d.LocalTransparencyModifier ~= 0 and not d.Parent:IsA('Accoutrement') and d~=head then
+                        if d.LocalTransparencyModifier ~= 0 and not d.Parent:IsA('Accoutrement') then
                             d.LocalTransparencyModifier = 0;
                         elseif d.Parent:IsA('Accoutrement') then
                             if d.LocalTransparencyModifier ~= 1 then
