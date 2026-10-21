@@ -1,5 +1,5 @@
 local cam=workspace.CurrentCamera;
-local plr=owner;
+local plr=game.Players.LocalPlayer;
 local isViewing=false;
 local fp=false;
 local plrChar=plr.Character;
@@ -92,16 +92,8 @@ if RunServ:IsClient() then
             for _,d in pairs(parts) do
                 if d:IsA("BasePart") then
                     task.spawn(function()
-                        if d.LocalTransparencyModifier ~= d.Transparency and not d.Parent:IsA('Accoutrement') then
-                            d.LocalTransparencyModifier = d.Transparency;
-                        elseif d.Parent:IsA('Accoutrement') then
-                            local isBlocked = a:IsBlockedAccessory(d.Parent);
-                            --local isTrans = a:IsTransAccessory(d.Parent)
-                            if d.LocalTransparencyModifier ~= d.Transparency and isBlocked~=true then
-                                d.LocalTransparencyModifier = d.Transparency;
-                            elseif isBlocked == true and d.LocalTransparencyModifier ~= 1 then
-                                d.LocalTransparencyModifier = 1;
-                            end;
+                        if d.LocalTransparencyModifier ~= 0 then
+                            d.LocalTransparencyModifier = 0;
                         end;
                     end);
                 end;
