@@ -1,13 +1,13 @@
 task.wait(1);
 script.Name="Core";
 script.Parent=workspace;
+script:ClearAllChildren();
 local ts=game:GetService("TweenService");
 local debris=game:GetService('Debris');
 local players=game:GetService('Players');
 local cameraShake=require(130155223686242);
 local dynamicExplosion = require(11380416673);
-local sf=workspace:FindFirstChild("MusicFolder") or Instance.new('Folder',workspace);
-sf.Name="MusicFolder";
+local sf=script;
 function makeSound(id,vol,loop,name,pitch)
     pitch = pitch or 1;
     local s = Instance.new('Sound', sf);
